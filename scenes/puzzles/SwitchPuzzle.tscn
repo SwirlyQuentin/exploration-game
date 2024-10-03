@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgjksx2dl5l4d"]
+
+[ext_resource type="Script" path="res://scripts/puzzles/switch-puzzle/SwitchPuzzle.gd" id="1_x14el"]
+[ext_resource type="Script" path="res://scripts/puzzles/switch-puzzle/Switch.gd" id="2_agbqi"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_w5d41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxvu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwdux"]
+radius = 285.351
+
+[node name="SwitchPuzzle" type="Node2D"]
+script = ExtResource("1_x14el")
+
+[node name="Switch1" type="Node2D" parent="."]
+position = Vector2(-217, -1)
+script = ExtResource("2_agbqi")
+
+[node name="Area2D" type="Area2D" parent="Switch1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch1/Area2D"]
+shape = SubResource("CircleShape2D_sxvu4")
+
+[node name="SwitchSprite" type="Sprite2D" parent="Switch1"]
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("3_w5d41")
+
+[node name="Switch2" type="Node2D" parent="."]
+position = Vector2(190, 0)
+script = ExtResource("2_agbqi")
+
+[node name="Area2D" type="Area2D" parent="Switch2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch2/Area2D"]
+shape = SubResource("CircleShape2D_sxvu4")
+
+[node name="SwitchSprite" type="Sprite2D" parent="Switch2"]
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("3_w5d41")
+
+[node name="ActiveCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
+shape = SubResource("CircleShape2D_dwdux")
+
+[connection signal="body_entered" from="Switch1/Area2D" to="Switch1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Switch1/Area2D" to="Switch1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Switch2/Area2D" to="Switch2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Switch2/Area2D" to="Switch2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="ActiveCheck" to="." method="_on_active_check_body_entered"]
+[connection signal="body_exited" from="ActiveCheck" to="." method="_on_active_check_body_exited"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0v0ci1gfne8u"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_3jktq"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="1_4sft4"]
+[ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="3_lphba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbaur"]
+size = Vector2(127, 127)
+
+[node name="TestScene" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(570, 295)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("1_3jktq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_4sft4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_vbaur")
+
+[node name="SwitchPuzzle" parent="." instance=ExtResource("3_lphba")]
+position = Vector2(568, 351)
