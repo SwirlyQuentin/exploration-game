@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0v0ci1gfne8u"]
+[gd_scene load_steps=6 format=3 uid="uid://c0v0ci1gfne8u"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_3jktq"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="1_4sft4"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="3_lphba"]
+[ext_resource type="Script" path="res://scripts/item-containers/Collectables.gd" id="4_gvm3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbaur"]
 size = Vector2(127, 127)
 
 [node name="TestScene" type="Node"]
+
+[node name="SwitchPuzzle" parent="." instance=ExtResource("3_lphba")]
+position = Vector2(568, 351)
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(570, 295)
@@ -21,5 +25,11 @@ texture = ExtResource("1_4sft4")
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_vbaur")
 
-[node name="SwitchPuzzle" parent="." instance=ExtResource("3_lphba")]
-position = Vector2(568, 351)
+[node name="CollectableLocations" type="Node" parent="."]
+script = ExtResource("4_gvm3o")
+
+[node name="CollectableLocation" type="Marker2D" parent="CollectableLocations"]
+position = Vector2(430, 221)
+
+[node name="Collectables" type="Node" parent="."]
+unique_name_in_owner = true

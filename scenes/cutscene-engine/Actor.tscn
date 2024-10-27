@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://blqd462wtgkci"]
+
+[ext_resource type="Texture2D" uid="uid://c5rr40pmwy02j" path="res://icon.svg" id="1_2mboq"]
+[ext_resource type="Script" path="res://scripts/dialogue-engine/Actor.gd" id="1_kqq76"]
+
+[node name="Actor" type="Marker2D"]
+position = Vector2(203, 484)
+script = ExtResource("1_kqq76")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -109.0
+offset_top = -168.0
+offset_right = 115.0
+offset_bottom = 113.0
+
+[node name="TextureRect" type="TextureRect" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2mboq")
+stretch_mode = 4

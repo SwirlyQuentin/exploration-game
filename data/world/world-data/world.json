@@ -1,0 +1,8 @@
+{
+    "collectables":[{"name": "collectable1", "location": "", "scene": "", "active": true}],
+    "chests": [{"name": "chest1", "location": "", "scene": "", "active": true}],
+    "loaded":false,
+    "puzzles":[{"name": "puzzle1", "location": "", "scene": "", "active": true, "solved":false}],
+    "enemies":[{"name": "enemy1", "location": "", "scene": "", "active": true}]
+
+}

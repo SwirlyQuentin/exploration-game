@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://celweepgsovfg"]
+
+[ext_resource type="Script" path="res://scripts/global/DevConsole.gd" id="1_efj7a"]
+
+[node name="DevConsole" type="Node"]
+script = ExtResource("1_efj7a")
+
+[node name="Console" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 119.0
+offset_top = 93.0
+offset_right = 428.0
+offset_bottom = 433.0
+
+[node name="ColorRect" type="ColorRect" parent="Console"]
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Contents" type="VBoxContainer" parent="Console"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConsoleText" type="RichTextLabel" parent="Console/Contents"]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true
+
+[node name="TextInput" type="LineEdit" parent="Console/Contents"]
+layout_mode = 2
+
+[connection signal="focus_entered" from="Console/Contents/TextInput" to="." method="_on_text_input_focus_entered"]
+[connection signal="focus_exited" from="Console/Contents/TextInput" to="." method="_on_text_input_focus_exited"]
