@@ -22,11 +22,13 @@ func collectWorldData():
 
 func loadCollectables():
 	collectableContainer = get_tree().current_scene.get_node("Collectables")
+	print("container", collectableContainer)
+	print("collectable ", collectable)
 	for colPos in worldData["collectables"]:
 		var c = collectable.instantiate()
 		collectableContainer.add_child(c)
 		c.position = colPos["location"]
-	print(collectableContainer)
+	print("container", collectableContainer)
 	pass
 
 func writeLocations():
