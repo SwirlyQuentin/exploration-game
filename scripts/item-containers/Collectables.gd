@@ -9,15 +9,15 @@ var currentScene = ""
 func _ready() -> void:
 	formatCollectables()
 	Signals.loadLocations.connect(loadLocations)
+	loadLocations()
 	pass # Replace with function body.
 
 
 func formatCollectables():
 	for child in children:
-		locations.append({"name":child.name, "position":child.global_position, "scene":currentScene, "active":true, "type": "collectable"})
+		locations.append({"name":child.name, "position":child.global_position, "ref":"", "active":true, "type": "collectable"})
 	pass
 
 func loadLocations():
-	for location in locations:
-		WorldLoader.locations.append(location)
+	WorldLoader.appendCollectables(locations)
 	pass

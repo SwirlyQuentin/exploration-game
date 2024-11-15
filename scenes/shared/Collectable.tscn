@@ -1,22 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqlw063hk567a"]
+[gd_scene load_steps=7 format=3 uid="uid://bqlw063hk567a"]
 
+[ext_resource type="Script" path="res://scripts/shared/GameObject.gd" id="1_g1uga"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="1_uoata"]
-[ext_resource type="Script" path="res://scripts/shared/Collectable.gd" id="1_yc21u"]
+[ext_resource type="Script" path="res://scripts/shared/CollectableObject.gd" id="2_r0lrr"]
+[ext_resource type="Script" path="res://scripts/shared/ProcessCheck.gd" id="4_gs3nk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fn88i"]
 radius = 20.025
 
-[node name="Collectable" type="Node2D"]
-script = ExtResource("1_yc21u")
+[sub_resource type="CircleShape2D" id="CircleShape2D_723eo"]
+radius = 30.0666
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Collectable" type="Node2D"]
+script = ExtResource("1_g1uga")
+
+[node name="CollectableObject" type="Node2D" parent="."]
+script = ExtResource("2_r0lrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollectableObject"]
 modulate = Color(0.989694, 0.160488, 1, 1)
 scale = Vector2(0.253906, 0.253906)
 texture = ExtResource("1_uoata")
 
-[node name="CollectCheck" type="Area2D" parent="."]
+[node name="CollectCheck" type="Area2D" parent="CollectableObject"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableObject/CollectCheck"]
 shape = SubResource("CircleShape2D_fn88i")
 
-[connection signal="body_entered" from="CollectCheck" to="." method="_on_collect_check_body_entered"]
+[node name="ProcessCheck" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_gs3nk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProcessCheck"]
+shape = SubResource("CircleShape2D_723eo")
+
+[connection signal="body_entered" from="CollectableObject/CollectCheck" to="CollectableObject" method="_on_collect_check_body_entered"]

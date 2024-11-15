@@ -10,3 +10,5 @@ signal addCollectable
 #loading world
 signal writeWorldLocations
 signal loadLocations
+signal saveWorld
+signal loadObjects

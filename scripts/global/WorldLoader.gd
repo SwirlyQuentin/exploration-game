@@ -12,7 +12,10 @@ var locations = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.connect("writeWorldLocations", writeLocations)
+	Signals.connect("loadObjects", loadCollectables)
+	Signals.connect("saveWorld", saveWorld)
 	collectWorldData()
+
 	pass # Replace with function body.
 
 
@@ -36,14 +39,27 @@ func writeLocations():
 	worldData["chests"] = []
 	for location in locations:
 		if (location["type"] == "collectable"):
-			worldData["collectables"].append({"name": location["name"], "location": location["position"], "scene":location["scene"], "active":true})
+			worldData["collectables"].append({"name": location["name"], "location": location["position"], "ref":location["ref"], "active":true})
 		elif (location["type"] == "chests"):
-			worldData["chests"].append({"name": location["name"], "location": location["position"], "scene":location["scene"], "active":true})
+			worldData["chests"].append({"name": location["name"], "location": location["position"], "ref":location["ref"], "active":true})
 		elif (location["type"] == "puzzles"):
-			worldData["puzzles"].append({"name": location["name"], "location": location["position"], "scene":location["scene"], "active":true, "solved":false})
+			worldData["puzzles"].append({"name": location["name"], "location": location["position"], "ref":location["ref"], "active":true, "solved":false})
 		elif (location["type"] == "enemies"):
-			worldData["enemies"].append({"name": location["name"], "location": location["position"], "scene":location["scene"], "active":true})
+			worldData["enemies"].append({"name": location["name"], "location": location["position"], "ref":location["ref"], "active":true})
 
 	print(worldData)
-	loadCollectables()
+
+
+	saveWorld()
+	pass
+
+func saveWorld():
+	var saveFile = FileAccess.open("res://data/world/world-data/world.json", FileAccess.WRITE)
+	saveFile.store_string(JSON.stringify(worldData))
+	DevConsole.log("Saved")
+
+func appendCollectables(collectables):
+	for col in collectables:
+		locations.append(col)
+	Signals.emit_signal("writeWorldLocations")
 	pass

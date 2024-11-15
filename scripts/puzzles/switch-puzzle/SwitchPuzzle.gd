@@ -1,7 +1,10 @@
 extends Node2D
 
-@onready var switch1 = $Switch1
-@onready var switch2 = $Switch2
+@onready var switch1 = $InteractiveNodes/Switch1
+@onready var switch2 = $InteractiveNodes/Switch2
+@onready var interactiveNodes = $InteractiveNodes
+
+@onready var reward = $Reward
 
 
 var active = false
@@ -26,7 +29,8 @@ func checkSolve():
 	if (switch1.enabled && switch2.enabled):
 		#Mark as Solved
 		print("SOLVED")
-		self.process_mode = Node.PROCESS_MODE_DISABLED
+		reward.unlockReward()
+		interactiveNodes.process_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 		pass
 	pass
 

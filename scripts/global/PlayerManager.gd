@@ -31,8 +31,8 @@ func checkLevelUp():
 		data["level"] += 1
 
 
-func addCollectable(col):
-	data["collectables"].append(col)
+func addCollectable():
+	# data["collectables"].append(col)
 	data["totalCollectables"] += 1
-	col.queue_free()
+	# col.queue_free()
 	pass
