@@ -14,19 +14,6 @@ func _input(event):
 			enable()
 
 
-
-
-func _on_area_2d_body_entered(body:Node2D) -> void:
-	if (body.is_in_group("player")):
-		close = true
-		pass
-
-
-func _on_area_2d_body_exited(body:Node2D) -> void:
-	if (body.is_in_group("player")):
-		close = false
-		pass
-
 func enable():
 	enabled = true
 	sprite.modulate = Color("6dde00")
@@ -38,3 +25,15 @@ func disable():
 	enabled = false
 	sprite.modulate = Color("ffffff")
 	pass
+
+
+
+func _on_area_2d_area_exited(area:Area2D) -> void:
+	if (area.is_in_group("player")):
+			close = false
+			pass
+
+func _on_area_2d_area_entered(area:Area2D) -> void:
+	if (area.is_in_group("player")):
+		close = true
+		pass

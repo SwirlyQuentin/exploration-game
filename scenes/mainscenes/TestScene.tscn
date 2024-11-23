@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0v0ci1gfne8u"]
+[gd_scene load_steps=7 format=3 uid="uid://c0v0ci1gfne8u"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/TestScene.gd" id="1_vjtt2"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="3_fws1k"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="3_lphba"]
 [ext_resource type="Script" path="res://scripts/item-containers/Collectables.gd" id="4_gvm3o"]
+[ext_resource type="PackedScene" uid="uid://df7eh6265reu1" path="res://scenes/environment/Pillar.tscn" id="5_cfwen"]
+[ext_resource type="PackedScene" uid="uid://cl2vlx7i0bahw" path="res://scenes/enemies/Dummy.tscn" id="6_nl43f"]
 
-[node name="TestScene" type="Node"]
+[node name="TestScene" type="Node2D"]
 script = ExtResource("1_vjtt2")
 
 [node name="SwitchPuzzle" parent="." instance=ExtResource("3_lphba")]
 position = Vector2(568, 351)
-
-[node name="Player" parent="." instance=ExtResource("3_fws1k")]
 
 [node name="CollectableLocations" type="Node" parent="."]
 script = ExtResource("4_gvm3o")
@@ -21,3 +21,14 @@ position = Vector2(430, 221)
 
 [node name="Collectables" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pillar" parent="YSort" instance=ExtResource("5_cfwen")]
+position = Vector2(417, 519)
+
+[node name="Player" parent="YSort" instance=ExtResource("3_fws1k")]
+
+[node name="Dummy" parent="YSort" instance=ExtResource("6_nl43f")]
+position = Vector2(973, 268)

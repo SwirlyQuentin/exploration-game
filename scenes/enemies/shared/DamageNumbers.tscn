@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cufh450k7ysk1"]
+
+[node name="DamageNumbers" type="Label"]
+offset_left = -66.0
+offset_top = 103.0
+offset_right = 77.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0.453775, 0.074403, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1
