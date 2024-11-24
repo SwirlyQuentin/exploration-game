@@ -23,6 +23,8 @@ scale = Vector2(0.253906, 0.253906)
 texture = ExtResource("1_uoata")
 
 [node name="CollectCheck" type="Area2D" parent="CollectableObject"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableObject/CollectCheck"]
 shape = SubResource("CircleShape2D_fn88i")
@@ -35,4 +37,4 @@ script = ExtResource("4_gs3nk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProcessCheck"]
 shape = SubResource("CircleShape2D_723eo")
 
-[connection signal="body_entered" from="CollectableObject/CollectCheck" to="CollectableObject" method="_on_collect_check_body_entered"]
+[connection signal="area_entered" from="CollectableObject/CollectCheck" to="CollectableObject" method="_on_collect_check_area_entered"]

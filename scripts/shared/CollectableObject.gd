@@ -19,9 +19,10 @@ func initTimerTimeout():
 	print("timeout")
 	initialized = true
 
-func _on_collect_check_body_entered(body:Node2D) -> void:
-	print("COLLIDED, ", body)
-	if (body.is_in_group("player")):
+
+func _on_collect_check_area_entered(area:Area2D) -> void:
+	print("COLLIDED, ", area)
+	if (area.is_in_group("player")):
 		Signals.emit_signal("addCollectable")
 		print("added collectable")
 		get_parent().queue_free()

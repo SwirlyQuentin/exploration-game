@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0v0ci1gfne8u"]
+[gd_scene load_steps=9 format=3 uid="uid://c0v0ci1gfne8u"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/TestScene.gd" id="1_vjtt2"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="3_fws1k"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="3_lphba"]
+[ext_resource type="Script" path="res://scripts/item-containers/Chests.gd" id="4_fg4ms"]
 [ext_resource type="Script" path="res://scripts/item-containers/Collectables.gd" id="4_gvm3o"]
 [ext_resource type="PackedScene" uid="uid://df7eh6265reu1" path="res://scenes/environment/Pillar.tscn" id="5_cfwen"]
 [ext_resource type="PackedScene" uid="uid://cl2vlx7i0bahw" path="res://scenes/enemies/Dummy.tscn" id="6_nl43f"]
+[ext_resource type="PackedScene" uid="uid://b2mm47w0a8n8s" path="res://scenes/enemies/ShootingEnemy.tscn" id="7_6nu6g"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_vjtt2")
@@ -19,8 +21,16 @@ script = ExtResource("4_gvm3o")
 [node name="CollectableLocation" type="Marker2D" parent="CollectableLocations" groups=["Collectables"]]
 position = Vector2(430, 221)
 
+[node name="ChestLocations" type="Node" parent="."]
+script = ExtResource("4_fg4ms")
+
+[node name="ChestLoc" type="Marker2D" parent="ChestLocations"]
+position = Vector2(647, 462)
+
 [node name="Collectables" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="Chests" type="Node" parent="."]
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -29,6 +39,10 @@ y_sort_enabled = true
 position = Vector2(417, 519)
 
 [node name="Player" parent="YSort" instance=ExtResource("3_fws1k")]
+position = Vector2(675, 179)
 
 [node name="Dummy" parent="YSort" instance=ExtResource("6_nl43f")]
 position = Vector2(973, 268)
+
+[node name="ShootingEnemy" parent="." instance=ExtResource("7_6nu6g")]
+position = Vector2(226, 149)

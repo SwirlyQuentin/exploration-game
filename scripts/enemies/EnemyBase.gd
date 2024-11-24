@@ -18,7 +18,6 @@ func takeDamage(damage):
 	damaging = true
 	damageTimer = 0
 	damageNumbers.text = str(currentTotalDamage)
-	print(currentTotalDamage)
 	
 	pass
 
@@ -29,5 +28,8 @@ func _process(delta):
 			damaging = false
 			currentTotalDamage = 0
 			damageNumbers.text = ""
+
+func transitionCheck(sig):
+	print(sig)
 
 

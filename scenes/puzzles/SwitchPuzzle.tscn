@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgjksx2dl5l4d"]
+[gd_scene load_steps=4 format=3 uid="uid://bgjksx2dl5l4d"]
 
 [ext_resource type="Script" path="res://scripts/puzzles/switch-puzzle/SwitchPuzzle.gd" id="1_x14el"]
 [ext_resource type="PackedScene" uid="uid://bsbtai88mb8hq" path="res://scenes/puzzles/Util/switch.tscn" id="2_7gr6d"]
-[ext_resource type="Script" path="res://scripts/shared/PuzzeReward.gd" id="4_cbf8t"]
-[ext_resource type="PackedScene" uid="uid://bqlw063hk567a" path="res://scenes/shared/Collectable.tscn" id="5_xetmb"]
+[ext_resource type="PackedScene" uid="uid://bmyx7x7me70nq" path="res://scenes/shared/Reward.tscn" id="3_h3db2"]
 
 [node name="SwitchPuzzle" type="Node2D"]
 script = ExtResource("1_x14el")
@@ -15,9 +14,4 @@ script = ExtResource("1_x14el")
 [node name="Switch2" parent="InteractiveNodes" instance=ExtResource("2_7gr6d")]
 position = Vector2(195, 2)
 
-[node name="Reward" type="Node2D" parent="."]
-script = ExtResource("4_cbf8t")
-
-[node name="Collectable" parent="Reward" instance=ExtResource("5_xetmb")]
-position = Vector2(200, 97)
-isPuzzle = true
+[node name="Reward" parent="." instance=ExtResource("3_h3db2")]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2mm47w0a8n8s"]
+
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/ShootingEnemy.gd" id="1_63hku"]
+[ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="2_7g2ym"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/IdleState.gd" id="3_s0na4"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="4_07bdm"]
+[ext_resource type="Script" path="res://scripts/enemies/StateMachine/BaseShooting.gd" id="4_e42nl"]
+[ext_resource type="Script" path="res://scripts/weapons/StandardGun.gd" id="6_i7f4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drug7"]
+size = Vector2(61, 61)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ssyff"]
+radius = 110.041
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubp8i"]
+radius = 250.018
+
+[node name="ShootingEnemy" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_63hku")
+
+[node name="ShootingEnemySM" type="Node" parent="."]
+script = ExtResource("2_7g2ym")
+
+[node name="Idle" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("3_s0na4")
+
+[node name="BaseShooting" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("4_e42nl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.492188, 0.492188)
+texture = ExtResource("4_07bdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_drug7")
+
+[node name="CloseCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseCheck"]
+shape = SubResource("CircleShape2D_ssyff")
+
+[node name="ActiveCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
+shape = SubResource("CircleShape2D_ubp8i")
+
+[node name="Holster" type="Node2D" parent="."]
+
+[node name="StandardGun" type="Node2D" parent="Holster"]
+script = ExtResource("6_i7f4l")
+
+[node name="ShootingPoint" type="Marker2D" parent="Holster/StandardGun"]
+
+[node name="Bullets" type="Node" parent="Holster/StandardGun"]
+
+[connection signal="body_entered" from="ActiveCheck" to="." method="_on_active_check_body_entered"]

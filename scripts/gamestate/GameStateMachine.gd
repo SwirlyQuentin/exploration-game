@@ -20,5 +20,5 @@ func change_state(new_state_name: String) -> void:
 
 	current_state = states[new_state_name]
 	current_state.enter()
-    
+	
 	emit_signal("state_changed", current_state)

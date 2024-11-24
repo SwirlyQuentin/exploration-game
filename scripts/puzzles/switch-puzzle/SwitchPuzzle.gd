@@ -30,7 +30,7 @@ func checkSolve():
 		#Mark as Solved
 		print("SOLVED")
 		reward.unlockReward()
-		interactiveNodes.process_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
+		interactiveNodes.process_mode = Node.PROCESS_MODE_DISABLED
 		pass
 	pass
 

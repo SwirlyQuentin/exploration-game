@@ -52,5 +52,14 @@ shape = SubResource("RectangleShape2D_hvyej")
 [node name="HandConnect" type="RayCast2D" parent="."]
 target_position = Vector2(0, -133.333)
 
+[node name="MainCam" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+
 [connection signal="area_entered" from="RenderDistance" to="." method="_on_render_distance_area_entered"]
 [connection signal="area_exited" from="RenderDistance" to="." method="_on_render_distance_area_exited"]

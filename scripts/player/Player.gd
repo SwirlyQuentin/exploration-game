@@ -47,6 +47,7 @@ func _on_render_distance_area_exited(area:Area2D) -> void:
 func shoot():
 	var b:Area2D = playerBullet.instantiate()
 	bulletContainer.add_child(b)
+	b.damage = int(randf_range(3 * (PlayerManager.data["totalCollectables"] + 1) , 6 * (PlayerManager.data["totalCollectables"] + 1)))
 	b.global_position = shootingPoint.global_position
 	b.direction = get_global_mouse_position() - shootingPoint.global_position
 	b.rotation = b.direction.angle() + deg_to_rad(90)

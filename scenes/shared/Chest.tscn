@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7juy0gk5lbww"]
+
+[ext_resource type="Script" path="res://scripts/shared/Chest.gd" id="1_exbno"]
+[ext_resource type="Script" path="res://scripts/shared/GameObject.gd" id="1_o5ho1"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="2_wv08y"]
+[ext_resource type="PackedScene" uid="uid://bmyx7x7me70nq" path="res://scenes/shared/Reward.tscn" id="3_1itb4"]
+[ext_resource type="Script" path="res://scripts/shared/ProcessCheck.gd" id="5_8krto"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpxh"]
+size = Vector2(72, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl3a5"]
+radius = 153.264
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_o5ho1")
+
+[node name="ChestObject" type="Node2D" parent="."]
+script = ExtResource("1_exbno")
+
+[node name="Unopened" type="Sprite2D" parent="ChestObject"]
+position = Vector2(1, 14)
+scale = Vector2(0.429688, 0.226563)
+texture = ExtResource("2_wv08y")
+
+[node name="Opened" type="Sprite2D" parent="ChestObject"]
+visible = false
+modulate = Color(0.874845, 0, 0.23843, 1)
+position = Vector2(1, 14)
+scale = Vector2(0.429688, 0.226563)
+texture = ExtResource("2_wv08y")
+
+[node name="Reward" parent="ChestObject" instance=ExtResource("3_1itb4")]
+position = Vector2(-199, -183)
+
+[node name="InteractiveNodes" type="Node2D" parent="ChestObject"]
+position = Vector2(1, 14)
+
+[node name="CloseCheck" type="Area2D" parent="ChestObject/InteractiveNodes"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestObject/InteractiveNodes/CloseCheck"]
+shape = SubResource("RectangleShape2D_kvpxh")
+
+[node name="ProcessCheck" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("5_8krto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProcessCheck"]
+shape = SubResource("CircleShape2D_dl3a5")
+
+[connection signal="area_entered" from="ChestObject/InteractiveNodes/CloseCheck" to="ChestObject" method="_on_close_check_area_entered"]
+[connection signal="area_exited" from="ChestObject/InteractiveNodes/CloseCheck" to="ChestObject" method="_on_close_check_area_exited"]

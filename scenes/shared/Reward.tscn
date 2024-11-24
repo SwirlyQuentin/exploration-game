@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmyx7x7me70nq"]
+
+[ext_resource type="Script" path="res://scripts/shared/PuzzeReward.gd" id="1_tva53"]
+[ext_resource type="PackedScene" uid="uid://bqlw063hk567a" path="res://scenes/shared/Collectable.tscn" id="2_drokf"]
+
+[node name="Reward" type="Node2D"]
+script = ExtResource("1_tva53")
+
+[node name="Collectable" parent="." instance=ExtResource("2_drokf")]
+position = Vector2(200, 97)
+isPuzzle = true
