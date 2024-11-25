@@ -1,26 +1,79 @@
-[gd_scene load_steps=6 format=3 uid="uid://vksaete574p5"]
+[gd_scene load_steps=14 format=3 uid="uid://vksaete574p5"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_qp76k"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="2_8ktw0"]
+[ext_resource type="Texture2D" uid="uid://d2gj881el3t3f" path="res://assets/rat/RatIdle.png" id="2_30587"]
+[ext_resource type="Texture2D" uid="uid://by7ebbyo33m2p" path="res://assets/rat/RatWalk.png" id="3_ctwio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3td0"]
+atlas = ExtResource("2_30587")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajjyw"]
+atlas = ExtResource("2_30587")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stjqm"]
+atlas = ExtResource("3_ctwio")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2o0l"]
+atlas = ExtResource("3_ctwio")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq7t3"]
+atlas = ExtResource("3_ctwio")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8e0mj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3td0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajjyw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stjqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2o0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq7t3")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbaur"]
-size = Vector2(127, 25.2222)
+size = Vector2(40, 10.3889)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3awsu"]
 radius = 953.333
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvyej"]
-size = Vector2(126.667, 130)
+size = Vector2(57.7778, 42.2222)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.45, 0.45)
 script = ExtResource("1_qp76k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8ktw0")
+[node name="Rat" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8e0mj")
+autoplay = "default"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 53.3333)
+position = Vector2(2.22222, 27.4167)
 shape = SubResource("RectangleShape2D_vbaur")
 
 [node name="RenderDistance" type="Area2D" parent="."]
@@ -47,6 +100,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveTrigger"]
+position = Vector2(0, 12.2222)
 shape = SubResource("RectangleShape2D_hvyej")
 
 [node name="HandConnect" type="RayCast2D" parent="."]

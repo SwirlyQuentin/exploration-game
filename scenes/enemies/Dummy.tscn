@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl2vlx7i0bahw"]
 
 [ext_resource type="Script" path="res://scripts/enemies/Dummy.gd" id="1_yk1d5"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="2_ww32v"]
+[ext_resource type="Texture2D" uid="uid://kck67bmsgmiy" path="res://assets/enemies/woozylady/RougeRodent_characters_woozylady.png" id="2_o53bw"]
 [ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="3_408wo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yowiy"]
-size = Vector2(193, 192)
+size = Vector2(56, 60)
 
 [node name="Dummy" type="StaticBody2D" groups=["damagable"]]
 collision_layer = 9
@@ -13,11 +13,16 @@ collision_mask = 9
 script = ExtResource("1_yk1d5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_ww32v")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_o53bw")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_yowiy")
 
 [node name="DamageNumbers" parent="." instance=ExtResource("3_408wo")]
+offset_left = -24.0
+offset_top = 44.0
+offset_right = 26.0
+offset_bottom = 72.0

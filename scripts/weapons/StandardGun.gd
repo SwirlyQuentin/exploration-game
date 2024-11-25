@@ -14,6 +14,9 @@ var ableToShoot = false
 var cooldown = 1.5
 var cooldownTimer = 0
 
+var enemyRange = 700
+var sweetSpot = 300
+
 
 func shoot(target):
     if (cooldownTimer <= 0):

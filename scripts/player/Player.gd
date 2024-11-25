@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var bulletContainer = $Bullets
 @onready var shootingPoint = $Hand/ShootingPoint
 @onready var hand = $Hand
+@onready var sprite:AnimatedSprite2D = $Rat
 
 const speed = 300.0
 var handDistance = 70
@@ -27,6 +28,18 @@ func _physics_process(delta: float) -> void:
 	if (!direction):
 		direction.x = move_toward(direction.x, 0, speed)
 		direction.y = move_toward(direction.y, 0, speed)
+
+
+	if (xdirection < 0):
+		sprite.flip_h = false
+	elif (xdirection > 0):
+		sprite.flip_h = true
+
+	if (direction != Vector2.ZERO):
+		sprite.animation = "running"
+	else:
+		sprite.animation = "default"
+		pass
 
 
 	velocity = direction.normalized() * speed

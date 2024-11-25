@@ -18,6 +18,15 @@ var opp = false
 
 var finalDirection = Vector2()
 var character = null
+var speedMod = 0.3
+
+
+func enter():
+    character.speedMod = speedMod
+    print("changed")
+
+func exit():
+    character.speedMod = 1
 
 func _ready():
     stateName = "idle"

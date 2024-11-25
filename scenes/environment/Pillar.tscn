@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://df7eh6265reu1"]
 
 [ext_resource type="Script" path="res://scripts/environment/JumpableObject.gd" id="1_65r3o"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="1_ffmrd"]
+[ext_resource type="Texture2D" uid="uid://32doxobli34s" path="res://assets/environment/objects/RougeRodent_environment-vendingmachine.png" id="2_v4dpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oygnx"]
-size = Vector2(91, 28.4628)
+size = Vector2(68.8172, 14.7107)
 
 [node name="Pillar" type="Node2D"]
 y_sort_enabled = true
@@ -13,11 +13,12 @@ script = ExtResource("1_65r3o")
 [node name="Level1" type="StaticBody2D" parent="." groups=["jumpable"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="Level1"]
+texture_filter = 1
 position = Vector2(1, -23.5)
-scale = Vector2(0.515625, 0.789063)
-texture = ExtResource("1_ffmrd")
+scale = Vector2(2, 2)
+texture = ExtResource("2_v4dpj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1"]
-position = Vector2(1, 11.4531)
+position = Vector2(-4.76837e-07, 17.9531)
 scale = Vector2(0.726563, 0.945313)
 shape = SubResource("RectangleShape2D_oygnx")

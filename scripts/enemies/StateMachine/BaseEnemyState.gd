@@ -9,12 +9,11 @@ var previousState = null
 var stateName = "state"
 
 func _ready():
-    self.process_mode = Node.PROCESS_MODE_DISABLED
+    pass
 
 func enter() -> void:
     pass
 
 func exit() -> void:
-    self.process_mode = Node.PROCESS_MODE_DISABLED
     pass
 

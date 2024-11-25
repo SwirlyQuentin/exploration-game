@@ -21,6 +21,7 @@ func _ready() -> void:
             remove_child(state)
         else:
             currentState = state
+            currentState.enter()
     pass
 
 func add_state(state) -> void:
@@ -30,7 +31,7 @@ func add_state(state) -> void:
 func change_state(newStateName: String) -> void:
     if currentState:
         currentState.exit()
-
+    remove_child(currentState)
     currentState = states[newStateName]
     add_child(currentState)
     currentState.enter()

@@ -1,24 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2mm47w0a8n8s"]
+[gd_scene load_steps=19 format=3 uid="uid://b2mm47w0a8n8s"]
 
 [ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/ShootingEnemy.gd" id="1_63hku"]
 [ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="2_7g2ym"]
 [ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/IdleState.gd" id="3_s0na4"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="4_07bdm"]
 [ext_resource type="Script" path="res://scripts/enemies/StateMachine/BaseShooting.gd" id="4_e42nl"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/StrafeState.gd" id="5_7qoqm"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/AdvanceState.gd" id="6_cos0a"]
 [ext_resource type="Script" path="res://scripts/weapons/StandardGun.gd" id="6_i7f4l"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/MeleeState.gd" id="7_l3sah"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/RetreatState.gd" id="8_7mpnt"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/FollowState.gd" id="9_jyawp"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/ReturnState.gd" id="10_qhons"]
+[ext_resource type="Texture2D" uid="uid://ch2o0awkhqmje" path="res://assets/enemies/david/RougeRodent_characters_david.png" id="11_ri4f3"]
+[ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="13_vxdmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drug7"]
-size = Vector2(61, 61)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ssyff"]
-radius = 110.041
+size = Vector2(35, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubp8i"]
 radius = 250.018
 
-[node name="ShootingEnemy" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgsq6"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wupc"]
+bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
+
+[sub_resource type="Theme" id="Theme_0tpba"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kgsq6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6wupc")
+
+[node name="ShootingEnemy" type="CharacterBody2D" groups=["damagable"]]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_63hku")
 
 [node name="ShootingEnemySM" type="Node" parent="."]
@@ -30,17 +44,32 @@ script = ExtResource("3_s0na4")
 [node name="BaseShooting" type="Node" parent="ShootingEnemySM"]
 script = ExtResource("4_e42nl")
 
+[node name="StrafeState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("5_7qoqm")
+
+[node name="AdvanceState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("6_cos0a")
+
+[node name="MeleeState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("7_l3sah")
+
+[node name="RetreatState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("8_7mpnt")
+
+[node name="FollowState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("9_jyawp")
+
+[node name="ReturnState" type="Node" parent="ShootingEnemySM"]
+script = ExtResource("10_qhons")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.492188, 0.492188)
-texture = ExtResource("4_07bdm")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("11_ri4f3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 11)
 shape = SubResource("RectangleShape2D_drug7")
-
-[node name="CloseCheck" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseCheck"]
-shape = SubResource("CircleShape2D_ssyff")
 
 [node name="ActiveCheck" type="Area2D" parent="."]
 
@@ -55,5 +84,19 @@ script = ExtResource("6_i7f4l")
 [node name="ShootingPoint" type="Marker2D" parent="Holster/StandardGun"]
 
 [node name="Bullets" type="Node" parent="Holster/StandardGun"]
+
+[node name="DamageNumbers" parent="." instance=ExtResource("13_vxdmn")]
+offset_top = 41.0
+offset_right = 31.0
+offset_bottom = 69.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -22.0
+theme = SubResource("Theme_0tpba")
+value = 50.0
+show_percentage = false
 
 [connection signal="body_entered" from="ActiveCheck" to="." method="_on_active_check_body_entered"]
