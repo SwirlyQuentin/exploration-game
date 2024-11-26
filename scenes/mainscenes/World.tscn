@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccjli0aqghxt3"]
+
+[ext_resource type="Script" path="res://scripts/main-scenes/World.gd" id="1_rq7sy"]
+[ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="2_giafk"]
+[ext_resource type="Script" path="res://scripts/item-containers/Collectables.gd" id="3_k0hns"]
+[ext_resource type="Script" path="res://scripts/item-containers/Chests.gd" id="4_0nyb6"]
+[ext_resource type="PackedScene" uid="uid://df7eh6265reu1" path="res://scenes/environment/Pillar.tscn" id="5_dwr54"]
+[ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="6_3ivhj"]
+[ext_resource type="PackedScene" uid="uid://cl2vlx7i0bahw" path="res://scenes/enemies/Dummy.tscn" id="7_brlag"]
+[ext_resource type="PackedScene" uid="uid://b2mm47w0a8n8s" path="res://scenes/enemies/ShootingEnemy.tscn" id="8_cfopl"]
+
+[sub_resource type="TileSet" id="TileSet_1syt8"]
+
+[node name="World" type="Node"]
+script = ExtResource("1_rq7sy")
+
+[node name="Map" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1syt8")
+format = 2
+
+[node name="SwitchPuzzle" parent="." instance=ExtResource("2_giafk")]
+position = Vector2(568, 351)
+
+[node name="CollectableLocations" type="Node" parent="."]
+script = ExtResource("3_k0hns")
+
+[node name="CollectableLocation" type="Marker2D" parent="CollectableLocations" groups=["Collectables"]]
+position = Vector2(430, 221)
+
+[node name="ChestLocations" type="Node" parent="."]
+script = ExtResource("4_0nyb6")
+
+[node name="ChestLoc" type="Marker2D" parent="ChestLocations"]
+position = Vector2(647, 462)
+
+[node name="Collectables" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Chests" type="Node" parent="."]
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pillar" parent="YSort" instance=ExtResource("5_dwr54")]
+position = Vector2(417, 519)
+
+[node name="Player" parent="YSort" instance=ExtResource("6_3ivhj")]
+position = Vector2(675, 179)
+
+[node name="Dummy" parent="YSort" instance=ExtResource("7_brlag")]
+position = Vector2(973, 268)
+
+[node name="ShootingEnemy" parent="." instance=ExtResource("8_cfopl")]
+position = Vector2(124, 470)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://vksaete574p5"]
+[gd_scene load_steps=18 format=3 uid="uid://vksaete574p5"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_qp76k"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="2_8ktw0"]
 [ext_resource type="Texture2D" uid="uid://d2gj881el3t3f" path="res://assets/rat/RatIdle.png" id="2_30587"]
 [ext_resource type="Texture2D" uid="uid://by7ebbyo33m2p" path="res://assets/rat/RatWalk.png" id="3_ctwio"]
+[ext_resource type="Script" path="res://scripts/player/Health.gd" id="5_yhv6a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3td0"]
 atlas = ExtResource("2_30587")
@@ -62,6 +63,15 @@ radius = 953.333
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvyej"]
 size = Vector2(57.7778, 42.2222)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsmk2"]
+size = Vector2(37.7778, 44.4444)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhor8"]
+bg_color = Color(0.285194, 0.70737, 0.202176, 1)
+
+[sub_resource type="Theme" id="Theme_2x4k7"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hhor8")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.45, 0.45)
 script = ExtResource("1_qp76k")
@@ -73,6 +83,7 @@ sprite_frames = SubResource("SpriteFrames_8e0mj")
 autoplay = "default"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2.22222, 27.4167)
 shape = SubResource("RectangleShape2D_vbaur")
 
@@ -100,6 +111,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveTrigger"]
+visible = false
 position = Vector2(0, 12.2222)
 shape = SubResource("RectangleShape2D_hvyej")
 
@@ -114,6 +126,25 @@ drag_left_margin = 0.05
 drag_top_margin = 0.05
 drag_right_margin = 0.05
 drag_bottom_margin = 0.05
+
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2.22222, 11.1111)
+shape = SubResource("RectangleShape2D_xsmk2")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("5_yhv6a")
+
+[node name="HealthBar" type="ProgressBar" parent="Health"]
+offset_left = -37.7778
+offset_top = -31.1111
+offset_right = 34.2222
+offset_bottom = -17.1111
+theme = SubResource("Theme_2x4k7")
+show_percentage = false
 
 [connection signal="area_entered" from="RenderDistance" to="." method="_on_render_distance_area_entered"]
 [connection signal="area_exited" from="RenderDistance" to="." method="_on_render_distance_area_exited"]

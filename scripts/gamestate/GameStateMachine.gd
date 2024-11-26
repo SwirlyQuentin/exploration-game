@@ -1,13 +1,15 @@
 extends Node
 
 @onready var testState = $TestState
+@onready var gameState = $GameState
 
 var states = {}
 var current_state: BaseState = null
 
 func _ready() -> void:
 	add_state("testState", testState)
-	change_state("testState")
+	add_state("gameState", gameState)
+	change_state("gameState")
 	pass
 
 func add_state(state_name: String, state: BaseState) -> void:

@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://mqaw4lxou51x"]
+[gd_scene load_steps=4 format=3 uid="uid://mqaw4lxou51x"]
 
 [ext_resource type="Script" path="res://scripts/gamestate/GameStateMachine.gd" id="1_efl6x"]
 [ext_resource type="Script" path="res://scripts/gamestate/states/TestState.gd" id="2_p445w"]
+[ext_resource type="Script" path="res://scripts/gamestate/states/GameState.gd" id="3_qrykb"]
 
 [node name="GameStateMachine" type="Node"]
 script = ExtResource("1_efl6x")
 
 [node name="TestState" type="Node" parent="."]
 script = ExtResource("2_p445w")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("3_qrykb")
