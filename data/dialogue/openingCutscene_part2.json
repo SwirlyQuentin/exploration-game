@@ -1,0 +1,38 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "1 in the morning!?",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "...",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Will's shift at the gas station",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "should have ended 30 minutes ago...",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Where is he...?",
+            "direction": "center"
+        }
+    ]
+}

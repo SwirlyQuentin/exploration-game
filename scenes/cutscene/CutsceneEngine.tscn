@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnxlmnx0yhkb"]
+
+[ext_resource type="Script" path="res://scripts/cutscene/CutsceneEngine.gd" id="1_iwiot"]
+[ext_resource type="PackedScene" uid="uid://dw3ajy8u7rnxr" path="res://scenes/cutscene/DialoguePlayer.tscn" id="2_840vc"]
+
+[node name="CutsceneEngine" type="Node"]
+process_mode = 3
+script = ExtResource("1_iwiot")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="DialoguePlayer" parent="Canvas" instance=ExtResource("2_840vc")]
+visible = false

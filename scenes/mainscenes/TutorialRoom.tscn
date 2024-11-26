@@ -1,0 +1,307 @@
+[gd_scene load_steps=26 format=3 uid="uid://coihemilehu1d"]
+
+[ext_resource type="Script" path="res://scripts/main-scenes/TutorialRoom.gd" id="1_yqb4j"]
+[ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="2_0nik4"]
+[ext_resource type="Texture2D" uid="uid://wk8jkwp73vc5" path="res://assets/environment/TutorialRoom/RougeRodent_house-floorplan-collision.png" id="2_h0s36"]
+[ext_resource type="Texture2D" uid="uid://dsuwqi86gdtn6" path="res://assets/environment/TutorialRoom/RougeRodent_house-floorplan-overlay.png" id="4_gdnbu"]
+[ext_resource type="Script" path="res://scripts/shared/BlackFade.gd" id="4_oqg76"]
+[ext_resource type="Script" path="res://scripts/objects/Note.gd" id="6_3mjwo"]
+[ext_resource type="PackedScene" uid="uid://bl8a02ovxe3ob" path="res://scenes/shared/InteractIndicator.tscn" id="6_y7a8c"]
+[ext_resource type="Texture2D" uid="uid://bjlpxk5ghhwjn" path="res://assets/UI/TempNote.png" id="8_ojywt"]
+[ext_resource type="FontFile" uid="uid://sbvuvff68ak7" path="res://assets/UI/Dialogue/pixelFont-7-8x14-sproutLands.ttf" id="9_sa6bl"]
+[ext_resource type="Script" path="res://scripts/objects/Clock.gd" id="10_3vla0"]
+[ext_resource type="Script" path="res://scripts/objects/Cabinet.gd" id="11_r64g7"]
+[ext_resource type="Script" path="res://scripts/shared/InteractIndicator.gd" id="12_tpjwk"]
+[ext_resource type="Texture2D" uid="uid://bi0dnrdtw0ok1" path="res://assets/UI/Interact.png" id="13_ljd5m"]
+[ext_resource type="Script" path="res://scripts/objects/Bed.gd" id="14_wlbvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx3lp"]
+size = Vector2(22, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42q3p"]
+size = Vector2(32, 10)
+
+[sub_resource type="Animation" id="Animation_tq3vl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fp6jg"]
+resource_name = "fade"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgtmn"]
+_data = {
+"RESET": SubResource("Animation_tq3vl"),
+"fade": SubResource("Animation_fp6jg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcih8"]
+resource_local_to_scene = true
+size = Vector2(25.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n02gu"]
+resource_local_to_scene = true
+size = Vector2(25.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yydl4"]
+resource_local_to_scene = true
+size = Vector2(31.75, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4bb8"]
+atlas = ExtResource("13_ljd5m")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s72st"]
+atlas = ExtResource("13_ljd5m")
+region = Rect2(25, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pem8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4bb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s72st")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="TutorialRoom" type="Node"]
+script = ExtResource("1_yqb4j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1165.0
+offset_bottom = 641.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_h0s36")
+stretch_mode = 3
+
+[node name="Player" parent="." instance=ExtResource("2_0nik4")]
+position = Vector2(1272, 701)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_gdnbu")
+stretch_mode = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
+polygon = PackedVector2Array(1266, 556, 1266, 632, 1236, 632, 1236, 644, 1100, 644, 1100, 669, 1109, 669, 1110, 746, 1110, 757, 1110, 770, 1178, 770, 1178, 812, 1211, 812, 1251, 812, 1280, 812, 1280, 842, 1336, 842, 1336, 859, 1052, 859, 1052, 405, 1539, 406, 1538, 862, 1368, 858, 1368, 842, 1392, 842, 1392, 783, 1321, 783, 1321, 762, 1328, 762, 1328, 734, 1320, 734, 1320, 702, 1320, 702, 1320, 605, 1367, 605, 1367, 569, 1335, 569, 1335, 556)
+
+[node name="TABLE" type="StaticBody2D" parent="."]
+position = Vector2(1382, 822)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLE"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_kx3lp")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1351, 849)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_42q3p")
+
+[node name="BlackFade" type="ColorRect" parent="."]
+offset_left = 12.0
+offset_top = 2.0
+offset_right = 2464.0
+offset_bottom = 1364.0
+color = Color(0, 0, 0, 0)
+script = ExtResource("4_oqg76")
+
+[node name="Fade" type="AnimationPlayer" parent="BlackFade"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_kgtmn")
+}
+
+[node name="Note" type="Node2D" parent="."]
+position = Vector2(1267, 821)
+script = ExtResource("6_3mjwo")
+
+[node name="InteractIndicator" parent="Note" instance=ExtResource("6_y7a8c")]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" parent="Note/InteractIndicator" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_jcih8")
+
+[node name="Icon" parent="Note/InteractIndicator" index="1"]
+position = Vector2(0, -16)
+
+[node name="NoteTexture" type="CanvasLayer" parent="Note"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Note/NoteTexture"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.517647)
+
+[node name="Paper" type="TextureRect" parent="Note/NoteTexture"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -853.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("8_ojywt")
+stretch_mode = 3
+
+[node name="Message" type="Label" parent="Note/NoteTexture"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 554.0
+offset_top = 253.0
+offset_right = -562.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.255734, 0.12893, 0.018256, 1)
+theme_override_fonts/font = ExtResource("9_sa6bl")
+theme_override_font_sizes/font_size = 24
+text = "I have Will
+
+Lets see if you can get to me before I kill him
+
+-Rogue Rodents"
+autowrap_mode = 2
+
+[node name="Tooltip" type="Label" parent="Note/NoteTexture"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1046.0
+offset_top = 659.0
+offset_right = -29.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_sa6bl")
+theme_override_font_sizes/font_size = 28
+text = "Press E to exit"
+
+[node name="Clock" type="Node2D" parent="."]
+script = ExtResource("10_3vla0")
+
+[node name="InteractIndicator" parent="Clock" instance=ExtResource("6_y7a8c")]
+position = Vector2(1252, 629)
+
+[node name="CollisionShape2D" parent="Clock/InteractIndicator" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_n02gu")
+
+[node name="Icon" parent="Clock/InteractIndicator" index="1"]
+position = Vector2(0, -25)
+
+[node name="Cabinet" type="Node2D" parent="."]
+script = ExtResource("11_r64g7")
+
+[node name="InteractIndicator" type="Area2D" parent="Cabinet"]
+position = Vector2(1354, 580)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("12_tpjwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet/InteractIndicator"]
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_yydl4")
+
+[node name="Icon" type="AnimatedSprite2D" parent="Cabinet/InteractIndicator"]
+texture_filter = 1
+position = Vector2(-2, -54)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_pem8s")
+autoplay = "default"
+frame_progress = 0.937316
+
+[node name="Bed" type="Node2D" parent="."]
+script = ExtResource("14_wlbvl")
+
+[node name="InteractIndicator" type="Area2D" parent="Bed"]
+position = Vector2(1175, 707)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("12_tpjwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/InteractIndicator"]
+position = Vector2(-16, -6)
+shape = SubResource("RectangleShape2D_yydl4")
+
+[node name="Icon" type="AnimatedSprite2D" parent="Bed/InteractIndicator"]
+texture_filter = 1
+position = Vector2(-16, -26)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_pem8s")
+autoplay = "default"
+frame_progress = 0.937316
+
+[connection signal="area_entered" from="ExitTrigger" to="." method="_on_exit_trigger_area_entered"]
+[connection signal="animation_finished" from="BlackFade/Fade" to="BlackFade" method="_on_fade_animation_finished"]
+[connection signal="area_entered" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_entered"]
+[connection signal="area_exited" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_exited"]
+[connection signal="area_entered" from="Bed/InteractIndicator" to="Bed/InteractIndicator" method="_on_area_entered"]
+[connection signal="area_exited" from="Bed/InteractIndicator" to="Bed/InteractIndicator" method="_on_area_exited"]
+
+[editable path="Note/InteractIndicator"]
+[editable path="Clock/InteractIndicator"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8bw5ikq1wxds"]
+
+[ext_resource type="Script" path="res://scripts/cutscene/PositionDialogue.gd" id="1_ebdak"]
+[ext_resource type="Texture2D" uid="uid://yomeaw4o1wuf" path="res://assets/UI/Dialogue/Dialog_UI_V5.png" id="2_uw6wm"]
+[ext_resource type="FontFile" uid="uid://sbvuvff68ak7" path="res://assets/UI/Dialogue/pixelFont-7-8x14-sproutLands.ttf" id="3_d15xq"]
+
+[node name="PositionDialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -520.0
+offset_right = 409.0
+offset_bottom = -260.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+script = ExtResource("1_ebdak")
+
+[node name="Dialogue" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.5
+offset_top = -124.0
+offset_right = 165.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueBackground" type="TextureRect" parent="Dialogue"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -9.5
+offset_top = 1.0
+offset_right = 160.5
+offset_bottom = 61.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_uw6wm")
+stretch_mode = 3
+
+[node name="ActorText" type="Label" parent="Dialogue"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_top = 43.0
+offset_right = 715.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.195, 0.195)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d15xq")
+theme_override_font_sizes/font_size = 64
+text = "HELLO MY NAME IS QUEHJBN KJSDFKJHSDK"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AttachPoint" type="Marker2D" parent="."]
+position = Vector2(90, 198)

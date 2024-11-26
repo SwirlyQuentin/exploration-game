@@ -1,0 +1,33 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Zzzzzz...",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "...",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "*blink* *blink*",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Ugh... What time is it?",
+            "direction": "center"
+        }
+    ]
+}

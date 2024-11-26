@@ -8,35 +8,42 @@ extends CharacterBody2D
 @onready var health = $Health
 @onready var hitBox = $Hitbox
 
-const speed = 300.0
+const speed = 12000.0
 var handDistance = 70
 @export var dashTime = 0.2
 var dashTimer = 0
-var dashSpeed = 600
+var dashSpeed = 30000
 var dashing = false
 var direction = Vector2()
 var dead = false
+var speedMod = 1
+var tutorial = false
+var disabled = false
 
 func _ready():
+    print("player ready")
     health.connect("die", die)
+    Signals.connect("tutorial", tutorialValues)
+    Signals.connect("enablePlayer", enable)
+    Signals.connect("disablePlayer", disable)
 
 
 func _input(event):
-    if (event.is_action_pressed("shoot")):
+    if (event.is_action_pressed("shoot") && !tutorial):
         shoot()
-    elif (event.is_action_pressed("dash") && !dashing):
+    elif (event.is_action_pressed("dash") && !dashing && !tutorial):
         dash()
 
 
 func _physics_process(delta: float) -> void:
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
-    if (dead):
+    if (dead || disabled):
         return
 
     positionHand()
 
-    if (!dashing):
+    if (!dashing && !disabled):
         var xdirection = Input.get_axis("left", "right")
         var ydirection = Input.get_axis("up", "down")
         direction = Vector2(xdirection, ydirection)
@@ -50,18 +57,29 @@ func _physics_process(delta: float) -> void:
             sprite.flip_h = false
         elif (xdirection > 0):
             sprite.flip_h = true
+        if (ydirection < 0):
+            sprite.flip_v = false
+        elif (ydirection > 0):
+            sprite.flip_v = true
 
     if (direction != Vector2.ZERO):
-        sprite.animation = "running"
+        if (abs(direction.y) > abs(direction.x)):
+            sprite.animation = "vertRun"
+        else:
+            sprite.animation = "running"
+            sprite.flip_v = false
     else:
+        sprite.flip_v = false
         sprite.animation = "default"
         pass
 
     if (dashing):
-        velocity = direction.normalized() * dashSpeed
+        velocity = direction.normalized() * dashSpeed * delta
         checkDash(delta)
+    elif (disabled):
+        self.velocity = Vector2.ZERO
     else:
-        velocity = direction.normalized() * speed
+        velocity = direction.normalized() * speed * speedMod * delta
 
 
     move_and_slide()
@@ -121,4 +139,19 @@ func checkDash(delta):
 func die():
     dead = true
     print("DEAD")
+    sprite.play("dead")
     pass
+
+func tutorialValues():
+    print("TUTORIAL VALS")
+    speedMod = 0.5
+    tutorial = true
+    hand.visible = false
+    health.visible = false
+
+func disable():
+    disabled = true
+
+func enable():
+    disabled = false
+

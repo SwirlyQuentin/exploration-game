@@ -1,0 +1,18 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Will...?",
+            "direction": "center"
+        }
+    ]
+}

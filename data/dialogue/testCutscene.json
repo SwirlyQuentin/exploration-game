@@ -1,0 +1,33 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "hand",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "hand",
+            "content": "Hi Im Rat!",
+            "direction": "left"
+        },
+        {
+            "key": "hand",
+            "content": "Help me find my owner :(",
+            "direction": "left"
+        },
+        {
+            "key": "hand",
+            "content": "...",
+            "direction": "left"
+        },
+        {
+            "key": "hand",
+            "content": "Pleeeaaase :,(",
+            "direction": "left"
+        }
+    ]
+}

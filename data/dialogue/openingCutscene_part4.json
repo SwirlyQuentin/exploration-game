@@ -1,0 +1,28 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "OMG!!?",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "My cheese from a month ago.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "*monch*",
+            "direction": "center"
+        }
+    ]
+}

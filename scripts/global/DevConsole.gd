@@ -1,11 +1,11 @@
 extends Node
 
-@onready var console = $Console
-@onready var textInput = $Console/Contents/TextInput
-@onready var consoleText:RichTextLabel = $Console/Contents/ConsoleText
+@onready var console = $Canvas/Console
+@onready var textInput = $Canvas/Console/Contents/TextInput
+@onready var consoleText:RichTextLabel = $Canvas/Console/Contents/ConsoleText
 
 var pastCommands = []
-var dataSignals = []
+var dataSignals = ["startCutscene"]
 
 var visibleState = false
 var focused = false
@@ -38,8 +38,8 @@ func parseConsole():
     var text = textInput.text
     var split = text.split(" ")
     if (split[0] == "emit"):
-        if (split[1] in dataSignals):
-            self.log("Invalid Call")
+        if (split[1] in dataSignals && split.size() == 3):
+            Signals.emit_signal(split[1], split[2])
         else:
             print("emitted")
             Signals.emit_signal(split[1])

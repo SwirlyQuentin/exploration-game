@@ -2,14 +2,17 @@ extends Node
 
 @onready var testState = $TestState
 @onready var gameState = $GameState
+@onready var tutorialState = $TutorialState
 
 var states = {}
 var current_state: BaseState = null
 
 func _ready() -> void:
+	Signals.connect("changeState", change_state)
 	add_state("testState", testState)
 	add_state("gameState", gameState)
-	change_state("gameState")
+	add_state("tutState", tutorialState)
+	change_state("tutState")
 	pass
 
 func add_state(state_name: String, state: BaseState) -> void:
