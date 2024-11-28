@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2mm47w0a8n8s"]
+[gd_scene load_steps=23 format=3 uid="uid://b2mm47w0a8n8s"]
 
 [ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/ShootingEnemy.gd" id="1_63hku"]
 [ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="2_7g2ym"]
@@ -13,12 +13,16 @@
 [ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/ReturnState.gd" id="10_qhons"]
 [ext_resource type="Texture2D" uid="uid://ch2o0awkhqmje" path="res://assets/enemies/david/RougeRodent_characters_david.png" id="11_ri4f3"]
 [ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="13_vxdmn"]
+[ext_resource type="Script" path="res://scripts/weapons/StandardMelee.gd" id="13_yy13o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drug7"]
 size = Vector2(35, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubp8i"]
 radius = 250.018
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_205nd"]
+size = Vector2(30, 30)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgsq6"]
 bg_color = Color(0, 0, 0, 0.431373)
@@ -30,9 +34,15 @@ bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_kgsq6")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_6wupc")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xvxk"]
+radius = 158.256
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kc3p"]
+radius = 84.1487
+
 [node name="ShootingEnemy" type="CharacterBody2D" groups=["damagable"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 72
+collision_mask = 0
 script = ExtResource("1_63hku")
 
 [node name="ShootingEnemySM" type="Node" parent="."]
@@ -85,6 +95,20 @@ script = ExtResource("6_i7f4l")
 
 [node name="Bullets" type="Node" parent="Holster/StandardGun"]
 
+[node name="Melee" type="Node2D" parent="."]
+
+[node name="StandardMelee" type="Node2D" parent="Melee"]
+position = Vector2(0, 9)
+script = ExtResource("13_yy13o")
+
+[node name="Hitbox" type="Area2D" parent="Melee/StandardMelee"]
+position = Vector2(35, -1)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/StandardMelee/Hitbox"]
+shape = SubResource("RectangleShape2D_205nd")
+
 [node name="DamageNumbers" parent="." instance=ExtResource("13_vxdmn")]
 offset_top = 41.0
 offset_right = 31.0
@@ -99,4 +123,19 @@ theme = SubResource("Theme_0tpba")
 value = 50.0
 show_percentage = false
 
+[node name="EnemyAlert" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlert"]
+shape = SubResource("CircleShape2D_1xvxk")
+
+[node name="Close" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Close"]
+shape = SubResource("CircleShape2D_0kc3p")
+
 [connection signal="body_entered" from="ActiveCheck" to="." method="_on_active_check_body_entered"]
+[connection signal="area_entered" from="Close" to="." method="_on_close_area_entered"]

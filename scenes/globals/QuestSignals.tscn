@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl1edeixlox2a"]
+
+[ext_resource type="Script" path="res://scripts/global/QuestSignals.gd" id="1_f7y6w"]
+
+[node name="QuestSignals" type="Node"]
+script = ExtResource("1_f7y6w")

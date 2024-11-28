@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var bulletContainer = $Bullets
 @onready var shootingPoint = $Hand/ShootingPoint
 @onready var hand = $Hand
+@onready var gunSprite = $Hand/Gun
 @onready var sprite:AnimatedSprite2D = $Rat
 @onready var health = $Health
 @onready var hitBox = $Hitbox
@@ -12,13 +13,16 @@ const speed = 12000.0
 var handDistance = 70
 @export var dashTime = 0.2
 var dashTimer = 0
-var dashSpeed = 30000
+var dashSpeed = 40000
 var dashing = false
 var direction = Vector2()
 var dead = false
 var speedMod = 1
 var tutorial = false
 var disabled = false
+
+var shootingTimer = 0
+var shootingCooldown = 0.3
 
 func _ready():
     print("player ready")
@@ -29,9 +33,7 @@ func _ready():
 
 
 func _input(event):
-    if (event.is_action_pressed("shoot") && !tutorial):
-        shoot()
-    elif (event.is_action_pressed("dash") && !dashing && !tutorial):
+    if (event.is_action_pressed("dash") && !dashing && !tutorial):
         dash()
 
 
@@ -42,6 +44,9 @@ func _physics_process(delta: float) -> void:
         return
 
     positionHand()
+    shootingTimer -= delta
+    if (Input.is_action_pressed("shoot") && !tutorial && shootingTimer <= 0):
+        shoot()
 
     if (!dashing && !disabled):
         var xdirection = Input.get_axis("left", "right")
@@ -100,8 +105,9 @@ func shoot():
     bulletContainer.add_child(b)
     b.damage = int(randf_range(3 * (PlayerManager.data["totalCollectables"] + 1) , 6 * (PlayerManager.data["totalCollectables"] + 1)))
     b.global_position = shootingPoint.global_position
-    b.direction = get_global_mouse_position() - shootingPoint.global_position
+    b.direction = get_global_mouse_position() - self.global_position
     b.rotation = b.direction.angle() + deg_to_rad(90)
+    shootingTimer = shootingCooldown
     pass
 
 
@@ -109,6 +115,13 @@ func positionHand():
     var tar = (get_global_mouse_position() - self.position).normalized()
     tar *= handDistance
     hand.position = tar
+    hand.rotation = get_angle_to(get_global_mouse_position())
+
+    var degHand = rad_to_deg(hand.rotation)
+    if ((degHand >= 90 && degHand <= 180) || (degHand <= -90 && degHand >= -180)):
+        hand.scale = Vector2(1, -1)
+    else:
+        hand.scale = Vector2(1, 1)
 
     
     pass

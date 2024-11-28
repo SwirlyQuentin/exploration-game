@@ -23,6 +23,8 @@ PlayerManager="*res://scenes/globals/PlayerManager.tscn"
 DevConsole="*res://scenes/globals/DevConsole.tscn"
 WorldLoader="*res://scenes/globals/WorldLoader.tscn"
 CutsceneEngine="*res://scenes/cutscene/CutsceneEngine.tscn"
+QuestEngine="*res://scenes/globals/QuestEngine.tscn"
+QuestSignals="*res://scenes/globals/QuestSignals.tscn"
 
 [display]
 
@@ -107,6 +109,7 @@ advance-dialogue={
 2d_physics/layer_4="damagables"
 2d_physics/layer_5="player"
 2d_physics/layer_6="interactIdicator"
+2d_physics/layer_7="enemies"
 
 [rendering]
 

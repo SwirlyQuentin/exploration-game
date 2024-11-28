@@ -3,15 +3,15 @@ extends Node2D
 @onready var shootingPoint = $ShootingPoint
 @onready var bullets = $Bullets
 
-var totalShots = 5
+var totalShots = 3
 var target = null
-var angleDifference = -20
+var angleDifference = -10
 var currentShots = 0
 var shooting = false
 var shotTimer = 0.2
 var timer = 0
 var ableToShoot = false
-var cooldown = 1.5
+var cooldown = 2.5
 var cooldownTimer = 0
 
 var enemyRange = 700

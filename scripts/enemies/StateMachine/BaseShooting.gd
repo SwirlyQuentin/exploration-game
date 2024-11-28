@@ -4,7 +4,7 @@ var character = null
 
 var target = null
 var stateTimer = 0
-var states = ["advance", "strafe", "baseShooting"]
+var states = ["advance", "strafe"]
 
 
 func _ready():

@@ -1,0 +1,18 @@
+{
+    "quests": {
+        "testQuest": {
+            "name": "Test Quest",
+            "desc": "This is a test of the quest system",
+            "obj": "dash one time",
+            "signal": "testQuest",
+            "completed": false
+        },
+        "testQuest2": {
+            "name": "Test Quest",
+            "desc": "This is a test of the quest system",
+            "obj": "shoot one time",
+            "signal": "testQuest2",
+            "completed": false
+        }
+    }
+}

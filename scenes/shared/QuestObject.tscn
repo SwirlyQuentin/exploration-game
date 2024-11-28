@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlltspsq4fiog"]
+
+[ext_resource type="Script" path="res://scripts/shared/QuestObject.gd" id="1_y78wk"]
+
+[node name="QuestObject" type="Node"]
+process_mode = 3
+script = ExtResource("1_y78wk")

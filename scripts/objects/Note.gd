@@ -25,5 +25,5 @@ func _input(event):
 
 
 func checkObject(object):
-    if (object == "Cabinet"):
+    if (object == "Note"):
         ind.enable()
