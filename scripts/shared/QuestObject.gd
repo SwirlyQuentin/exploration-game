@@ -40,3 +40,7 @@ func condEnable():
 
 func condDisable():
     pass
+
+
+func trigger(trig):
+    QuestSignals.emit_signal(trig)

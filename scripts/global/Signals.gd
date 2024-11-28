@@ -26,3 +26,11 @@ signal disablePlayer
 
 #tutorial sequence
 signal enableDialogueObject
+signal tutorialFinished
+
+#Quests
+signal advanceQuest
+signal completeQuest
+signal completeObj
+
+signal blackFade

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://vksaete574p5"]
+[gd_scene load_steps=26 format=3 uid="uid://vksaete574p5"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_qp76k"]
 [ext_resource type="Texture2D" uid="uid://d2gj881el3t3f" path="res://assets/rat/RatIdle.png" id="2_30587"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/player/Health.gd" id="5_yhv6a"]
 [ext_resource type="Texture2D" uid="uid://co6s85onbsqx0" path="res://assets/weapons/RatGun/Gun.png" id="6_lfjmx"]
 [ext_resource type="Texture2D" uid="uid://dypu7s0hpfxtr" path="res://assets/UI/Empty_HealthBar.png" id="8_jyu8a"]
+[ext_resource type="PackedScene" uid="uid://bs4xf8y5r5e2j" path="res://scenes/shared/BlackFade.tscn" id="9_jcupo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8abe"]
 atlas = ExtResource("2_kw7ly")
@@ -216,6 +217,14 @@ offset_right = 24.0
 offset_bottom = -18.0
 theme = SubResource("Theme_2x4k7")
 show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackFade" parent="CanvasLayer" instance=ExtResource("9_jcupo")]
+offset_left = -526.0
+offset_top = -297.0
+offset_right = 1926.0
+offset_bottom = 1065.0
 
 [connection signal="area_entered" from="RenderDistance" to="." method="_on_render_distance_area_entered"]
 [connection signal="area_exited" from="RenderDistance" to="." method="_on_render_distance_area_exited"]

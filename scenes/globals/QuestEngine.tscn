@@ -1,6 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://v2wwqes225qu"]
+[gd_scene load_steps=4 format=3 uid="uid://v2wwqes225qu"]
 
 [ext_resource type="Script" path="res://scripts/global/QuestEngine.gd" id="1_jpokf"]
+[ext_resource type="Texture2D" uid="uid://bjlx6x3pt4ysx" path="res://assets/UI/Quest/QuestTracker.png" id="2_inw4s"]
+[ext_resource type="FontFile" uid="uid://sbvuvff68ak7" path="res://assets/UI/Dialogue/pixelFont-7-8x14-sproutLands.ttf" id="3_8n5oh"]
 
 [node name="QuestEngine" type="Node"]
 script = ExtResource("1_jpokf")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="QuestTracker" type="Control" parent="Canvas"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -358.0
+offset_bottom = 267.0
+grow_horizontal = 0
+
+[node name="Background" type="TextureRect" parent="Canvas/QuestTracker"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -387.0
+offset_top = -92.0
+offset_right = -187.0
+offset_bottom = 108.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+texture = ExtResource("2_inw4s")
+stretch_mode = 3
+
+[node name="MainStory" type="Label" parent="Canvas/QuestTracker"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8n5oh")
+theme_override_font_sizes/font_size = 30
+text = "Main Story"
+horizontal_alignment = 1
+
+[node name="QuestName" type="Label" parent="Canvas/QuestTracker"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 23.0
+offset_top = 77.0
+offset_right = 298.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8n5oh")
+theme_override_font_sizes/font_size = 24
+text = "Quest Name"
+
+[node name="Scroll" type="ScrollContainer" parent="Canvas/QuestTracker"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -30.5
+offset_right = 335.0
+offset_bottom = 36.5
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="QuestDesc" type="Label" parent="Canvas/QuestTracker/Scroll"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 50.305)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_8n5oh")
+theme_override_font_sizes/font_size = 18
+text = "Quest Description"
+autowrap_mode = 2
+
+[node name="Objectives" type="Control" parent="Canvas/QuestTracker"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -92.0
+offset_right = 331.0
+offset_bottom = -29.0
+grow_vertical = 0
+
+[node name="ObjectiveContainer" type="VBoxContainer" parent="Canvas/QuestTracker/Objectives"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

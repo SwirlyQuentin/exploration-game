@@ -1,17 +1,55 @@
 {
     "quests": {
-        "testQuest": {
-            "name": "Test Quest",
-            "desc": "This is a test of the quest system",
-            "obj": "dash one time",
-            "signal": "testQuest",
+        "barQuest": {
+            "name": "Bar Quest",
+            "desc": "Visit the bar and ask around if anyone has any information about the current Rouge Rodents.",
+            "obj": { "bar-visited": { "name": "Bar Visited", "ref": "", "completed": false } },
+            "signal": "barQuest",
             "completed": false
         },
-        "testQuest2": {
-            "name": "Test Quest",
-            "desc": "This is a test of the quest system",
-            "obj": "shoot one time",
-            "signal": "testQuest2",
+        "meetupQuest": {
+            "name": "meetupQuest",
+            "desc": "Crash the cheese meetup.",
+            "obj": { "meetup-crashed": { "name": "Meetup Crashed", "ref": "", "completed": false } },
+            "signal": "meetupQuest",
+            "completed": false
+        },
+        "metalQuest": {
+            "name": "metalQuest",
+            "desc": "Visit the Metal Shop to make the Rougue Key.",
+            "obj": { "metal-shop-visited": { "name": "Metal Shop Visited", "ref": "", "completed": false } },
+            "signal": "metalQuest",
+            "completed": false
+        },
+        "materialQuest": {
+            "name": "materialQuest",
+            "desc": "Reroute the lava to fix the forge and kill enemies at the hangout spot.",
+            "obj": { 
+                "forge-fixed": { "name": "Forge Fixed", "ref": "", "completed": false }, 
+                "mold-acquired": { "name": "Mold Acquired", "ref": "", "completed": false } 
+            },
+            "signal": "materialQuest",
+            "completed": false
+        },
+        "forgeQuest": {
+            "name": "forgeQuest",
+            "desc": "Return to blank to forge the key",
+            "obj": { "blank-visited": { "name": "Blank Visited", "ref": "", "completed": false } },
+            "signal": "forgeQuest",
+            "completed": false
+        },
+        "hideoutQuest": {
+            "name": "hideoutQuest",
+            "desc": "Visit the Rougue Rodents hideout to get Will back",
+            "obj": { "hideout-visited": { "name": "Hideout Visited", "ref": "", "completed": false } },
+            "signal": "hideoutQuest",
+            "completed": false
+        },
+        "saveQuest": {
+            "name": "saveQuest",
+            "desc": "Save Will",
+            "obj": { "will-saved": { "name": "Will Saved", "ref": "", "completed": false } },
+            "signal": "saveQuest",
             "completed": false
         }
     }

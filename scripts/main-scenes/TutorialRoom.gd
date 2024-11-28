@@ -10,8 +10,9 @@ func _ready():
 
 func _on_exit_trigger_area_entered(area:Area2D) -> void:
     area.get_parent().disable()
-    blackFade.fade()
+    blackFade.fade("")
 
 func _physics_process(delta):
     if (blackFade.finished):
+        Signals.emit_signal("tutorialFinished")
         Signals.emit_signal("changeState", "gameState")

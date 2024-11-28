@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://coihemilehu1d"]
+[gd_scene load_steps=23 format=3 uid="uid://coihemilehu1d"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/TutorialRoom.gd" id="1_yqb4j"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="2_0nik4"]
 [ext_resource type="Texture2D" uid="uid://wk8jkwp73vc5" path="res://assets/environment/TutorialRoom/RougeRodent_house-floorplan-collision.png" id="2_h0s36"]
 [ext_resource type="Texture2D" uid="uid://dsuwqi86gdtn6" path="res://assets/environment/TutorialRoom/RougeRodent_house-floorplan-overlay.png" id="4_gdnbu"]
-[ext_resource type="Script" path="res://scripts/shared/BlackFade.gd" id="4_oqg76"]
+[ext_resource type="PackedScene" uid="uid://bs4xf8y5r5e2j" path="res://scenes/shared/BlackFade.tscn" id="5_2rwxi"]
 [ext_resource type="Script" path="res://scripts/objects/Note.gd" id="6_3mjwo"]
 [ext_resource type="PackedScene" uid="uid://bl8a02ovxe3ob" path="res://scenes/shared/InteractIndicator.tscn" id="6_y7a8c"]
 [ext_resource type="Texture2D" uid="uid://bjlpxk5ghhwjn" path="res://assets/UI/TempNote.png" id="8_ojywt"]
@@ -20,44 +20,6 @@ size = Vector2(22, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42q3p"]
 size = Vector2(32, 10)
-
-[sub_resource type="Animation" id="Animation_tq3vl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackFade:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fp6jg"]
-resource_name = "fade"
-length = 1.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackFade:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgtmn"]
-_data = {
-"RESET": SubResource("Animation_tq3vl"),
-"fade": SubResource("Animation_fp6jg")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcih8"]
 resource_local_to_scene = true
@@ -153,19 +115,7 @@ collision_mask = 2
 position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_42q3p")
 
-[node name="BlackFade" type="ColorRect" parent="."]
-offset_left = 12.0
-offset_top = 2.0
-offset_right = 2464.0
-offset_bottom = 1364.0
-color = Color(0, 0, 0, 0)
-script = ExtResource("4_oqg76")
-
-[node name="Fade" type="AnimationPlayer" parent="BlackFade"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_kgtmn")
-}
+[node name="BlackFade" parent="." instance=ExtResource("5_2rwxi")]
 
 [node name="Note" type="Node2D" parent="."]
 position = Vector2(1267, 821)
@@ -297,7 +247,6 @@ autoplay = "default"
 frame_progress = 0.937316
 
 [connection signal="area_entered" from="ExitTrigger" to="." method="_on_exit_trigger_area_entered"]
-[connection signal="animation_finished" from="BlackFade/Fade" to="BlackFade" method="_on_fade_animation_finished"]
 [connection signal="area_entered" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_entered"]
 [connection signal="area_exited" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_exited"]
 [connection signal="area_entered" from="Bed/InteractIndicator" to="Bed/InteractIndicator" method="_on_area_entered"]

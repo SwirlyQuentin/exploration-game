@@ -3,6 +3,7 @@ extends Node
 @onready var testState = $TestState
 @onready var gameState = $GameState
 @onready var tutorialState = $TutorialState
+@onready var bar = $Bar
 
 var states = {}
 var current_state: BaseState = null
@@ -12,6 +13,7 @@ func _ready() -> void:
 	add_state("testState", testState)
 	add_state("gameState", gameState)
 	add_state("tutState", tutorialState)
+	add_state("bar", bar)
 	change_state("tutState")
 	pass
 

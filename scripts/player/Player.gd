@@ -128,8 +128,8 @@ func positionHand():
 
 func dash():
     dashing = true
-    set_collision_layer_value(1, false)
-    set_collision_mask_value(1, false)
+    # set_collision_layer_value(1, false)
+    # set_collision_mask_value(1, false)
     hitBox.set_collision_layer_value(5, false)
     hitBox.set_collision_mask_value(5, false)
     dashTimer = dashTime
@@ -142,8 +142,8 @@ func dash():
 func checkDash(delta):
     dashTimer -= delta
     if (dashTimer <= 0):
-        set_collision_layer_value(1, true)
-        set_collision_mask_value(1, true)
+        # set_collision_layer_value(1, true)
+        # set_collision_mask_value(1, true)
         hitBox.set_collision_layer_value(5, true)
         hitBox.set_collision_mask_value(5, true)
         dashing = false
