@@ -6,6 +6,8 @@ class_name EnemyBase
 @onready var healthBar:ProgressBar = $HealthBar
 
 
+signal deathSignal
+
 var currentTotalDamage = 0
 var health = 50
 var damageTimer = 0
@@ -25,7 +27,7 @@ func takeDamage(damage):
     damageTimer = 0
     damageNumbers.text = str(currentTotalDamage)
     if (health <= 0):
-        queue_free()
+        die()
     
     pass
 
@@ -36,6 +38,11 @@ func _process(delta):
             damaging = false
             currentTotalDamage = 0
             damageNumbers.text = ""
+
+func die():
+    emit_signal("deathSignal")
+    queue_free()
+    pass
 
 func transitionCheck(sig):
     print(sig)

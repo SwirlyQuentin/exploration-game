@@ -7,7 +7,12 @@ extends Node
 
 var questData = null
 var currentQuest = null
+var previousQuest = null
 var questIndex = 0
+var questQueue = []
+
+var completeTimer = 0
+var completeTime = 4
 
 func _ready():
     hideQuests()
@@ -15,6 +20,9 @@ func _ready():
     Signals.connect("advanceQuest", advanceQuest)
     Signals.connect("completeQuest", completeQuest)
     Signals.connect("completeObj", completeObj)
+    Signals.connect("emitQueue", emitQueue)
+    Signals.connect("queueComplete", queueComplete)
+    Signals.connect("completeTimer", completeOnTimer)
     var questFile = FileAccess.open("res://data/world/quests.json", FileAccess.READ)
     questData = JSON.parse_string(questFile.get_as_text())
     currentQuest = questData["quests"].keys()[0]
@@ -30,6 +38,7 @@ func completeQuest():
             QuestSignals.emit_signal(questData["quests"][currentQuest]["signal"])
             questData["quests"][currentQuest]["completed"] = true
             advanceQuest()
+            questQueue = []
 
 func completeObj(obj):
     if (obj in questData["quests"][currentQuest]["obj"].keys()):
@@ -60,6 +69,7 @@ func hideQuests():
 
 func advanceQuest():
     if (questData["quests"][currentQuest]["completed"]):
+        previousQuest = currentQuest
         questIndex += 1
         currentQuest = questData["quests"].keys()[questIndex]
         updateTracker()
@@ -71,3 +81,25 @@ func checkCompletedQuest():
         if !questData["quests"][currentQuest]["obj"][obj]["completed"]:
             result = false
     return result
+
+
+func queueComplete():
+    if (previousQuest not in questQueue && previousQuest != null):
+        questQueue.append(previousQuest)
+        print("queued ", previousQuest)
+    pass
+
+func emitQueue():
+    for quest in questQueue:
+        QuestSignals.emit_signal(questData["quests"][quest]["signal"])
+        print("clearing queue ", quest)
+
+func completeOnTimer():
+    if (checkCompletedQuest()):
+        completeTimer = completeTime
+
+func _process(delta):
+    if (completeTimer > 0):
+        completeTimer -= delta
+        if (completeTimer <= 0):
+            completeQuest()

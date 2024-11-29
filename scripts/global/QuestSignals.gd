@@ -1,4 +1,9 @@
 extends Node
 
-signal testQuest
-signal testQuest2
+signal barQuest
+signal meetupQuest
+signal metalQuest
+signal materialQuest
+signal forgeQuest
+signal hideoutQuest
+signal saveQuest

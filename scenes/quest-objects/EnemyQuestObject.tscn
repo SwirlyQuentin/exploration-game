@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bghr4q1snoqg4"]
+
+[ext_resource type="Script" path="res://scripts/quest-objects/EnemyQuestObject.gd" id="1_0exlt"]
+
+[node name="EnemyQuestObject" type="Node"]
+script = ExtResource("1_0exlt")

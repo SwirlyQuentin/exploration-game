@@ -15,6 +15,7 @@ func _ready():
     pass
 
 func catchSignal():
+    print("recieved Signal ")
     if (action == "enable"):
         enable()
     elif (action == "disable"):

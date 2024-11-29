@@ -2,11 +2,21 @@ extends Node
 
 @onready var player = $Canvas/DialoguePlayer
 @onready var actorContainer = $Canvas/DialoguePlayer/Actors
+@onready var bubblePlayer = $Bubble
 
 
 func _ready():
     Signals.connect("startCutscene", playCutscene)
+    Signals.connect("startBubble", playBubble)
     Signals.connect("cutsceneFinished", cutsceneFinished)
+
+
+func playBubble(bubble):
+    var loadFile = FileAccess.open("res://data/dialogue/bubbles/" + bubble + ".json", FileAccess.READ)
+    if (loadFile != null):
+        var data = JSON.parse_string(loadFile.get_as_text())
+        bubblePlayer.loadBubble(data)
+    pass
 
 func playCutscene(cutscene):
     #check if cutscene is already played

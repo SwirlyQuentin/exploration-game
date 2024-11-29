@@ -1,31 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsqntnwp1ch6o"]
+[gd_scene load_steps=8 format=3 uid="uid://dp5wwreobuwmy"]
 
-[ext_resource type="Script" path="res://scripts/main-scenes/Bar.gd" id="1_hiuhv"]
-[ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="2_xci6d"]
-[ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="3_28rw1"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="4_yds5c"]
-[ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="5_slogn"]
+[ext_resource type="Script" path="res://scripts/main-scenes/MetalShop.gd" id="1_0nfe3"]
+[ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="1_jmfvv"]
+[ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="2_de68u"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_v6c72"]
+[ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="4_ggpal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug38g"]
 size = Vector2(26, 26)
 
-[node name="Bar" type="Node"]
-script = ExtResource("1_hiuhv")
+[node name="MetalShop" type="Node"]
+script = ExtResource("1_0nfe3")
 
-[node name="Player" parent="." instance=ExtResource("2_xci6d")]
+[node name="Player" parent="." instance=ExtResource("1_jmfvv")]
 position = Vector2(584, 325)
 
 [node name="TravelArea" type="Node2D" parent="."]
 position = Vector2(508, 307)
-script = ExtResource("3_28rw1")
+script = ExtResource("2_de68u")
 zone = "gameState"
 
 [node name="Sprite2D" type="Sprite2D" parent="TravelArea"]
 position = Vector2(0.249983, 2.87499)
 scale = Vector2(0.152344, 0.154297)
-texture = ExtResource("4_yds5c")
+texture = ExtResource("3_v6c72")
 
 [node name="Area2D" type="Area2D" parent="TravelArea"]
 collision_layer = 16
@@ -37,12 +37,12 @@ shape = SubResource("RectangleShape2D_1in5g")
 
 [node name="TestButton" type="Node2D" parent="."]
 position = Vector2(554, 260)
-script = ExtResource("5_slogn")
+script = ExtResource("4_ggpal")
 
 [node name="Sprite2D" type="Sprite2D" parent="TestButton"]
 position = Vector2(-7.62939e-06, 2.38419e-06)
 scale = Vector2(0.203125, 0.203125)
-texture = ExtResource("4_yds5c")
+texture = ExtResource("3_v6c72")
 
 [node name="Area2D" type="Area2D" parent="TestButton"]
 collision_layer = 16

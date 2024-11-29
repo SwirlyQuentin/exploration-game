@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var sprite:AnimatedSprite2D = $Rat
 @onready var health = $Health
 @onready var hitBox = $Hitbox
+@onready var cam = $MainCam
+@onready var bubbleLoc = $Bubbleloc
 
 const speed = 12000.0
 var handDistance = 70
@@ -30,7 +32,12 @@ func _ready():
     Signals.connect("tutorial", tutorialValues)
     Signals.connect("enablePlayer", enable)
     Signals.connect("disablePlayer", disable)
+    Signals.connect("placeWorld", placeInWorld)
 
+func placeInWorld():
+    if (PlayerManager.exitSpace):
+        self.global_position = PlayerManager.exitSpace
+    pass
 
 func _input(event):
     if (event.is_action_pressed("dash") && !dashing && !tutorial):
@@ -42,6 +49,8 @@ func _physics_process(delta: float) -> void:
     # As good practice, you should replace UI actions with custom gameplay actions.
     if (dead || disabled):
         return
+
+    PlayerManager.bubbleLoc = bubbleLoc.global_position
 
     positionHand()
     shootingTimer -= delta

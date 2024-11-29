@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnxlmnx0yhkb"]
+[gd_scene load_steps=6 format=3 uid="uid://dnxlmnx0yhkb"]
 
 [ext_resource type="Script" path="res://scripts/cutscene/CutsceneEngine.gd" id="1_iwiot"]
 [ext_resource type="PackedScene" uid="uid://dw3ajy8u7rnxr" path="res://scenes/cutscene/DialoguePlayer.tscn" id="2_840vc"]
+[ext_resource type="Script" path="res://scripts/cutscene/Bubble.gd" id="3_fxax7"]
+[ext_resource type="Texture2D" uid="uid://dwxdr0mrhkgyn" path="res://assets/UI/Dialogue/SpeechBubble.png" id="4_u3ipr"]
+[ext_resource type="FontFile" uid="uid://sbvuvff68ak7" path="res://assets/UI/Dialogue/pixelFont-7-8x14-sproutLands.ttf" id="5_irx8w"]
 
 [node name="CutsceneEngine" type="Node"]
 process_mode = 3
@@ -11,3 +14,24 @@ script = ExtResource("1_iwiot")
 
 [node name="DialoguePlayer" parent="Canvas" instance=ExtResource("2_840vc")]
 visible = false
+
+[node name="Bubble" type="Node2D" parent="."]
+script = ExtResource("3_fxax7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bubble"]
+texture_filter = 1
+position = Vector2(28, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_u3ipr")
+
+[node name="Label" type="Label" parent="Bubble"]
+texture_filter = 1
+offset_left = 7.0
+offset_top = -7.0
+offset_right = 138.0
+offset_bottom = 24.0
+scale = Vector2(0.35, 0.35)
+theme_override_fonts/font = ExtResource("5_irx8w")
+theme_override_font_sizes/font_size = 24
+text = "dfdf"
+vertical_alignment = 1

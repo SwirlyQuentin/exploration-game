@@ -23,7 +23,7 @@ var speedMod = 0.3
 
 func enter():
     character.speedMod = speedMod
-    print("changed")
+    # print("changed")
 
 func exit():
     character.speedMod = 1
@@ -55,7 +55,7 @@ func _physics_process(delta):
     var align = 183
     var angle_between = rad_to_deg(perlinDirection.angle_to((character.originalPos - character.global_position).normalized()))
     if abs(angle_between) > alignment_threshold && abs(angle_between) < align && (currentRange/range) > 0.9:
-        print(angle_between)
+        # print(angle_between)
         # If the angle is very small, directly use toSpawn direction
         opp = !opp
         stopped = true

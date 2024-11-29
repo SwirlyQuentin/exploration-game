@@ -42,7 +42,6 @@ radius = 84.1487
 
 [node name="ShootingEnemy" type="CharacterBody2D" groups=["damagable"]]
 collision_layer = 72
-collision_mask = 0
 script = ExtResource("1_63hku")
 
 [node name="ShootingEnemySM" type="Node" parent="."]
@@ -82,6 +81,8 @@ position = Vector2(-1.5, 11)
 shape = SubResource("RectangleShape2D_drug7")
 
 [node name="ActiveCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
 shape = SubResource("CircleShape2D_ubp8i")
@@ -103,7 +104,7 @@ script = ExtResource("13_yy13o")
 
 [node name="Hitbox" type="Area2D" parent="Melee/StandardMelee"]
 position = Vector2(35, -1)
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/StandardMelee/Hitbox"]
@@ -137,5 +138,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Close"]
 shape = SubResource("CircleShape2D_0kc3p")
 
+[connection signal="area_entered" from="ActiveCheck" to="." method="_on_active_check_area_entered"]
 [connection signal="body_entered" from="ActiveCheck" to="." method="_on_active_check_body_entered"]
 [connection signal="area_entered" from="Close" to="." method="_on_close_area_entered"]

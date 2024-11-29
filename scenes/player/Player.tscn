@@ -131,6 +131,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_hhor8")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.45, 0.45)
+collision_layer = 0
 script = ExtResource("1_qp76k")
 
 [node name="Rat" type="AnimatedSprite2D" parent="."]
@@ -225,6 +226,9 @@ offset_left = -526.0
 offset_top = -297.0
 offset_right = 1926.0
 offset_bottom = 1065.0
+
+[node name="BubbleLoc" type="Node2D" parent="."]
+position = Vector2(-2.22222, -35.5556)
 
 [connection signal="area_entered" from="RenderDistance" to="." method="_on_render_distance_area_entered"]
 [connection signal="area_exited" from="RenderDistance" to="." method="_on_render_distance_area_exited"]

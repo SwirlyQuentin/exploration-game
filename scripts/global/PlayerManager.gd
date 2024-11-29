@@ -6,6 +6,8 @@ var data = {"exp": 0, "level": 1, "gold": 0, "collectables": [], "totalCollectab
 
 var maxLevel = 50
 var levelExp = {"1": 10}
+var exitSpace = null
+var bubbleLoc = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

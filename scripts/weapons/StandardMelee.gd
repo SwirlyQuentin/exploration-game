@@ -8,8 +8,8 @@ var boxDist = 35
 
 func hit(tar):
     self.target = tar
-    if target.hitBox in hitbox.get_overlapping_areas():
-        target.health.takeDamage(damage)
+    if target in hitbox.get_overlapping_areas():
+        target.get_parent().health.takeDamage(damage)
 
 
 func _process(delta):

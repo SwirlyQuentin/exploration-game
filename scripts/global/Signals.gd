@@ -20,9 +20,12 @@ signal tutorial
 signal startCutscene
 signal cutsceneFinished
 
+signal startBubble
+
 #Player
 signal enablePlayer
 signal disablePlayer
+signal placeWorld
 
 #tutorial sequence
 signal enableDialogueObject
@@ -32,5 +35,8 @@ signal tutorialFinished
 signal advanceQuest
 signal completeQuest
 signal completeObj
+signal emitQueue
+signal queueComplete
+signal completeTimer
 
 signal blackFade

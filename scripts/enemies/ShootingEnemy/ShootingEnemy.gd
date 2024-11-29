@@ -19,6 +19,7 @@ var target = null
 
 
 func _ready():
+    originalPos = self.global_position
     prepHealthBar()
 
     pass
@@ -37,7 +38,7 @@ func _physics_process(delta):
 
 
 func transition(sig):
-    print("changing ", sig)
+    # print("changing ", sig)
     if (sig == "active"):
         idle = false
         activeCheck.process_mode = Node.PROCESS_MODE_DISABLED
@@ -87,3 +88,12 @@ func alert(tar):
 func _on_close_area_entered(area:Area2D) -> void:
     if (area.is_in_group("player") && target != null):
         transition("advance")
+
+
+func _on_active_check_area_entered(area:Area2D) -> void:
+    if (area.is_in_group("player")):
+        target = area
+        melee.target = area
+        transition("active")
+        for enemy in enemyAlert.get_overlapping_bodies():
+            enemy.alert(area)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ccjli0aqghxt3"]
+[gd_scene load_steps=43 format=3 uid="uid://ccjli0aqghxt3"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/World.gd" id="1_rq7sy"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="2_giafk"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="6_3ivhj"]
 [ext_resource type="PackedScene" uid="uid://cl2vlx7i0bahw" path="res://scenes/enemies/Dummy.tscn" id="7_brlag"]
 [ext_resource type="PackedScene" uid="uid://b2mm47w0a8n8s" path="res://scenes/enemies/ShootingEnemy.tscn" id="8_cfopl"]
+[ext_resource type="PackedScene" uid="uid://be2cbp27g8w6" path="res://scenes/shared/TravelArea.tscn" id="12_0u65w"]
 [ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="12_6qxts"]
+[ext_resource type="PackedScene" uid="uid://bghr4q1snoqg4" path="res://scenes/quest-objects/EnemyQuestObject.tscn" id="13_dx4pp"]
+[ext_resource type="PackedScene" uid="uid://hnmhayqa84ix" path="res://scenes/quest-objects/EnemyGroup.tscn" id="13_eu8n7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aigx4"]
 texture = ExtResource("2_s2yjc")
@@ -626,7 +629,13 @@ size = Vector2(479, 353)
 size = Vector2(478, 225)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wyun"]
-size = Vector2(703, 671)
+size = Vector2(703, 617)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4boud"]
+size = Vector2(288, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkxsj"]
+size = Vector2(319, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqivj"]
 size = Vector2(320, 320)
@@ -640,11 +649,14 @@ size = Vector2(1247, 351)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcvh2"]
 size = Vector2(1249, 318)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7d2t"]
-size = Vector2(65, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4600m"]
+size = Vector2(102, 44)
 
 [node name="World" type="Node"]
 script = ExtResource("1_rq7sy")
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(2576, -661)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1538.0
@@ -868,8 +880,22 @@ shape = SubResource("RectangleShape2D_aiix5")
 position = Vector2(3198, -1461)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingCollision/StaticBody2D21"]
-position = Vector2(2.5, 4.5)
+position = Vector2(2.5, -22.5)
 shape = SubResource("RectangleShape2D_8wyun")
+
+[node name="StaticBody2D30" type="StaticBody2D" parent="BuildingCollision"]
+position = Vector2(2997, -1150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingCollision/StaticBody2D30"]
+position = Vector2(-4, 2.5)
+shape = SubResource("RectangleShape2D_4boud")
+
+[node name="StaticBody2D31" type="StaticBody2D" parent="BuildingCollision"]
+position = Vector2(3382, -1150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingCollision/StaticBody2D31"]
+position = Vector2(10.5, 2.5)
+shape = SubResource("RectangleShape2D_pkxsj")
 
 [node name="StaticBody2D22" type="StaticBody2D" parent="BuildingCollision"]
 position = Vector2(3136, -2272)
@@ -965,17 +991,53 @@ text = "Hangout Spot"
 
 [node name="TravelAreas" type="Node" parent="."]
 
-[node name="TravelArea" type="Node2D" parent="TravelAreas"]
-position = Vector2(3841, -167)
-script = ExtResource("12_6qxts")
-zone = "bar"
+[node name="Bar" parent="TravelAreas" instance=ExtResource("12_0u65w")]
+worldSpace = true
 
-[node name="Area2D" type="Area2D" parent="TravelAreas/TravelArea"]
+[node name="ExitSpace" parent="TravelAreas/Bar" index="1"]
+position = Vector2(1, -41)
+
+[node name="MetalShop" type="Node2D" parent="TravelAreas"]
+position = Vector2(3182, -1151)
+script = ExtResource("12_6qxts")
+zone = "metalShop"
+worldSpace = true
+
+[node name="Area2D" type="Area2D" parent="TravelAreas/MetalShop"]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TravelAreas/TravelArea/Area2D"]
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_k7d2t")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TravelAreas/MetalShop/Area2D"]
+position = Vector2(4, -3)
+shape = SubResource("RectangleShape2D_4600m")
 
-[connection signal="area_entered" from="TravelAreas/TravelArea/Area2D" to="TravelAreas/TravelArea" method="_on_area_2d_area_entered"]
+[node name="ExitSpace" type="Node2D" parent="TravelAreas/MetalShop"]
+position = Vector2(4, 51)
+
+[node name="StoryEnemies" type="Node" parent="."]
+
+[node name="CheeseMeetup" parent="StoryEnemies" instance=ExtResource("13_eu8n7")]
+position = Vector2(5120, -948)
+objective = "meetup-crashed"
+willComplete = true
+
+[node name="ShootingEnemy6" parent="StoryEnemies/CheeseMeetup" instance=ExtResource("8_cfopl")]
+position = Vector2(-23, 5)
+
+[node name="EnemyQuestObject" parent="StoryEnemies/CheeseMeetup" instance=ExtResource("13_dx4pp")]
+quest = "barQuest"
+
+[node name="HangoutEnemies" parent="StoryEnemies" instance=ExtResource("13_eu8n7")]
+position = Vector2(2528, -2266)
+objective = "mold-acquired"
+willComplete = true
+
+[node name="ShootingEnemy6" parent="StoryEnemies/HangoutEnemies" instance=ExtResource("8_cfopl")]
+position = Vector2(-47, 15)
+
+[node name="EnemyQuestObject" parent="StoryEnemies/HangoutEnemies" instance=ExtResource("13_dx4pp")]
+quest = "metalQuest"
+
+[connection signal="area_entered" from="TravelAreas/MetalShop/Area2D" to="TravelAreas/MetalShop" method="_on_area_2d_area_entered"]
+
+[editable path="TravelAreas/Bar"]
