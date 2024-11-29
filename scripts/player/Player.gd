@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var health = $Health
 @onready var hitBox = $Hitbox
 @onready var cam = $MainCam
-@onready var bubbleLoc = $Bubbleloc
+@onready var bubbleLoc = $BubbleLoc
 
 const speed = 12000.0
 var handDistance = 70

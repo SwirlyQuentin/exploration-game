@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://coihemilehu1d"]
+[gd_scene load_steps=25 format=3 uid="uid://coihemilehu1d"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/TutorialRoom.gd" id="1_yqb4j"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="2_0nik4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/shared/InteractIndicator.gd" id="12_tpjwk"]
 [ext_resource type="Texture2D" uid="uid://bi0dnrdtw0ok1" path="res://assets/UI/Interact.png" id="13_ljd5m"]
 [ext_resource type="Script" path="res://scripts/objects/Bed.gd" id="14_wlbvl"]
+[ext_resource type="Script" path="res://scripts/objects/Crack.gd" id="15_wyum5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx3lp"]
 size = Vector2(22, 36)
@@ -54,6 +55,9 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpj7u"]
+size = Vector2(19, 24)
 
 [node name="TutorialRoom" type="Node"]
 script = ExtResource("1_yqb4j")
@@ -246,6 +250,20 @@ sprite_frames = SubResource("SpriteFrames_pem8s")
 autoplay = "default"
 frame_progress = 0.937316
 
+[node name="Crack" type="Node2D" parent="."]
+position = Vector2(1136, 654)
+script = ExtResource("15_wyum5")
+
+[node name="InteractIndicator" parent="Crack" instance=ExtResource("6_y7a8c")]
+position = Vector2(8, 3)
+
+[node name="CollisionShape2D" parent="Crack/InteractIndicator" index="0"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_xpj7u")
+
+[node name="Icon" parent="Crack/InteractIndicator" index="1"]
+position = Vector2(-1, -31)
+
 [connection signal="area_entered" from="ExitTrigger" to="." method="_on_exit_trigger_area_entered"]
 [connection signal="area_entered" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_entered"]
 [connection signal="area_exited" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_exited"]
@@ -254,3 +272,4 @@ frame_progress = 0.937316
 
 [editable path="Note/InteractIndicator"]
 [editable path="Clock/InteractIndicator"]
+[editable path="Crack/InteractIndicator"]

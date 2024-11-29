@@ -1,0 +1,74 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Gun",
+            "source": "res://scenes/cutscene/Actors/Gun.tscn",
+            "actor-key": "gun",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Found You.",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Wake Up.",
+            "direction": "left"
+        },
+        {
+            "key": "gun",
+            "content": "Fancy seeing you again...",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "What's the occasion?",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "I thought you were done.",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "They took Will.",
+            "direction": "left"
+        },
+        {
+            "key": "gun",
+            "content": "Does this mean what I think it means!?",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "Where to?",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "They changed the location when I left.",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "But I know the bar they frequent.",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Lets Go.",
+            "direction": "left"
+        }
+    ]
+}

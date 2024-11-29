@@ -228,7 +228,7 @@ offset_right = 1926.0
 offset_bottom = 1065.0
 
 [node name="BubbleLoc" type="Node2D" parent="."]
-position = Vector2(-2.22222, -35.5556)
+position = Vector2(35.5556, -11.1111)
 
 [connection signal="area_entered" from="RenderDistance" to="." method="_on_render_distance_area_entered"]
 [connection signal="area_exited" from="RenderDistance" to="." method="_on_render_distance_area_exited"]

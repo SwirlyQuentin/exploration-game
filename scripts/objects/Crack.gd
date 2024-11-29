@@ -13,10 +13,9 @@ func _input(event):
         ind.inRange = false
         ind.disable()
         ind.hideIcon()
-        Signals.emit_signal("enableDialogueObject", "Note")
-        Signals.emit_signal("startBubble", "openingBubble")
+        Signals.emit_signal("startCutscene", "openingCutscene_part6")
 
 
 func checkObject(object):
-    if (object == "Cabinet"):
+    if (object == "Crack"):
         ind.enable()

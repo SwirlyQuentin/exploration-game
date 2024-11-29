@@ -10,12 +10,9 @@
 process_mode = 3
 script = ExtResource("1_iwiot")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-
-[node name="DialoguePlayer" parent="Canvas" instance=ExtResource("2_840vc")]
-visible = false
-
 [node name="Bubble" type="Node2D" parent="."]
+z_index = 1
+scale = Vector2(1.5, 1.5)
 script = ExtResource("3_fxax7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bubble"]
@@ -24,14 +21,20 @@ position = Vector2(28, -2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_u3ipr")
 
-[node name="Label" type="Label" parent="Bubble"]
+[node name="BubbleText" type="Label" parent="Bubble"]
 texture_filter = 1
 offset_left = 7.0
 offset_top = -7.0
 offset_right = 138.0
 offset_bottom = 24.0
 scale = Vector2(0.35, 0.35)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_irx8w")
 theme_override_font_sizes/font_size = 24
 text = "dfdf"
 vertical_alignment = 1
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="DialoguePlayer" parent="Canvas" instance=ExtResource("2_840vc")]
+visible = false

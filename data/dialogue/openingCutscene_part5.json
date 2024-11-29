@@ -1,0 +1,34 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "W...H...A...T...",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "They took Will?!!",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Where is it?!",
+            "direction": "center"
+        }
+        ,
+        {
+            "key": "rat",
+            "content": "Where did I leave it?!",
+            "direction": "center"
+        }
+    ]
+}

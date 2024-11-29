@@ -18,6 +18,8 @@ func _input(event):
             noteTexture.visible = false
             showing = false
             Signals.emit_signal("enablePlayer")
+            Signals.emit_signal("enableDialogueObject", "Crack")
+            Signals.emit_signal("startCutscene", "openingCutscene_part5")
         else:
             noteTexture.visible = true
             showing = true
