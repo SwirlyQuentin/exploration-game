@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bba3ijf1m24yb"]
+
+[ext_resource type="Script" path="res://scripts/shared/DialogueObject.gd" id="1_2aa00"]
+[ext_resource type="PackedScene" uid="uid://dlltspsq4fiog" path="res://scenes/shared/QuestObject.tscn" id="2_4cq5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8f66"]
+
+[node name="DialogueObject" type="Node2D"]
+script = ExtResource("1_2aa00")
+
+[node name="CloseCheck" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseCheck"]
+shape = SubResource("RectangleShape2D_f8f66")
+
+[node name="QuestObject" parent="." instance=ExtResource("2_4cq5u")]
+
+[connection signal="area_entered" from="CloseCheck" to="." method="_on_close_check_area_entered"]
+[connection signal="area_exited" from="CloseCheck" to="." method="_on_close_check_area_exited"]

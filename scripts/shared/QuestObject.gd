@@ -3,6 +3,9 @@ class_name QuestObject
 
 @export var quest:String
 @export_enum("enable", "disable") var action:String = "enable"
+@export var endingQuest:String
+@export_enum("enable", "disable") var endAction:String = "disable"
+@export var id:String
 @onready var parent = self.get_parent()
 
 
@@ -10,11 +13,16 @@ class_name QuestObject
 
 func _ready():
     QuestSignals.connect(QuestEngine.getSignal(quest), catchSignal)
+    if(endingQuest != ""):
+        QuestSignals.connect(QuestEngine.getSignal(endingQuest), endObject)
     disable()
 
     pass
 
-func catchSignal():
+func catchSignal(ids):
+    if ids != null && id not in ids:
+        return
+    Signals.emit_signal("queueQuest", quest, id)
     print("recieved Signal ")
     if (action == "enable"):
         enable()
@@ -23,6 +31,18 @@ func catchSignal():
     else:
         print("wrong action")
 
+func endObject(ids):
+    if ids != null && id not in ids:
+        return
+    Signals.emit_signal("removeFromQueue", quest, id)
+    print("recieved Signal ")
+    if (endAction == "enable"):
+        enable()
+    elif (endAction == "disable"):
+        disable()
+    else:
+        print("wrong action")
+    pass
 
 func enable():
     condEnable()

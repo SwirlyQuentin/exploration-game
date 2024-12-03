@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp5wwreobuwmy"]
+[gd_scene load_steps=9 format=3 uid="uid://dp5wwreobuwmy"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/MetalShop.gd" id="1_0nfe3"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="1_jmfvv"]
 [ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="2_de68u"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_v6c72"]
 [ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="4_ggpal"]
+[ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="6_mkgka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in5g"]
 
@@ -51,6 +52,22 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestButton/Area2D"]
 shape = SubResource("RectangleShape2D_ug38g")
 
+[node name="DialogueObject" parent="." instance=ExtResource("6_mkgka")]
+position = Vector2(635, 273)
+cutscene = "lisaCutscene"
+obj = "lisa"
+
+[node name="QuestObject" parent="DialogueObject" index="1"]
+quest = "metalQuest2"
+endingQuest = "materialQuest"
+id = "lisa"
+
+[node name="Sprite2D" type="Sprite2D" parent="DialogueObject"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_v6c72")
+
 [connection signal="area_entered" from="TravelArea/Area2D" to="TravelArea" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_exited"]
+
+[editable path="DialogueObject"]

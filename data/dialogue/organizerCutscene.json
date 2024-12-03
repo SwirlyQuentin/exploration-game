@@ -1,0 +1,250 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Gun",
+            "source": "res://scenes/cutscene/Actors/Gun.tscn",
+            "actor-key": "gun",
+            "actor-ref": ""
+        },
+        {
+            "name": "Organizer",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "organizer",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "organizer",
+            "content": "Please don't shoot.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "I have credit card debt I still haven't paid off.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "...actually...",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "go ahead..",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "SHUT UP!!",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "wait please",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Where's the hideout?",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "What?",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "WHERE'S",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "THE",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "HIDEOUT",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "Don't yell at me!",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "I'm sensitive.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Sensitive?",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "You work for a gang.",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "I just saw this job on Gregslist.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "and ever since..",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "I've been in this gang.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "*sobs*",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "Dafuq..",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "... what",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "just",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "where's the hideout.",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "Ok ok I'll tell you.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "just put that gun away.",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "I have a name you know.",
+            "direction": "right"
+        },
+        {
+            "key": "organizer",
+            "content": "Oh sorry.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "What's your name?",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "Gunda..",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "but you can call me Gun.",
+            "direction": "right"
+        },
+        {
+            "key": "organizer",
+            "content": "... ok... Gun.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "It's just north of here..",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "but you need a key to get in.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Where can I find the key?",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "Well...",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "It's not where can you find this key",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "it's where can you make it.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Don't play games with me.",
+            "direction": "left"
+        },
+        {
+            "key": "organizer",
+            "content": "Wait no I'm serious!",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "This key can only be made in the metal shop.",
+            "direction": "center"
+        },
+        {
+            "key": "organizer",
+            "content": "Just ask Lisa for help.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Ok",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Thanks.",
+            "direction": "left"
+        },
+        {
+            "key": "gun",
+            "content": "Did he just pee his pants?",
+            "direction": "right"
+        },
+        {
+            "key": "organizer",
+            "content": "*sobs*",
+            "direction": "center"
+        }
+    ]
+}

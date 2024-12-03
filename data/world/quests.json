@@ -7,6 +7,20 @@
             "signal": "barQuest",
             "completed": false
         },
+        "barQuest2": {
+            "name": "Bar Quest 2",
+            "desc": "Talk to the bartender",
+            "obj": { "bartender": { "name": "Bartender Talked to", "ref": "", "completed": false } },
+            "signal": "barQuest2",
+            "completed": false
+        },
+        "barQuest3": {
+            "name": "Bar Quest 3",
+            "desc": "Talk to Neo",
+            "obj": { "neo": { "name": "Neo talked to", "ref": "", "completed": false } },
+            "signal": "barQuest3",
+            "completed": false
+        },
         "meetupQuest": {
             "name": "meetupQuest",
             "desc": "Crash the cheese meetup.",
@@ -14,11 +28,25 @@
             "signal": "meetupQuest",
             "completed": false
         },
+        "organizerQuest": {
+            "name": "organizerQuest",
+            "desc": "Talk to the cheese meetup organizer.",
+            "obj": { "organizer": { "name": "Organizer", "ref": "", "completed": false } },
+            "signal": "organizerQuest",
+            "completed": false
+        },
         "metalQuest": {
             "name": "metalQuest",
             "desc": "Visit the Metal Shop to make the Rougue Key.",
             "obj": { "metal-shop-visited": { "name": "Metal Shop Visited", "ref": "", "completed": false } },
             "signal": "metalQuest",
+            "completed": false
+        },
+        "metalQuest2": {
+            "name": "metalQuest2",
+            "desc": "Talk to Lisa.",
+            "obj": { "lisa": { "name": "Lisa", "ref": "", "completed": false } },
+            "signal": "metalQuest2",
             "completed": false
         },
         "materialQuest": {

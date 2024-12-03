@@ -1,0 +1,105 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Bartender",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "bar",
+            "actor-ref": ""
+        },
+        {
+            "name": "Gun",
+            "source": "res://scenes/cutscene/Actors/Gun.tscn",
+            "actor-key": "gun",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "What happened here?",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Why is it so empty?",
+            "direction": "left"
+        },
+        {
+            "key": "bar",
+            "content": "Ever since you left the 'Boss' went into a rage",
+            "direction": "center"
+        },
+        {
+            "key": "bar",
+            "content": "and chased away all my customers.",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "I figured that would happen.",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "Their crashout..",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "not their business failing.",
+            "direction": "right"
+        },
+        {
+            "key": "bar",
+            "content": "Well they have alwayd been obsessed with you two.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Well do you know where their new location is?",
+            "direction": "left"
+        },
+        {
+            "key": "bar",
+            "content": "No...",
+            "direction": "center"
+        },
+        {
+            "key": "bar",
+            "content": "but Neo does",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Thanks.",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Want some cheese?",
+            "direction": "left"
+        },
+        {
+            "key": "bar",
+            "content": "...",
+            "direction": "center"
+        },
+        {
+            "key": "bar",
+            "content": "no...",
+            "direction": "center"
+        },
+        {
+            "key": "bar",
+            "content": "Thanks.",
+            "direction": "center"
+        }
+    ]
+}

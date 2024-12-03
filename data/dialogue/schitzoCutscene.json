@@ -1,0 +1,89 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Schitzo",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "sch",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "sch",
+            "content": "*Whisper* *Whisper*",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "*Mumble* *Mumble*",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "NO SHARRON.?!",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "I dont..",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "I can't..",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "The voices",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "It's not real..",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "I knew Sharron was cheating on me with Mike.",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "I should have never gone in that room.",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "EW",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "A RAT..!",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "No...",
+            "direction": "right"
+        },
+        {
+            "key": "sch",
+            "content": "It's not real..",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "...",
+            "direction": "left"
+        }
+    ]
+}

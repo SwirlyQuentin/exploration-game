@@ -1,0 +1,176 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Bartender",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "bar",
+            "actor-ref": ""
+        },
+        {
+            "name": "Gun",
+            "source": "res://scenes/cutscene/Actors/Gun.tscn",
+            "actor-key": "gun",
+            "actor-ref": ""
+        },
+        {
+            "name": "Neo",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "neo",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Excuse me?",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "...",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "Who said that?",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Down here.",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "oh...",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "What do you want?",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "I don't recognize him..",
+            "direction": "right"
+        },
+        {
+            "key": "gun",
+            "content": "Do you think he's new?",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "The boss wants to see you.",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "wait what...",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "why?",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Shouldn't you know?",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "is this because of the cheese meetup??!",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "I swear I just came in for a drink",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "are you even sober enough to get there???",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "do you even know where it is?!",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "yes I swear!",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "It's in the alley by the apartments right in front of the nightclub",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "SHUT UP!",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "You Incompetent Little Bi-",
+            "direction": "left"
+        },
+        {
+            "key": "gun",
+            "content": "relax...",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "Report back to the hideout.",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "I'm taking over.",
+            "direction": "left"
+        },
+        {
+            "key": "neo",
+            "content": "I'm sorry.",
+            "direction": "center"
+        },
+        {
+            "key": "neo",
+            "content": "please don't tell the boss about this.",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "..did he just pee his pants?",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "o-ok....",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "I won't.",
+            "direction": "left"
+        },
+        {
+            "key": "gun",
+            "content": "ew.",
+            "direction": "right"
+        }
+    ]
+}

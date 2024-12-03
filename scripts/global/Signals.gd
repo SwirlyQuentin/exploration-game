@@ -36,7 +36,9 @@ signal advanceQuest
 signal completeQuest
 signal completeObj
 signal emitQueue
-signal queueComplete
+signal queueQuest
 signal completeTimer
+signal emitCurrentQuestSignal
+signal removeFromQueue
 
 signal blackFade

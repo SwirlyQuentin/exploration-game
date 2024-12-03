@@ -1,0 +1,145 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Gun",
+            "source": "res://scenes/cutscene/Actors/Gun.tscn",
+            "actor-key": "gun",
+            "actor-ref": ""
+        },
+        {
+            "name": "Lisa",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "lisa",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Are you Lisa?",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "No.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Do you know where I can find Lisa?",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "I am Lisa.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "Uhh.. ok?",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "Can you help me make a key?",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "Wow very specific.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "I need a key to the Rogue Rodents hideout.",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "Ugh it's always that stupid gang.",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "Rogue Rodents this..",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "Rogue Rodents that..",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "I only joined because I needed money.",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "I found it on Gregslist.",
+            "direction": "center"
+        },
+        {
+            "key": "gun",
+            "content": "What the hell is Gregslist?",
+            "direction": "right"
+        },
+        {
+            "key": "lisa",
+            "content": "To make the key I need the mold.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "How can I get one?",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "Well you're in luck.",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "The gang recently changed their locks..",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "and there's a key mold distribution happening soon at the old lot north of here",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "But nothing is getting done until my forge is fixed.",
+            "direction": "center"
+        },
+        {
+            "key": "lisa",
+            "content": "The lava needed for my forge isn't getting routed correctly.",
+            "direction": "center"
+        },
+        {
+            "key": "rat",
+            "content": "So if I fix your forge and bring you the mold..",
+            "direction": "left"
+        },
+        {
+            "key": "rat",
+            "content": "can you make me the key?",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "Yep!",
+            "direction": "center"
+        }
+    ]
+}

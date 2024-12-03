@@ -8,4 +8,5 @@ func _ready() -> void:
 		PlayerManager.exitSpace = spawnpoint.global_position
 	Signals.emit_signal("placeWorld")
 	Signals.emit_signal("loadObjects")
+	Signals.emit_signal("emitCurrentQuestSignal")
 	Signals.emit_signal("emitQueue")
