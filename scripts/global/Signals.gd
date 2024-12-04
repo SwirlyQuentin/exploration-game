@@ -42,3 +42,7 @@ signal emitCurrentQuestSignal
 signal removeFromQueue
 
 signal blackFade
+
+
+#pipe puzzle
+signal checkPipes

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvx4vgmwsbpvv"]
+
+[ext_resource type="Script" path="res://scripts/puzzles/LavaValve/Pipe.gd" id="1_tsriv"]
+[ext_resource type="Texture2D" uid="uid://bu61mo2e5a24x" path="res://assets/puzzles/PipePuzzle/StraightPipe.png" id="2_0pkcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t12n0"]
+size = Vector2(17, 21)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_tsriv")
+correctRotation = 90
+
+[node name="CloseCheck" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseCheck"]
+shape = SubResource("RectangleShape2D_t12n0")
+
+[node name="PipeSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_0pkcb")
+
+[connection signal="area_entered" from="CloseCheck" to="." method="_on_close_check_area_entered"]
+[connection signal="area_exited" from="CloseCheck" to="." method="_on_close_check_area_exited"]

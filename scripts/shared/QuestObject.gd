@@ -6,6 +6,7 @@ class_name QuestObject
 @export var endingQuest:String
 @export_enum("enable", "disable") var endAction:String = "disable"
 @export var id:String
+@export var invis:bool = true
 @onready var parent = self.get_parent()
 
 
@@ -53,7 +54,8 @@ func enable():
 func disable():
     condDisable()
     parent.process_mode = Node.PROCESS_MODE_DISABLED
-    parent.visible = false
+    if(invis):
+        parent.visible = false
     pass
 
 func condEnable():

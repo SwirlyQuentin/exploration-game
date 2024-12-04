@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://df7127a2ypw7n"]
+
+[ext_resource type="Script" path="res://scripts/puzzles/LavaValve/PipePuzzle.gd" id="1_prj1w"]
+[ext_resource type="PackedScene" uid="uid://bvx4vgmwsbpvv" path="res://scenes/puzzles/PipePuzzle/Pipe.tscn" id="2_iu6dc"]
+[ext_resource type="PackedScene" uid="uid://bmyx7x7me70nq" path="res://scenes/shared/Reward.tscn" id="4_0jevw"]
+
+[node name="LavaValvePuzzle" type="Node2D"]
+script = ExtResource("1_prj1w")
+isStory = true
+obj = "forge-fixed"
+
+[node name="Pipes" type="Node2D" parent="."]
+
+[node name="Pipe" parent="Pipes" instance=ExtResource("2_iu6dc")]
+
+[node name="Reward" parent="." instance=ExtResource("4_0jevw")]
+position = Vector2(-184, 19)

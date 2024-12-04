@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://coihemilehu1d"]
+[gd_scene load_steps=26 format=3 uid="uid://coihemilehu1d"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/TutorialRoom.gd" id="1_yqb4j"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="2_0nik4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bi0dnrdtw0ok1" path="res://assets/UI/Interact.png" id="13_ljd5m"]
 [ext_resource type="Script" path="res://scripts/objects/Bed.gd" id="14_wlbvl"]
 [ext_resource type="Script" path="res://scripts/objects/Crack.gd" id="15_wyum5"]
+[ext_resource type="Texture2D" uid="uid://be1x8x348ujmg" path="res://assets/objects/Clock.png" id="16_gtimx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx3lp"]
 size = Vector2(22, 36)
@@ -263,6 +264,11 @@ shape = SubResource("RectangleShape2D_xpj7u")
 
 [node name="Icon" parent="Crack/InteractIndicator" index="1"]
 position = Vector2(-1, -31)
+
+[node name="ClockSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1251, 575)
+texture = ExtResource("16_gtimx")
 
 [connection signal="area_entered" from="ExitTrigger" to="." method="_on_exit_trigger_area_entered"]
 [connection signal="area_entered" from="Cabinet/InteractIndicator" to="Cabinet/InteractIndicator" method="_on_area_entered"]

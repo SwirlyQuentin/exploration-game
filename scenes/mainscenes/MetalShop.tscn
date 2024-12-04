@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp5wwreobuwmy"]
+[gd_scene load_steps=11 format=3 uid="uid://dp5wwreobuwmy"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/MetalShop.gd" id="1_0nfe3"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="1_jmfvv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_v6c72"]
 [ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="4_ggpal"]
 [ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="6_mkgka"]
+[ext_resource type="PackedScene" uid="uid://df7127a2ypw7n" path="res://scenes/puzzles/PipePuzzle.tscn" id="7_rd10r"]
+[ext_resource type="PackedScene" uid="uid://dlltspsq4fiog" path="res://scenes/shared/QuestObject.tscn" id="8_xyk26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in5g"]
 
@@ -66,8 +68,18 @@ id = "lisa"
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("3_v6c72")
 
+[node name="LavaValvePuzzle" parent="." instance=ExtResource("7_rd10r")]
+position = Vector2(791, 250)
+
+[node name="QuestObject" parent="LavaValvePuzzle" instance=ExtResource("8_xyk26")]
+quest = "materialQuest"
+endingQuest = "forgeQuest"
+id = "forge"
+invis = false
+
 [connection signal="area_entered" from="TravelArea/Area2D" to="TravelArea" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_exited"]
 
 [editable path="DialogueObject"]
+[editable path="LavaValvePuzzle"]
