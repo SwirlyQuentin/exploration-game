@@ -1,56 +1,56 @@
 {
     "quests": {
         "barQuest": {
-            "name": "Bar Quest",
-            "desc": "Visit the bar and ask around if anyone has any information about the current Rouge Rodents.",
+            "name": "I Need a Drink",
+            "desc": "Visit the bar and ask around for any information.",
             "obj": { "bar-visited": { "name": "Bar Visited", "ref": "", "completed": false } },
             "signal": "barQuest",
             "completed": false
         },
         "barQuest2": {
-            "name": "Bar Quest 2",
+            "name": "Beep Boop Beep",
             "desc": "Talk to the bartender",
             "obj": { "bartender": { "name": "Bartender Talked to", "ref": "", "completed": false } },
             "signal": "barQuest2",
             "completed": false
         },
         "barQuest3": {
-            "name": "Bar Quest 3",
+            "name": "Who's Neo?",
             "desc": "Talk to Neo",
             "obj": { "neo": { "name": "Neo talked to", "ref": "", "completed": false } },
             "signal": "barQuest3",
             "completed": false
         },
         "meetupQuest": {
-            "name": "meetupQuest",
+            "name": "Cheese CrashOut",
             "desc": "Crash the cheese meetup.",
             "obj": { "meetup-crashed": { "name": "Meetup Crashed", "ref": "", "completed": false } },
             "signal": "meetupQuest",
             "completed": false
         },
         "organizerQuest": {
-            "name": "organizerQuest",
+            "name": "Interrogate the Man",
             "desc": "Talk to the cheese meetup organizer.",
             "obj": { "organizer": { "name": "Organizer", "ref": "", "completed": false } },
             "signal": "organizerQuest",
             "completed": false
         },
         "metalQuest": {
-            "name": "metalQuest",
+            "name": "Rogue Key",
             "desc": "Visit the Metal Shop to make the Rougue Key.",
             "obj": { "metal-shop-visited": { "name": "Metal Shop Visited", "ref": "", "completed": false } },
             "signal": "metalQuest",
             "completed": false
         },
         "metalQuest2": {
-            "name": "metalQuest2",
+            "name": "Hey Ms.Lisa!",
             "desc": "Talk to Lisa.",
             "obj": { "lisa": { "name": "Lisa", "ref": "", "completed": false } },
             "signal": "metalQuest2",
             "completed": false
         },
         "materialQuest": {
-            "name": "materialQuest",
+            "name": "Let's Play With Fire",
             "desc": "Reroute the lava to fix the forge and kill enemies at the hangout spot.",
             "obj": { 
                 "forge-fixed": { "name": "Forge Fixed", "ref": "", "completed": false }, 
@@ -60,28 +60,28 @@
             "completed": false
         },
         "forgeQuest": {
-            "name": "forgeQuest",
+            "name": "Foraging! Or is it..Forging?",
             "desc": "Return to Lisa to forge the key",
             "obj": { "lisa-visited": { "name": "Lisa Visited", "ref": "", "completed": false } },
             "signal": "forgeQuest",
             "completed": false
         },
         "hideoutQuest": {
-            "name": "hideoutQuest",
+            "name": "Game Time",
             "desc": "Visit the Rougue Rodents hideout to get Will back",
             "obj": { "hideout-visited": { "name": "Hideout Visited", "ref": "", "completed": false } },
             "signal": "hideoutQuest",
             "completed": false
         },
         "saveQuest": {
-            "name": "saveQuest",
-            "desc": "Save Will",
+            "name": "Save Will",
+            "desc": "Save Will!!!!!!!!!",
             "obj": { "will-saved": { "name": "Will Saved", "ref": "", "completed": false } },
             "signal": "saveQuest",
             "completed": false
         },
         "final": {
-            "name": "Will",
+            "name": "Will?",
             "desc": "Talk to Will and Boss",
             "obj": { "will": { "name": "Talk to Will", "ref": "", "completed": false } },
             "signal": "willQuest",
