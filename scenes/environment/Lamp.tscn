@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnxk1u0uuldd4"]
+
+[ext_resource type="Texture2D" uid="uid://b7uxqbvof2twf" path="res://assets/environment/objects/LampPost.png" id="1_yhyf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p85bu"]
+size = Vector2(14, 8)
+
+[node name="Lamp" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_yhyf3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(19, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 5)
+shape = SubResource("RectangleShape2D_p85bu")
