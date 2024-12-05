@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://carid5hvxo6sb"]
+
+[ext_resource type="Texture2D" uid="uid://jrbq42wreccy" path="res://assets/environment/objects/RougeRodent_car-down.png" id="1_mqvvt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjt7t"]
+size = Vector2(52, 92)
+
+[node name="Car" type="Node2D" groups=["navigation_polygon_source_geometry_group"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_mqvvt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(19, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-19, -30)
+shape = SubResource("RectangleShape2D_bjt7t")

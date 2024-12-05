@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bvqk10df4uvud"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bvqk10df4uvud"]
 
 [ext_resource type="Texture2D" uid="uid://b8eo7xufhpknu" path="res://assets/environment/buildings/BUILDINGS-REAL.png" id="1_yjflr"]
+[ext_resource type="Texture2D" uid="uid://fayuv4g0e42t" path="res://assets/environment/buildings/TopShaders.png" id="2_5jm1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b3sj"]
 texture = ExtResource("1_yjflr")
@@ -274,5 +275,66 @@ texture = ExtResource("1_yjflr")
 38:16/0 = 0
 2:17/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpjc4"]
+texture = ExtResource("2_5jm1c")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_7b3sj")
+sources/4 = SubResource("TileSetAtlasSource_gpjc4")
