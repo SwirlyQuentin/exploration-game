@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://ccjli0aqghxt3"]
+[gd_scene load_steps=60 format=4 uid="uid://ccjli0aqghxt3"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/World.gd" id="1_rq7sy"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="2_giafk"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://ch2o0awkhqmje" path="res://assets/enemies/david/RougeRodent_characters_david.png" id="17_homxk"]
 [ext_resource type="PackedScene" uid="uid://b1tfo5ld2fubp" path="res://scenes/enemies/Shotgunner.tscn" id="17_o2ylk"]
 [ext_resource type="PackedScene" uid="uid://b7mokm5xcuivm" path="res://scenes/shared/HealthPickup.tscn" id="21_5lfsi"]
-[ext_resource type="PackedScene" uid="uid://carid5hvxo6sb" path="res://scenes/environment/Car.tscn" id="24_48483"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkbly"]
 resource_local_to_scene = true
@@ -1207,27 +1206,6 @@ position = Vector2(5075, -664)
 position = Vector2(-2.5, -8)
 shape = SubResource("RectangleShape2D_fcvh2")
 
-[node name="HealthPickup" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(3825, 163)
-
-[node name="HealthPickup2" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(5413, 175)
-
-[node name="HealthPickup3" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(2349, 664)
-
-[node name="HealthPickup4" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(2336, -1533)
-
-[node name="HealthPickup5" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(3336, -2272)
-
-[node name="HealthPickup6" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(3614, -1511)
-
-[node name="HealthPickup7" parent="BuildingCollision" instance=ExtResource("21_5lfsi")]
-position = Vector2(5748, -2141)
-
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(2576, -661)
 
@@ -1633,32 +1611,26 @@ shape = SubResource("WorldBoundaryShape2D_on0mq")
 [node name="HealthPickup" parent="." instance=ExtResource("21_5lfsi")]
 position = Vector2(2881, -397)
 
-[node name="Car" parent="." instance=ExtResource("24_48483")]
-position = Vector2(2038, -801)
+[node name="HealthPickup2" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(3825, 163)
 
-[node name="Car2" parent="." instance=ExtResource("24_48483")]
-position = Vector2(2709, 184)
+[node name="HealthPickup3" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(5413, 175)
 
-[node name="Car3" parent="." instance=ExtResource("24_48483")]
-position = Vector2(4309, -1381)
+[node name="HealthPickup4" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(2349, 664)
 
-[node name="Car4" parent="." instance=ExtResource("24_48483")]
-position = Vector2(5915, -384)
+[node name="HealthPickup5" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(2336, -1533)
 
-[node name="Car5" parent="." instance=ExtResource("24_48483")]
-position = Vector2(5911, -834)
+[node name="HealthPickup6" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(3336, -2272)
 
-[node name="Car6" parent="." instance=ExtResource("24_48483")]
-position = Vector2(5908, -2385)
+[node name="HealthPickup7" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(3614, -1511)
 
-[node name="Car7" parent="." instance=ExtResource("24_48483")]
-position = Vector2(2712, -1672)
-
-[node name="Lamp" parent="." instance=ExtResource("8_4hee2")]
-position = Vector2(3258, -1111)
-
-[node name="Lamp2" parent="." instance=ExtResource("8_4hee2")]
-position = Vector2(4226, -244)
+[node name="HealthPickup8" parent="." instance=ExtResource("21_5lfsi")]
+position = Vector2(5748, -2141)
 
 [connection signal="area_entered" from="TravelAreas/MetalShop/Area2D" to="TravelAreas/MetalShop" method="_on_area_2d_area_entered"]
 

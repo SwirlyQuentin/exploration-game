@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjt7t"]
 size = Vector2(52, 92)
 
-[node name="Car" type="Node2D" groups=["navigation_polygon_source_geometry_group"]]
+[node name="Car" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

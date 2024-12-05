@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ip6u4eyt3jrf"]
+
+[ext_resource type="Texture2D" uid="uid://bd7ak4wvusnb6" path="res://assets/environment/objects/RougeRodent_environment-barrel.png" id="1_vp24g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mre4y"]
+size = Vector2(32, 12)
+
+[node name="Barrel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("1_vp24g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(19, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-19, -12)
+shape = SubResource("RectangleShape2D_mre4y")

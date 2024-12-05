@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57px3uml8qkl"]
+
+[ext_resource type="Texture2D" uid="uid://32doxobli34s" path="res://assets/environment/objects/RougeRodent_environment-vendingmachine.png" id="1_nu6as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mre4y"]
+size = Vector2(51, 14)
+
+[node name="Vending" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -34)
+scale = Vector2(2, 2)
+texture = ExtResource("1_nu6as")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(19, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-20.5, 9)
+shape = SubResource("RectangleShape2D_mre4y")
