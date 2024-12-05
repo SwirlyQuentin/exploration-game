@@ -113,8 +113,10 @@ _data = {
 }
 
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_yg1hd")
 speed = 4000
+health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_thfoi")
@@ -141,7 +143,7 @@ material = SubResource("ShaderMaterial_d1ljy")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h6b3p")
 autoplay = "default"
-frame_progress = 0.602569
+frame_progress = 0.291843
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_rpq8e")
@@ -151,6 +153,7 @@ script = ExtResource("5_l2a70")
 
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("7_cvs7m")
+stopDistance = 30.0
 
 [node name="Return" type="Node" parent="StateMachine"]
 script = ExtResource("6_xobhl")
@@ -173,7 +176,6 @@ visible = false
 shape = SubResource("CircleShape2D_we3ew")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=["damagable"]]
 visible = false
@@ -194,5 +196,6 @@ libraries = {
 
 [node name="BatHit" type="Node2D" parent="Melee"]
 script = ExtResource("11_edafh")
+hitRange = 40.0
 
 [connection signal="area_entered" from="ActiveCheck" to="ActiveCheck" method="_on_area_entered"]

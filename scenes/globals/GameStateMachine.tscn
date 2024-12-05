@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mqaw4lxou51x"]
+[gd_scene load_steps=9 format=3 uid="uid://mqaw4lxou51x"]
 
 [ext_resource type="Script" path="res://scripts/gamestate/GameStateMachine.gd" id="1_efl6x"]
 [ext_resource type="Script" path="res://scripts/gamestate/states/TestState.gd" id="2_p445w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/gamestate/states/Bar.gd" id="5_423v5"]
 [ext_resource type="Script" path="res://scripts/gamestate/states/MetalShop.gd" id="6_dib5t"]
 [ext_resource type="Script" path="res://scripts/gamestate/states/Warehouse.gd" id="7_aamsq"]
+[ext_resource type="Script" path="res://scripts/gamestate/states/Menu.gd" id="8_rbmho"]
 
 [node name="GameStateMachine" type="Node"]
 script = ExtResource("1_efl6x")
@@ -28,3 +29,6 @@ script = ExtResource("6_dib5t")
 
 [node name="Warehouse" type="Node" parent="."]
 script = ExtResource("7_aamsq")
+
+[node name="Menu" type="Node" parent="."]
+script = ExtResource("8_rbmho")

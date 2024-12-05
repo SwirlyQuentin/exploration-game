@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://ceimlfmwdyepx"]
+[gd_scene load_steps=6 format=3 uid="uid://ceimlfmwdyepx"]
+
+[ext_resource type="Script" path="res://scripts/main-scenes/MenuScene.gd" id="1_5ktdx"]
+[ext_resource type="Texture2D" uid="uid://bn1hv3ro02kei" path="res://assets/UI/MenuScreen.png" id="1_bja6e"]
+[ext_resource type="FontFile" uid="uid://sbvuvff68ak7" path="res://assets/UI/Dialogue/pixelFont-7-8x14-sproutLands.ttf" id="2_7ybff"]
+[ext_resource type="Texture2D" uid="uid://mhqfwxkht028" path="res://assets/UI/Play_Hover.png" id="3_7846h"]
+[ext_resource type="Texture2D" uid="uid://b8xk722uhydxm" path="res://assets/UI/Play_NotHover.png" id="4_jync1"]
 
 [node name="MenuScene" type="Node"]
+script = ExtResource("1_5ktdx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -69.0
+offset_top = -57.0
+offset_right = 1351.0
+offset_bottom = 787.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bja6e")
+
+[node name="Title" type="Label" parent="."]
+texture_filter = 1
+offset_left = 198.0
+offset_top = 115.0
+offset_right = 1085.0
+offset_bottom = 232.0
+theme_override_fonts/font = ExtResource("2_7ybff")
+theme_override_font_sizes/font_size = 140
+text = "Rogue Rodent"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 424.0
+offset_top = 370.0
+offset_right = 514.0
+offset_bottom = 410.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_7846h")
+texture_pressed = ExtResource("4_jync1")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]

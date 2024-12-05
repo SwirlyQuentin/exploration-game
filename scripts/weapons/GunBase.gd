@@ -10,7 +10,7 @@ class_name GunBase
 
 var shooting = false
 var target = null
-@onready var timer = shootingCooldown/2
+@onready var timer = randf_range(shootingCooldown/2, shootingCooldown)
 
 
 func enableShooting(tar = null):
@@ -30,5 +30,5 @@ func _physics_process(delta):
 
 
 func shoot():
-    timer = shootingCooldown
+    timer = shootingCooldown - randf_range(0, 0.3)
     pass

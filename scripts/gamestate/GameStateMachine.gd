@@ -6,6 +6,7 @@ extends Node
 @onready var bar = $Bar
 @onready var metal = $MetalShop
 @onready var ware = $Warehouse
+@onready var menu = $Menu
 
 var states = {}
 var current_state: BaseState = null
@@ -18,7 +19,8 @@ func _ready() -> void:
 	add_state("bar", bar)
 	add_state("metalShop", metal)
 	add_state("warehouse", ware)
-	change_state("tutState")
+	add_state("menu", menu)
+	change_state("menu")
 	pass
 
 func add_state(state_name: String, state: BaseState) -> void:

@@ -1,13 +1,13 @@
 extends GunBase
 
-@export var pellets:int = 5
+@export var pellets:int = 3
 
 @onready var bullet = preload("res://scenes/Weapons/StandardBullet.tscn")
 
-var startingShotAngle = -20
+var startingShotAngle = -10
 
 func shoot():
-    timer = shootingCooldown
+    timer = shootingCooldown - randf_range(0, 0.7)
     var angle = startingShotAngle
     for i in range(pellets):
         var b = bullet.instantiate()

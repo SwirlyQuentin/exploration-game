@@ -39,9 +39,10 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body:Node2D) -> void:
-    if (body.is_in_group("damagable")):
-        body.takeDamage(damage)
-        queue_free()
+    print("bodied")
+    if (!body.is_in_group("player")):
+        exploding = true
+        animation.play("explode")
 
 
 func _on_area_entered(area:Area2D) -> void:

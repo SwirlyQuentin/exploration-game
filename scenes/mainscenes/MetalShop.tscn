@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dp5wwreobuwmy"]
+[gd_scene load_steps=28 format=3 uid="uid://dp5wwreobuwmy"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/MetalShop.gd" id="1_0nfe3"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="1_jmfvv"]
 [ext_resource type="Texture2D" uid="uid://gg7pg7wi8tkt" path="res://assets/environment/MetalShop/MetalShop-Background.png" id="2_6nvcn"]
 [ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="2_de68u"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_v6c72"]
 [ext_resource type="Script" path="res://scripts/puzzles/LavaValve/PipePuzzle.gd" id="4_0c1yg"]
 [ext_resource type="PackedScene" uid="uid://bvx4vgmwsbpvv" path="res://scenes/puzzles/PipePuzzle/Pipe.tscn" id="5_fe02v"]
 [ext_resource type="Texture2D" uid="uid://bup6m6mj24u6b" path="res://assets/environment/MetalShop/PipeInGround.png" id="5_lvsw8"]
@@ -21,9 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://chygmaj0ll7r5" path="res://assets/environment/MetalShop/LavaSlab.png" id="19_dkar7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in5g"]
+size = Vector2(42, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2l8g"]
 size = Vector2(77.5, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfkoq"]
+size = Vector2(17.5, 23.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uafa"]
 atlas = ExtResource("9_nr8yw")
@@ -61,9 +64,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfkoq"]
-size = Vector2(17.5, 23.5)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f0fmf"]
 
 [node name="MetalShop" type="Node"]
@@ -85,22 +85,31 @@ offset_bottom = 348.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_6nvcn")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 342.0
+offset_top = 552.0
+offset_right = 543.0
+offset_bottom = 592.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 585.0
+offset_top = 552.0
+offset_right = 786.0
+offset_bottom = 592.0
+color = Color(0, 0, 0, 1)
+
 [node name="TravelArea" type="Node2D" parent="."]
 position = Vector2(569, 559)
 script = ExtResource("2_de68u")
 zone = "gameState"
-
-[node name="Sprite2D" type="Sprite2D" parent="TravelArea"]
-position = Vector2(0.249983, 2.87499)
-scale = Vector2(0.152344, 0.154297)
-texture = ExtResource("3_v6c72")
 
 [node name="Area2D" type="Area2D" parent="TravelArea"]
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TravelArea/Area2D"]
-position = Vector2(0, 3)
+position = Vector2(-5, 5)
 shape = SubResource("RectangleShape2D_1in5g")
 
 [node name="TextureRect7" type="TextureRect" parent="."]
@@ -243,6 +252,42 @@ texture = ExtResource("19_dkar7")
 quest = "forgeQuest"
 id = "lava"
 
+[node name="Water" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 409.0
+offset_top = 455.0
+offset_right = 427.0
+offset_bottom = 479.0
+scale = Vector2(2, 2)
+texture = ExtResource("14_ctv3l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Water"]
+visible = false
+position = Vector2(9.5, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/StaticBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_dfkoq")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 627.0
+offset_top = 191.0
+offset_right = 691.0
+offset_bottom = 248.0
+scale = Vector2(2, 2)
+texture = ExtResource("16_486mw")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 569.0
+offset_top = 261.0
+offset_right = 597.0
+offset_bottom = 285.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15_x0pmh")
+stretch_mode = 3
+
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -281,7 +326,7 @@ id = "lisa"
 invis = false
 
 [node name="Player" parent="YSort" instance=ExtResource("1_jmfvv")]
-position = Vector2(568, 532)
+position = Vector2(563, 523)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1
@@ -291,44 +336,8 @@ offset_right = 564.0
 offset_bottom = 207.0
 texture = ExtResource("13_md3f2")
 
-[node name="Water" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 409.0
-offset_top = 455.0
-offset_right = 427.0
-offset_bottom = 479.0
-scale = Vector2(2, 2)
-texture = ExtResource("14_ctv3l")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Water"]
-visible = false
-position = Vector2(9.5, 13)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/StaticBody2D"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_dfkoq")
-
-[node name="TextureRect6" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 627.0
-offset_top = 191.0
-offset_right = 691.0
-offset_bottom = 248.0
-scale = Vector2(2, 2)
-texture = ExtResource("16_486mw")
-
-[node name="TextureRect4" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 569.0
-offset_top = 261.0
-offset_right = 597.0
-offset_bottom = 285.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("15_x0pmh")
-stretch_mode = 3
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(549, 287)
+position = Vector2(549, 308)
 rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

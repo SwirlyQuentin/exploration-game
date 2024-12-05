@@ -8,6 +8,7 @@ extends Node2D
 
 
 func _on_area_2d_area_entered(area:Area2D) -> void:
-	if (worldSpace):
-		PlayerManager.exitSpace = exitPoint.global_position
-	Signals.emit_signal("blackFade", zone)
+	if (area.is_in_group("player")):
+		if (worldSpace):
+			PlayerManager.exitSpace = exitPoint.global_position
+		Signals.emit_signal("blackFade", zone)

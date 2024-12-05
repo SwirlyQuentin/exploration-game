@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ccjli0aqghxt3"]
+[gd_scene load_steps=54 format=3 uid="uid://ccjli0aqghxt3"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/World.gd" id="1_rq7sy"]
 [ext_resource type="PackedScene" uid="uid://bgjksx2dl5l4d" path="res://scenes/puzzles/SwitchPuzzle.tscn" id="2_giafk"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c2sx10lfonfrm" path="res://assets/environment/tilemap/RoadMap_V2.png" id="4_cyn40"]
 [ext_resource type="PackedScene" uid="uid://df7eh6265reu1" path="res://scenes/environment/Pillar.tscn" id="5_dwr54"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="6_3ivhj"]
-[ext_resource type="PackedScene" uid="uid://cl2vlx7i0bahw" path="res://scenes/enemies/Dummy.tscn" id="7_brlag"]
 [ext_resource type="PackedScene" uid="uid://be2cbp27g8w6" path="res://scenes/shared/TravelArea.tscn" id="12_0u65w"]
 [ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="12_6qxts"]
 [ext_resource type="PackedScene" uid="uid://bghr4q1snoqg4" path="res://scenes/quest-objects/EnemyQuestObject.tscn" id="13_dx4pp"]
@@ -18,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="16_86xi7"]
 [ext_resource type="Texture2D" uid="uid://ch2o0awkhqmje" path="res://assets/enemies/david/RougeRodent_characters_david.png" id="17_homxk"]
 [ext_resource type="PackedScene" uid="uid://b1tfo5ld2fubp" path="res://scenes/enemies/Shotgunner.tscn" id="17_o2ylk"]
+[ext_resource type="PackedScene" uid="uid://b7mokm5xcuivm" path="res://scenes/shared/HealthPickup.tscn" id="19_e2yg1"]
+[ext_resource type="PackedScene" uid="uid://dg3kbvjn2h2ar" path="res://scenes/enemies/PistolEnemy.tscn" id="20_yhq5o"]
+[ext_resource type="PackedScene" uid="uid://bfclrmduwhktj" path="res://scenes/enemies/Bat.tscn" id="21_446i3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aigx4"]
 texture = ExtResource("2_s2yjc")
@@ -725,8 +727,20 @@ position = Vector2(417, 519)
 [node name="Player" parent="YSort" instance=ExtResource("6_3ivhj")]
 position = Vector2(2578, -682)
 
-[node name="Dummy" parent="YSort" instance=ExtResource("7_brlag")]
-position = Vector2(973, 268)
+[node name="Shotgunner" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(2680, -337)
+
+[node name="PistolEnemy" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2615, -372)
+
+[node name="Bat" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(2555, -351)
+
+[node name="Bat2" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(2841, -357)
+
+[node name="PistolEnemy2" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2738, -371)
 
 [node name="Organizer" type="Node2D" parent="YSort"]
 position = Vector2(5004, -1058)
@@ -751,6 +765,172 @@ texture = ExtResource("17_homxk")
 quest = "meetupQuest"
 endingQuest = "materialQuest"
 id = "organizerSprite"
+
+[node name="CheeseMeetup" parent="YSort" instance=ExtResource("13_eu8n7")]
+y_sort_enabled = true
+position = Vector2(5120, -948)
+objective = "meetup-crashed"
+willComplete = true
+
+[node name="Shotgunner" parent="YSort/CheeseMeetup" instance=ExtResource("17_o2ylk")]
+position = Vector2(-27, -35)
+
+[node name="EnemyQuestObject" parent="YSort/CheeseMeetup" instance=ExtResource("13_dx4pp")]
+quest = "meetupQuest"
+endingQuest = "organizerQuest"
+id = "cheeseMeetup"
+
+[node name="PistolEnemy" parent="YSort/CheeseMeetup" instance=ExtResource("20_yhq5o")]
+position = Vector2(-259, -51)
+
+[node name="PistolEnemy2" parent="YSort/CheeseMeetup" instance=ExtResource("20_yhq5o")]
+position = Vector2(-164, 60)
+
+[node name="PistolEnemy3" parent="YSort/CheeseMeetup" instance=ExtResource("20_yhq5o")]
+position = Vector2(12, 56)
+
+[node name="PistolEnemy4" parent="YSort/CheeseMeetup" instance=ExtResource("20_yhq5o")]
+position = Vector2(118, -44)
+
+[node name="Bat" parent="YSort/CheeseMeetup" instance=ExtResource("21_446i3")]
+position = Vector2(-83, 47)
+
+[node name="Bat2" parent="YSort/CheeseMeetup" instance=ExtResource("21_446i3")]
+position = Vector2(-147, -14)
+
+[node name="Bat3" parent="YSort/CheeseMeetup" instance=ExtResource("21_446i3")]
+position = Vector2(202, 33)
+
+[node name="HangoutEnemies" parent="YSort" instance=ExtResource("13_eu8n7")]
+y_sort_enabled = true
+position = Vector2(2528, -2266)
+objective = "mold-acquired"
+willComplete = true
+
+[node name="Shotgunner" parent="YSort/HangoutEnemies" instance=ExtResource("17_o2ylk")]
+position = Vector2(21, -7)
+
+[node name="EnemyQuestObject" parent="YSort/HangoutEnemies" instance=ExtResource("13_dx4pp")]
+quest = "metalQuest"
+endingQuest = "metalQuest2"
+id = "hangout"
+
+[node name="Shotgunner2" parent="YSort/HangoutEnemies" instance=ExtResource("17_o2ylk")]
+position = Vector2(-85, -52)
+
+[node name="Shotgunner3" parent="YSort/HangoutEnemies" instance=ExtResource("17_o2ylk")]
+position = Vector2(-205, -19)
+
+[node name="PistolEnemy" parent="YSort/HangoutEnemies" instance=ExtResource("20_yhq5o")]
+position = Vector2(-304, -60)
+
+[node name="PistolEnemy2" parent="YSort/HangoutEnemies" instance=ExtResource("20_yhq5o")]
+position = Vector2(-78, 88)
+
+[node name="Bat" parent="YSort/HangoutEnemies" instance=ExtResource("21_446i3")]
+position = Vector2(-270, 65)
+
+[node name="Bat2" parent="YSort/HangoutEnemies" instance=ExtResource("21_446i3")]
+position = Vector2(49, -101)
+
+[node name="Bat3" parent="YSort/HangoutEnemies" instance=ExtResource("21_446i3")]
+position = Vector2(43, 79)
+
+[node name="PistolEnemy3" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2963, 230)
+
+[node name="PistolEnemy4" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(3063, 268)
+
+[node name="PistolEnemy5" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2955, 313)
+
+[node name="Bat3" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3215, 330)
+
+[node name="Bat4" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3084, 361)
+
+[node name="Bat5" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3152, 258)
+
+[node name="Shotgunner2" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(4719, 264)
+
+[node name="Shotgunner3" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(4728, 341)
+
+[node name="Bat6" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4932, 275)
+
+[node name="Bat7" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4936, 322)
+
+[node name="Bat8" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4820, 273)
+
+[node name="Shotgunner4" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(1933, 437)
+
+[node name="Shotgunner5" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(2023, 347)
+
+[node name="PistolEnemy6" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(1925, 527)
+
+[node name="PistolEnemy7" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2047, 435)
+
+[node name="PistolEnemy8" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(2019, 525)
+
+[node name="Bat9" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(1963, 319)
+
+[node name="Bat10" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(1901, 331)
+
+[node name="Bat11" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3520, -1030)
+
+[node name="Bat12" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3481, -985)
+
+[node name="Bat13" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3549, -985)
+
+[node name="Bat14" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(3508, -922)
+
+[node name="PistolEnemy9" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(4843, -1543)
+
+[node name="PistolEnemy10" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(4900, -1492)
+
+[node name="PistolEnemy11" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(4756, -1507)
+
+[node name="PistolEnemy12" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(4974, -1523)
+
+[node name="Shotgunner6" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(4476, -2568)
+
+[node name="Shotgunner7" parent="YSort" instance=ExtResource("17_o2ylk")]
+position = Vector2(4712, -2545)
+
+[node name="Bat15" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4624, -2502)
+
+[node name="Bat16" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4505, -2494)
+
+[node name="Bat17" parent="YSort" instance=ExtResource("21_446i3")]
+position = Vector2(4621, -2609)
+
+[node name="PistolEnemy13" parent="YSort" instance=ExtResource("20_yhq5o")]
+position = Vector2(4731, -2449)
 
 [node name="BuildingCollision" type="Node" parent="."]
 
@@ -997,6 +1177,27 @@ position = Vector2(5075, -664)
 position = Vector2(-2.5, -8)
 shape = SubResource("RectangleShape2D_fcvh2")
 
+[node name="HealthPickup" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(3825, 163)
+
+[node name="HealthPickup2" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(5413, 175)
+
+[node name="HealthPickup3" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(2349, 664)
+
+[node name="HealthPickup4" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(2336, -1533)
+
+[node name="HealthPickup5" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(3336, -2272)
+
+[node name="HealthPickup6" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(3614, -1511)
+
+[node name="HealthPickup7" parent="BuildingCollision" instance=ExtResource("19_e2yg1")]
+position = Vector2(5748, -2141)
+
 [node name="TempLabels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="TempLabels"]
@@ -1084,34 +1285,6 @@ shape = SubResource("RectangleShape2D_c1ehn")
 [node name="ExitSpace" parent="TravelAreas/Warehouse" index="1"]
 position = Vector2(-52, 6)
 
-[node name="StoryEnemies" type="Node" parent="."]
-
-[node name="CheeseMeetup" parent="StoryEnemies" instance=ExtResource("13_eu8n7")]
-position = Vector2(5120, -948)
-objective = "meetup-crashed"
-willComplete = true
-
-[node name="Shotgunner" parent="StoryEnemies/CheeseMeetup" instance=ExtResource("17_o2ylk")]
-position = Vector2(-27, -35)
-
-[node name="EnemyQuestObject" parent="StoryEnemies/CheeseMeetup" instance=ExtResource("13_dx4pp")]
-quest = "meetupQuest"
-endingQuest = "organizerQuest"
-id = "cheeseMeetup"
-
-[node name="HangoutEnemies" parent="StoryEnemies" instance=ExtResource("13_eu8n7")]
-position = Vector2(2528, -2266)
-objective = "mold-acquired"
-willComplete = true
-
-[node name="Shotgunner" parent="StoryEnemies/HangoutEnemies" instance=ExtResource("17_o2ylk")]
-position = Vector2(21, -7)
-
-[node name="EnemyQuestObject" parent="StoryEnemies/HangoutEnemies" instance=ExtResource("13_dx4pp")]
-quest = "metalQuest"
-endingQuest = "metalQuest2"
-id = "hangout"
-
 [node name="NavRegion" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_s71n6")
@@ -1142,6 +1315,9 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_on0mq")
+
+[node name="HealthPickup" parent="." instance=ExtResource("19_e2yg1")]
+position = Vector2(2881, -397)
 
 [connection signal="area_entered" from="TravelAreas/MetalShop/Area2D" to="TravelAreas/MetalShop" method="_on_area_2d_area_entered"]
 

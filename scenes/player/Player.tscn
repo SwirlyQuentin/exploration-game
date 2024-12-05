@@ -134,7 +134,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_hhor8")
 scale = Vector2(0.45, 0.45)
 collision_layer = 0
 script = ExtResource("1_qp76k")
-shootingCooldown = 0.2
+shootingCooldown = 0.4
 
 [node name="Rat" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -203,6 +203,7 @@ shape = SubResource("RectangleShape2D_xsmk2")
 [node name="Health" type="Node2D" parent="."]
 position = Vector2(2.22222, -24.4444)
 script = ExtResource("5_yhv6a")
+maxHealth = 30
 
 [node name="TextureRect" type="TextureRect" parent="Health"]
 texture_filter = 1

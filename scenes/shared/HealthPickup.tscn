@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7mokm5xcuivm"]
+
+[ext_resource type="Script" path="res://scripts/shared/HealthPickup.gd" id="1_vfjgm"]
+[ext_resource type="Texture2D" uid="uid://cxkhduf58xrc7" path="res://assets/objects/Heart.png" id="2_1xnoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5luc"]
+size = Vector2(16, 14)
+
+[node name="HealthPickup" type="Node2D"]
+script = ExtResource("1_vfjgm")
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_1xnoj")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_a5luc")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

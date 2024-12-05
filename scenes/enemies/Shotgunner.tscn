@@ -12,20 +12,21 @@
 [ext_resource type="Script" path="res://scripts/weapons/Shotgun.gd" id="8_ug2th"]
 [ext_resource type="Script" path="res://scripts/player/Hitbox.gd" id="10_p3huy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc3tn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhhqd"]
 bg_color = Color(0, 0, 0, 0.431373)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_levf0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8nqt"]
 bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
 
 [sub_resource type="Theme" id="Theme_t8exy"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_bc3tn")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_levf0")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_jhhqd")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_j8nqt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqcp3"]
 size = Vector2(16, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ljy"]
+resource_local_to_scene = true
 shader = ExtResource("3_0nfyx")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
@@ -85,22 +86,10 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:material")
+tracks/0/path = NodePath("Sprite:material:shader_parameter/enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("ShaderMaterial_d1ljy")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:material:shader_parameter/enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.01, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -119,27 +108,28 @@ script = ExtResource("1_hqqcm")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -22.0
-offset_top = -27.0
+offset_top = -53.0
 offset_right = 20.0
-offset_bottom = -20.0
+offset_bottom = -46.0
 theme = SubResource("Theme_t8exy")
 value = 50.0
 show_percentage = false
 
 [node name="DamageNumbers" parent="." instance=ExtResource("2_htal8")]
 offset_left = -31.0
-offset_top = 40.0
+offset_top = 14.0
 offset_right = 34.0
-offset_bottom = 74.0
+offset_bottom = 48.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 38)
+position = Vector2(-2, 12)
 shape = SubResource("RectangleShape2D_aqcp3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.937817, 0.915013, 1.54972e-06, 1)
 texture_filter = 1
 material = SubResource("ShaderMaterial_d1ljy")
+position = Vector2(0, -26)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_35rgx")
 autoplay = "default"
@@ -159,6 +149,7 @@ script = ExtResource("6_n4r45")
 script = ExtResource("7_w10l3")
 
 [node name="ActiveCheck" type="Area2D" parent="."]
+position = Vector2(0, -26)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("7_q32ch")
@@ -168,6 +159,7 @@ visible = false
 shape = SubResource("CircleShape2D_6ycyd")
 
 [node name="Holster" type="Node2D" parent="."]
+position = Vector2(0, -26)
 
 [node name="Shotgun" type="Node2D" parent="Holster"]
 script = ExtResource("8_ug2th")
@@ -176,18 +168,19 @@ gunRange = 300
 [node name="ShootingPoint" type="Marker2D" parent="Holster/Shotgun"]
 
 [node name="EnemyAlert" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -26)
 collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlert"]
-visible = false
 shape = SubResource("CircleShape2D_2lbp5")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=["damagable"]]
 visible = false
+position = Vector2(0, -25)
 collision_layer = 72
 collision_mask = 72
 script = ExtResource("10_p3huy")

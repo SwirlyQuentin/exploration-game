@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0mxl8vxerf5i"]
 
 [ext_resource type="Script" path="res://scripts/weapons/StandardBullet.gd" id="1_m2dcw"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="2_l6ad6"]
+[ext_resource type="Texture2D" uid="uid://oaioc6xyphek" path="res://assets/weapons/EnemyBullet.png" id="2_j5fxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0o4l0"]
-radius = 14.0357
+radius = 8.0
 
 [node name="StandardBullet" type="Area2D"]
 collision_layer = 16
@@ -12,8 +12,9 @@ collision_mask = 16
 script = ExtResource("1_m2dcw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_l6ad6")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_j5fxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0o4l0")

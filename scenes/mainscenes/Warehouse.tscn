@@ -1,13 +1,62 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo3net0p2atw1"]
+[gd_scene load_steps=25 format=3 uid="uid://bo3net0p2atw1"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/Warehouse.gd" id="1_k5674"]
 [ext_resource type="Texture2D" uid="uid://dclbaqtysqcrk" path="res://assets/environment/Warehouse/Warehouse-Background.png" id="2_uu7ux"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="3_xrbya"]
 [ext_resource type="Texture2D" uid="uid://jcdht6c7bfjo" path="res://assets/NPC/Boss/RougeRodent_characters_boss.png" id="4_cm5a6"]
 [ext_resource type="PackedScene" uid="uid://hnmhayqa84ix" path="res://scenes/quest-objects/EnemyGroup.tscn" id="5_fj4t8"]
+[ext_resource type="PackedScene" uid="uid://b7mokm5xcuivm" path="res://scenes/shared/HealthPickup.tscn" id="6_w5nsv"]
 [ext_resource type="PackedScene" uid="uid://b1tfo5ld2fubp" path="res://scenes/enemies/Shotgunner.tscn" id="6_w8i3x"]
-[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="7_50lnb"]
+[ext_resource type="Texture2D" uid="uid://cn7wfjvmathjq" path="res://assets/NPC/Will/RougeRodent_characters_will.png" id="7_3ptyo"]
 [ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="8_hjmyw"]
+[ext_resource type="PackedScene" uid="uid://bfclrmduwhktj" path="res://scenes/enemies/Bat.tscn" id="8_ly4bl"]
+[ext_resource type="PackedScene" uid="uid://dg3kbvjn2h2ar" path="res://scenes/enemies/PistolEnemy.tscn" id="9_fhwlr"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nkq4w"]
+vertices = PackedVector2Array(1328.01, 227.992, 1328.98, 798, 9.03125, 798, 10.9609, 227)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 217, 1338, 218, 1339, 808, -1, 808)])
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5m4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftkg7"]
+atlas = ExtResource("7_3ptyo")
+region = Rect2(0, 0, 14, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnh7e"]
+atlas = ExtResource("7_3ptyo")
+region = Rect2(14, 0, 14, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmdh2"]
+atlas = ExtResource("7_3ptyo")
+region = Rect2(28, 0, 14, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whrqq"]
+atlas = ExtResource("7_3ptyo")
+region = Rect2(42, 0, 14, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhitp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftkg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnh7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmdh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whrqq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1w7y"]
+size = Vector2(46, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sog8u"]
 atlas = ExtResource("4_cm5a6")
@@ -45,13 +94,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_nkq4w"]
-vertices = PackedVector2Array(1328.01, 227.992, 1328.98, 798, 9.03125, 798, 10.9609, 227)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1, 217, 1338, 218, 1339, 808, -1, 808)])
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5m4c"]
-
 [node name="Warehouse" type="Node"]
 script = ExtResource("1_k5674")
 
@@ -69,23 +111,6 @@ offset_bottom = 404.0
 scale = Vector2(2, 2)
 texture = ExtResource("2_uu7ux")
 stretch_mode = 3
-
-[node name="Player" parent="." instance=ExtResource("3_xrbya")]
-position = Vector2(20, 364)
-
-[node name="Boss" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(609, 164)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_h0gen")
-
-[node name="EnemyGroup" parent="." instance=ExtResource("5_fj4t8")]
-position = Vector2(271, 405)
-objective = "will-saved"
-willComplete = true
-
-[node name="Shotgunner" parent="EnemyGroup" instance=ExtResource("6_w8i3x")]
-position = Vector2(-22, -3)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_nkq4w")
@@ -117,19 +142,94 @@ rotation = 4.71239
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_j5m4c")
 
-[node name="Will" type="Node2D" parent="."]
-position = Vector2(646, 188)
+[node name="Ysort" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Will"]
-scale = Vector2(0.214844, 0.234375)
-texture = ExtResource("7_50lnb")
+[node name="Player" parent="Ysort" instance=ExtResource("3_xrbya")]
+position = Vector2(625, 314)
 
-[node name="DialogueObject" parent="Will" instance=ExtResource("8_hjmyw")]
+[node name="Will" type="Node2D" parent="Ysort"]
+position = Vector2(630, 190)
+
+[node name="DialogueObject" parent="Ysort/Will" instance=ExtResource("8_hjmyw")]
+position = Vector2(-1, 6)
 cutscene = "bossCutscene_part2"
 obj = "will"
 
-[node name="QuestObject" parent="Will/DialogueObject" index="1"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Ysort/Will/DialogueObject"]
+texture_filter = 1
+position = Vector2(3, -24)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lhitp")
+autoplay = "default"
+frame_progress = 0.594714
+
+[node name="CollisionShape2D" parent="Ysort/Will/DialogueObject/CloseCheck" index="0"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_y1w7y")
+
+[node name="QuestObject" parent="Ysort/Will/DialogueObject" index="2"]
 quest = "final"
 id = "will"
 
-[editable path="Will/DialogueObject"]
+[node name="HealthPickup" parent="Ysort/Will/DialogueObject" instance=ExtResource("6_w5nsv")]
+position = Vector2(-588, 561)
+
+[node name="EnemyGroup" parent="Ysort" instance=ExtResource("5_fj4t8")]
+position = Vector2(271, 405)
+objective = "will-saved"
+willComplete = true
+aggroOnSpawn = true
+
+[node name="Shotgunner" parent="Ysort/EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(-22, -3)
+
+[node name="Shotgunner2" parent="Ysort/EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(-94, 99)
+
+[node name="Shotgunner3" parent="Ysort/EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(-133, -37)
+
+[node name="Shotgunner4" parent="Ysort/EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(928, 144)
+
+[node name="Shotgunner5" parent="Ysort/EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(922, -39)
+
+[node name="Bat" parent="Ysort/EnemyGroup" instance=ExtResource("8_ly4bl")]
+position = Vector2(-36, 259)
+
+[node name="Bat2" parent="Ysort/EnemyGroup" instance=ExtResource("8_ly4bl")]
+position = Vector2(-103, 343)
+
+[node name="Bat3" parent="Ysort/EnemyGroup" instance=ExtResource("8_ly4bl")]
+position = Vector2(-75, -145)
+
+[node name="Bat4" parent="Ysort/EnemyGroup" instance=ExtResource("8_ly4bl")]
+position = Vector2(842, 283)
+
+[node name="Bat5" parent="Ysort/EnemyGroup" instance=ExtResource("8_ly4bl")]
+position = Vector2(642, 307)
+
+[node name="PistolEnemy" parent="Ysort/EnemyGroup" instance=ExtResource("9_fhwlr")]
+position = Vector2(176, 247)
+
+[node name="PistolEnemy2" parent="Ysort/EnemyGroup" instance=ExtResource("9_fhwlr")]
+position = Vector2(426, 247)
+
+[node name="PistolEnemy3" parent="Ysort/EnemyGroup" instance=ExtResource("9_fhwlr")]
+position = Vector2(824, -150)
+
+[node name="PistolEnemy4" parent="Ysort/EnemyGroup" instance=ExtResource("9_fhwlr")]
+position = Vector2(763, 148)
+
+[node name="Boss" type="Node2D" parent="Ysort"]
+position = Vector2(611, 188)
+scale = Vector2(2, 2)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Ysort/Boss"]
+texture_filter = 1
+position = Vector2(1, -12.5)
+sprite_frames = SubResource("SpriteFrames_h0gen")
+
+[editable path="Ysort/Will/DialogueObject"]

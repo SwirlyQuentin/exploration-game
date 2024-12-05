@@ -33,6 +33,13 @@ func _ready():
     updateTracker()
     pass
 
+func _input(event):
+    if (event.is_action_pressed("showQuests")):
+        if (quests.visible):
+            hideQuests()
+        else:
+            showQuests()
+
 
 func completeQuest():
     print("Completing")

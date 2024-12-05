@@ -7,6 +7,8 @@ signal addGold
 signal addExp
 signal addCollectable
 
+signal addHealth
+
 #loading world
 signal writeWorldLocations
 signal loadLocations

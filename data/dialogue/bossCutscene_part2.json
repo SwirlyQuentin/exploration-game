@@ -15,7 +15,7 @@
         },
         {
             "name": "Will",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Will.tscn",
             "actor-key": "will",
             "actor-ref": ""
         }

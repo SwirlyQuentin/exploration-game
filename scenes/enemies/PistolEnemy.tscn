@@ -1,0 +1,188 @@
+[gd_scene load_steps=25 format=3 uid="uid://dg3kbvjn2h2ar"]
+
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/ShootingBase.gd" id="1_krfsg"]
+[ext_resource type="Shader" uid="uid://1kecy47puo5c" path="res://tools/Hitflash.tres" id="2_6bbe4"]
+[ext_resource type="Texture2D" uid="uid://ch2o0awkhqmje" path="res://assets/enemies/david/RougeRodent_characters_david.png" id="3_bvh7n"]
+[ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="4_2lr52"]
+[ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="5_txdrf"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/IdleState.gd" id="6_xr8gf"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/States/Attacking.gd" id="7_7aacf"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/States/Return.gd" id="8_rr4la"]
+[ext_resource type="Script" path="res://scripts/enemies/shared/ActiveCheck.gd" id="9_jddvm"]
+[ext_resource type="Script" path="res://scripts/weapons/Pistol.gd" id="10_nh2cg"]
+[ext_resource type="Script" path="res://scripts/player/Hitbox.gd" id="11_0lg42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n76k"]
+size = Vector2(20, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dja72"]
+resource_local_to_scene = true
+shader = ExtResource("2_6bbe4")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa28n"]
+atlas = ExtResource("3_bvh7n")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc6n3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa28n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc3tn"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_levf0"]
+bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
+
+[sub_resource type="Theme" id="Theme_7mv0t"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bc3tn")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_levf0")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctq2r"]
+radius = 114.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0bl2"]
+radius = 268.007
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a4vn"]
+size = Vector2(34, 58)
+
+[sub_resource type="Animation" id="Animation_xx1tr"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tviqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dgrv"]
+_data = {
+"RESET": SubResource("Animation_tviqw"),
+"hit": SubResource("Animation_xx1tr")
+}
+
+[node name="PistolEnemy" type="CharacterBody2D"]
+collision_layer = 64
+script = ExtResource("1_krfsg")
+sweetSpot = 400
+health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_3n76k")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_dja72")
+position = Vector2(0, -25)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sc6n3")
+autoplay = "default"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -19.0
+offset_top = -56.0
+offset_right = 23.0
+offset_bottom = -49.0
+theme = SubResource("Theme_7mv0t")
+value = 50.0
+show_percentage = false
+
+[node name="DamageNumbers" parent="." instance=ExtResource("4_2lr52")]
+offset_left = -31.0
+offset_top = 16.0
+offset_right = 34.0
+offset_bottom = 50.0
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_txdrf")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_xr8gf")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("7_7aacf")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("8_rr4la")
+
+[node name="ActiveCheck" type="Area2D" parent="."]
+position = Vector2(0, -51)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("9_jddvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
+visible = false
+shape = SubResource("CircleShape2D_ctq2r")
+
+[node name="Holster" type="Node2D" parent="."]
+position = Vector2(0, -51)
+
+[node name="Pistol" type="Node2D" parent="Holster"]
+script = ExtResource("10_nh2cg")
+shootingCooldown = 1.0
+gunRange = 600
+
+[node name="ShootingPoint" type="Marker2D" parent="Holster/Pistol"]
+position = Vector2(1, 34)
+
+[node name="EnemyAlert" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -51)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlert"]
+shape = SubResource("CircleShape2D_q0bl2")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["damagable"]]
+visible = false
+position = Vector2(0, -50)
+collision_layer = 72
+collision_mask = 72
+script = ExtResource("11_0lg42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 36)
+shape = SubResource("RectangleShape2D_4a4vn")
+
+[node name="Hitflash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8dgrv")
+}
+
+[connection signal="area_entered" from="ActiveCheck" to="ActiveCheck" method="_on_area_entered"]

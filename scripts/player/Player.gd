@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var damage:int = 5
+
 @onready var playerBullet = preload("res://scenes/player/PlayerBullet.tscn")
 @onready var bulletContainer = $Bullets
 @onready var shootingPoint = $Hand/ShootingPoint
@@ -22,6 +24,7 @@ var dead = false
 var speedMod = 1
 var tutorial = false
 var disabled = false
+var deathTimer = 0
 
 var shootingTimer = 0
 @export var shootingCooldown = 0.3
@@ -47,7 +50,13 @@ func _input(event):
 func _physics_process(delta: float) -> void:
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
+    if (dead && deathTimer <= 0):
+        PlayerManager.health = null
+        get_tree().reload_current_scene()
+    if (dead):
+        deathTimer -= delta
     if (dead || disabled):
+
         return
 
     PlayerManager.bubbleLoc = bubbleLoc.global_position
@@ -112,7 +121,7 @@ func _on_render_distance_area_exited(area:Area2D) -> void:
 func shoot():
     var b:Area2D = playerBullet.instantiate()
     bulletContainer.add_child(b)
-    b.damage = int(randf_range(3 * (PlayerManager.data["totalCollectables"] + 1) , 6 * (PlayerManager.data["totalCollectables"] + 1)))
+    b.damage = damage
     b.global_position = shootingPoint.global_position
     b.direction = get_global_mouse_position() - self.global_position
     b.rotation = b.direction.angle() + deg_to_rad(90)
@@ -160,6 +169,9 @@ func checkDash(delta):
         velocity = Vector2.ZERO
 
 func die():
+    if (dead):
+        return
+    deathTimer = 3
     dead = true
     print("DEAD")
     sprite.play("dead")

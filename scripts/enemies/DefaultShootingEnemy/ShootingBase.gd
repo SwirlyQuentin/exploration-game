@@ -91,7 +91,14 @@ func takeDamage(damage, character = null):
     pass
 
 func flipSprite():
-    if velocity.x < 0:
-        sprite.flip_h = true
+    if (target == null):
+        if velocity.x < 0:
+            sprite.flip_h = true
+        elif (velocity.x > 0):
+            sprite.flip_h = false 
     else:
-       sprite.flip_h = false 
+        var toTarget = target.global_position - self.global_position
+        if toTarget.x < 0:
+            sprite.flip_h = true
+        elif (toTarget.x > 0):
+            sprite.flip_h = false 
