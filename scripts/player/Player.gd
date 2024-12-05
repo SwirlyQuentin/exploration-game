@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var damage:int = 5
+@export var dashCooldown:float = 0.5
+
 
 @onready var playerBullet = preload("res://scenes/player/PlayerBullet.tscn")
 @onready var bulletContainer = $Bullets
@@ -25,6 +27,7 @@ var speedMod = 1
 var tutorial = false
 var disabled = false
 var deathTimer = 0
+var dashCooldownTimer = 0
 
 var shootingTimer = 0
 @export var shootingCooldown = 0.3
@@ -62,6 +65,7 @@ func _physics_process(delta: float) -> void:
     PlayerManager.bubbleLoc = bubbleLoc.global_position
 
     positionHand()
+    dashCooldownTimer -= delta
     shootingTimer -= delta
     if (Input.is_action_pressed("shoot") && !tutorial && shootingTimer <= 0):
         shoot()
@@ -146,6 +150,8 @@ func positionHand():
     pass
 
 func dash():
+    if (dashCooldownTimer > 0):
+        return
     dashing = true
     # set_collision_layer_value(1, false)
     # set_collision_mask_value(1, false)
@@ -157,6 +163,7 @@ func dash():
             direction = Vector2(1, 0)
         else:
             direction = Vector2(-1, 0)
+    dashCooldownTimer = dashCooldown
     pass
 func checkDash(delta):
     dashTimer -= delta

@@ -25,6 +25,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_kgsq6")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_6wupc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ljy"]
+resource_local_to_scene = true
 shader = ExtResource("2_onwng")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
