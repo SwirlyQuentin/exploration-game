@@ -19,6 +19,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(1, 217, 1338, 218, 1339
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5m4c"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1w7y"]
+size = Vector2(46, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftkg7"]
 atlas = ExtResource("7_3ptyo")
 region = Rect2(0, 0, 14, 35)
@@ -54,9 +57,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1w7y"]
-size = Vector2(46, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sog8u"]
 atlas = ExtResource("4_cm5a6")
@@ -156,6 +156,14 @@ position = Vector2(-1, 6)
 cutscene = "bossCutscene_part2"
 obj = "will"
 
+[node name="CollisionShape2D" parent="Ysort/Will/DialogueObject/CloseCheck" index="0"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_y1w7y")
+
+[node name="QuestObject" parent="Ysort/Will/DialogueObject" index="1"]
+quest = "final"
+id = "will"
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Ysort/Will/DialogueObject"]
 texture_filter = 1
 position = Vector2(3, -24)
@@ -163,14 +171,6 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lhitp")
 autoplay = "default"
 frame_progress = 0.594714
-
-[node name="CollisionShape2D" parent="Ysort/Will/DialogueObject/CloseCheck" index="0"]
-position = Vector2(-8, 0)
-shape = SubResource("RectangleShape2D_y1w7y")
-
-[node name="QuestObject" parent="Ysort/Will/DialogueObject" index="2"]
-quest = "final"
-id = "will"
 
 [node name="HealthPickup" parent="Ysort/Will/DialogueObject" instance=ExtResource("6_w5nsv")]
 position = Vector2(-588, 561)
