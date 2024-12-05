@@ -10,7 +10,7 @@ size = Vector2(68.8172, 14.7107)
 y_sort_enabled = true
 script = ExtResource("1_65r3o")
 
-[node name="Level1" type="StaticBody2D" parent="." groups=["jumpable"]]
+[node name="Level1" type="StaticBody2D" parent="." groups=["jumpable", "navigation_polygon_source_geometry_group"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="Level1"]
 texture_filter = 1

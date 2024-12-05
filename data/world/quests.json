@@ -61,8 +61,8 @@
         },
         "forgeQuest": {
             "name": "forgeQuest",
-            "desc": "Return to blank to forge the key",
-            "obj": { "blank-visited": { "name": "Blank Visited", "ref": "", "completed": false } },
+            "desc": "Return to Lisa to forge the key",
+            "obj": { "lisa-visited": { "name": "Lisa Visited", "ref": "", "completed": false } },
             "signal": "forgeQuest",
             "completed": false
         },
@@ -78,6 +78,20 @@
             "desc": "Save Will",
             "obj": { "will-saved": { "name": "Will Saved", "ref": "", "completed": false } },
             "signal": "saveQuest",
+            "completed": false
+        },
+        "final": {
+            "name": "Will",
+            "desc": "Talk to Will and Boss",
+            "obj": { "will": { "name": "Talk to Will", "ref": "", "completed": false } },
+            "signal": "willQuest",
+            "completed": false
+        },
+        "end": {
+            "name": "THE END",
+            "desc": "Thanks for playing",
+            "obj": {},
+            "signal": "end",
             "completed": false
         }
     }

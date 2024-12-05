@@ -15,7 +15,8 @@ func _ready():
 func checkPipes():
     var solved = true
     for pipe in allPipes:
-        if (pipe.correctRotation != pipe.currentRotation):
+        if (int(pipe.currentRotation )not in pipe.correctRotations):
+            print(pipe.correctRotations, "   ", pipe.currentRotation)
             solved = false
     if (solved):
         solve()
@@ -25,5 +26,6 @@ func checkPipes():
 func solve():
     if (isStory):
         Signals.emit_signal("completeObj", obj, true)
-    reward.unlockReward()
+    # reward.unlockReward()
+    PlayerManager.forgeSolved = true
     pipes.process_mode = Node.PROCESS_MODE_DISABLED

@@ -1,0 +1,198 @@
+[gd_scene load_steps=28 format=3 uid="uid://bfclrmduwhktj"]
+
+[ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="1_jv6fn"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/ShootingBase.gd" id="1_yg1hd"]
+[ext_resource type="Shader" uid="uid://1kecy47puo5c" path="res://tools/Hitflash.tres" id="2_onwng"]
+[ext_resource type="Texture2D" uid="uid://c11i44jjc3ypw" path="res://assets/enemies/BirdMelee/RougeRodent_characters_enemy_bourgeoisie.png" id="3_aay1g"]
+[ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="4_rpq8e"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/IdleState.gd" id="5_l2a70"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/States/Return.gd" id="6_xobhl"]
+[ext_resource type="Script" path="res://scripts/enemies/shared/ActiveCheck.gd" id="7_3v4ul"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultMeleeEnemy/states/Attacking.gd" id="7_cvs7m"]
+[ext_resource type="Script" path="res://scripts/player/Hitbox.gd" id="8_t0psx"]
+[ext_resource type="Script" path="res://scripts/weapons/MeleeBase.gd" id="11_edafh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thfoi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgsq6"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wupc"]
+bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
+
+[sub_resource type="Theme" id="Theme_3jppw"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kgsq6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6wupc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ljy"]
+shader = ExtResource("2_onwng")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b87v"]
+atlas = ExtResource("3_aay1g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeqa0"]
+atlas = ExtResource("3_aay1g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbj07"]
+atlas = ExtResource("3_aay1g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l32f5"]
+atlas = ExtResource("3_aay1g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6b3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b87v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeqa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbj07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l32f5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbb1d"]
+radius = 114.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_we3ew"]
+radius = 268.007
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at1hy"]
+size = Vector2(33, 26)
+
+[sub_resource type="Animation" id="Animation_lau66"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_hp5hc"]
+resource_name = "hit"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_d1ljy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o46el"]
+_data = {
+"RESET": SubResource("Animation_lau66"),
+"hit": SubResource("Animation_hp5hc")
+}
+
+[node name="Bat" type="CharacterBody2D"]
+script = ExtResource("1_yg1hd")
+speed = 4000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_thfoi")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -20.0
+theme = SubResource("Theme_3jppw")
+value = 50.0
+show_percentage = false
+
+[node name="DamageNumbers" parent="." instance=ExtResource("1_jv6fn")]
+offset_left = -31.0
+offset_top = 40.0
+offset_right = 34.0
+offset_bottom = 74.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.937817, 0.915013, 1.54972e-06, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_d1ljy")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h6b3p")
+autoplay = "default"
+frame_progress = 0.602569
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_rpq8e")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_l2a70")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("7_cvs7m")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("6_xobhl")
+
+[node name="ActiveCheck" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("7_3v4ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
+visible = false
+shape = SubResource("CircleShape2D_mbb1d")
+
+[node name="EnemyAlert" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlert"]
+visible = false
+shape = SubResource("CircleShape2D_we3ew")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["damagable"]]
+visible = false
+collision_layer = 72
+collision_mask = 72
+script = ExtResource("8_t0psx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_at1hy")
+
+[node name="Hitflash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o46el")
+}
+
+[node name="Melee" type="Node2D" parent="."]
+
+[node name="BatHit" type="Node2D" parent="Melee"]
+script = ExtResource("11_edafh")
+
+[connection signal="area_entered" from="ActiveCheck" to="ActiveCheck" method="_on_area_entered"]

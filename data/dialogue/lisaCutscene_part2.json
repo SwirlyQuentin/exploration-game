@@ -1,0 +1,39 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Lisa",
+            "source": "res://scenes/cutscene/Actors/Lisa.tscn",
+            "actor-key": "lisa",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "rat",
+            "content": "Here's the mold.",
+            "direction": "left"
+        },
+        {
+            "key": "lisa",
+            "content": "Perfect, give me just a second.",
+            "direction": "right"
+        },
+        {
+            "key": "lisa",
+            "content": "*Lisa walks over to the anvil and comes back after 2 seconds and gives you a key*",
+            "direction": "right"
+        },
+        {
+            "key": "lisa",
+            "content": "Good luck with... whatever you're doing.",
+            "direction": "right"
+        }
+    ]
+}

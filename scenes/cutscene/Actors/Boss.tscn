@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvops2ch8w2hp"]
+
+[ext_resource type="Script" path="res://scripts/cutscene/Actor.gd" id="1_u0e6a"]
+[ext_resource type="Texture2D" uid="uid://brydwsomimtkj" path="res://assets/NPC/Boss/BossFace.png" id="2_t5fc1"]
+
+[node name="Boss" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_u0e6a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -67.0
+offset_right = -35.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_t5fc1")
+stretch_mode = 3

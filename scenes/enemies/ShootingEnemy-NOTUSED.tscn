@@ -24,15 +24,15 @@ radius = 250.018
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_205nd"]
 size = Vector2(30, 30)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgsq6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbwc6"]
 bg_color = Color(0, 0, 0, 0.431373)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wupc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2vko"]
 bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
 
 [sub_resource type="Theme" id="Theme_0tpba"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_kgsq6")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_6wupc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_tbwc6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_v2vko")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xvxk"]
 radius = 158.256
@@ -40,7 +40,7 @@ radius = 158.256
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kc3p"]
 radius = 84.1487
 
-[node name="ShootingEnemy" type="CharacterBody2D" groups=["damagable"]]
+[node name="ShootingEnemy(NOTUSED)" type="CharacterBody2D" groups=["damagable"]]
 collision_layer = 72
 script = ExtResource("1_63hku")
 

@@ -24,7 +24,7 @@ var tutorial = false
 var disabled = false
 
 var shootingTimer = 0
-var shootingCooldown = 0.3
+@export var shootingCooldown = 0.3
 
 func _ready():
     print("player ready")
@@ -116,6 +116,7 @@ func shoot():
     b.global_position = shootingPoint.global_position
     b.direction = get_global_mouse_position() - self.global_position
     b.rotation = b.direction.angle() + deg_to_rad(90)
+    b.character = self
     shootingTimer = shootingCooldown
     pass
 

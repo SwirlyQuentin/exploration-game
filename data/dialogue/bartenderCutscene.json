@@ -9,7 +9,7 @@
         },
         {
             "name": "Bartender",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Bartender.tscn",
             "actor-key": "bar",
             "actor-ref": ""
         },

@@ -38,6 +38,7 @@ player=""
 Collectables=""
 jumpable=""
 damagable=""
+navigation_polygon_source_geometry_group=""
 
 [input]
 

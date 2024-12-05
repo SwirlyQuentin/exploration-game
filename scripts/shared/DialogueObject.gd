@@ -2,6 +2,7 @@ extends Node2D
 
 @export var cutscene:String
 @export var obj:String = ""
+@export var willComplete:bool = true
 
 var close = false
 
@@ -12,7 +13,7 @@ func _input(event):
     if (event.is_action_pressed("interact") && close):
         Signals.emit_signal("startCutscene", cutscene)
         if (obj != ""):
-            Signals.emit_signal("completeObj", obj, true)
+            Signals.emit_signal("completeObj", obj, willComplete)
 
 
 func _on_close_check_area_entered(area:Area2D) -> void:

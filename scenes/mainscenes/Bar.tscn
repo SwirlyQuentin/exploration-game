@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsqntnwp1ch6o"]
+[gd_scene load_steps=37 format=3 uid="uid://bsqntnwp1ch6o"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/Bar.gd" id="1_hiuhv"]
 [ext_resource type="Texture2D" uid="uid://tgn8mnnylrqt" path="res://assets/environment/Bar/Bar_Interior.png" id="2_2h4po"]
@@ -7,7 +7,76 @@
 [ext_resource type="Texture2D" uid="uid://cyuh63qu2rgaa" path="res://assets/environment/Bar/BarOverlayV5.png" id="4_0fukv"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="4_yds5c"]
 [ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="5_slogn"]
+[ext_resource type="Texture2D" uid="uid://c5cu2jnotc7dj" path="res://assets/NPC/Bartender/RougeRodent_characters_bartender.png" id="7_11l1q"]
 [ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="8_tix3f"]
+[ext_resource type="Texture2D" uid="uid://dq7jme3ql44wd" path="res://assets/NPC/Neo/RougeRodent_characters_neo.png" id="9_w1unx"]
+[ext_resource type="Texture2D" uid="uid://kck67bmsgmiy" path="res://assets/enemies/woozylady/RougeRodent_characters_woozylady.png" id="10_da8wr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvnfs"]
+atlas = ExtResource("9_w1unx")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07e3t"]
+atlas = ExtResource("9_w1unx")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b55gu"]
+atlas = ExtResource("9_w1unx")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woqs4"]
+atlas = ExtResource("9_w1unx")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khqry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvnfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07e3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b55gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woqs4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck3pe"]
+atlas = ExtResource("10_da8wr")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0ynj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck3pe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1i2q"]
+atlas = ExtResource("7_11l1q")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af8bj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1i2q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl5kw"]
 size = Vector2(600, 157)
@@ -74,8 +143,74 @@ offset_right = 997.0
 offset_bottom = 558.0
 texture = ExtResource("2_2h4po")
 
-[node name="Player" parent="." instance=ExtResource("2_xci6d")]
-position = Vector2(616, 342)
+[node name="Ysorting" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Ysorting" instance=ExtResource("2_xci6d")]
+position = Vector2(694, 310)
+
+[node name="Neo" type="Node2D" parent="Ysorting"]
+position = Vector2(969, 467)
+
+[node name="NeoProcess" parent="Ysorting/Neo" instance=ExtResource("8_tix3f")]
+position = Vector2(0, -3)
+scale = Vector2(2, 2)
+cutscene = "neoCutscene"
+obj = "neo"
+
+[node name="QuestObject" parent="Ysorting/Neo/NeoProcess" index="1"]
+quest = "barQuest3"
+endingQuest = "meetupQuest"
+id = "neo"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Ysorting/Neo"]
+texture_filter = 1
+position = Vector2(0, -25)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_khqry")
+autoplay = "default"
+flip_h = true
+
+[node name="Schitzo" type="Node2D" parent="Ysorting"]
+position = Vector2(427, 390)
+
+[node name="SchitzoProcess" parent="Ysorting/Schitzo" instance=ExtResource("8_tix3f")]
+position = Vector2(-6, 23)
+scale = Vector2(2, 2)
+cutscene = "schitzoCutscene"
+
+[node name="CloseCheck" parent="Ysorting/Schitzo/SchitzoProcess" index="0"]
+position = Vector2(3, -8.5)
+
+[node name="QuestObject" parent="Ysorting/Schitzo/SchitzoProcess" index="1"]
+quest = "barQuest3"
+id = "schitzo"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Ysorting/Schitzo"]
+texture_filter = 1
+position = Vector2(0, -25)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_f0ynj")
+autoplay = "default"
+
+[node name="Bartender" type="Node2D" parent="Ysorting"]
+position = Vector2(821, 354)
+scale = Vector2(2, 2)
+
+[node name="BartenderProcess" parent="Ysorting/Bartender" instance=ExtResource("8_tix3f")]
+position = Vector2(-1, -7)
+cutscene = "bartenderCutscene"
+obj = "bartender"
+
+[node name="QuestObject" parent="Ysorting/Bartender/BartenderProcess" index="1"]
+quest = "barQuest2"
+endingQuest = "barQuest3"
+id = "bartender"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Ysorting/Bartender"]
+texture_filter = 1
+position = Vector2(-1, -12.5)
+sprite_frames = SubResource("SpriteFrames_af8bj")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1
@@ -85,7 +220,8 @@ offset_right = 997.0
 offset_bottom = 558.0
 texture = ExtResource("4_0fukv")
 
-[node name="OutsideColl" type="Node" parent="."]
+[node name="OutsideColl" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="OutsideColl"]
 visible = false
@@ -119,7 +255,8 @@ position = Vector2(674, 589)
 position = Vector2(14, -9.25)
 shape = SubResource("RectangleShape2D_s4ujp")
 
-[node name="InsideColl" type="Node" parent="."]
+[node name="InsideColl" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="InsideColl"]
 position = Vector2(594, 289)
@@ -254,6 +391,7 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_1in5g")
 
 [node name="TestButton" type="Node2D" parent="."]
+visible = false
 position = Vector2(674, 377)
 script = ExtResource("5_slogn")
 
@@ -269,50 +407,10 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestButton/Area2D"]
 shape = SubResource("RectangleShape2D_ug38g")
 
-[node name="Bartender" parent="." instance=ExtResource("8_tix3f")]
-position = Vector2(821, 329)
-cutscene = "bartenderCutscene"
-obj = "bartender"
-
-[node name="QuestObject" parent="Bartender" index="1"]
-quest = "barQuest2"
-endingQuest = "barQuest3"
-id = "bartender"
-
-[node name="Sprite2D" type="Sprite2D" parent="Bartender"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("4_yds5c")
-
-[node name="Neo" parent="." instance=ExtResource("8_tix3f")]
-position = Vector2(967, 455)
-cutscene = "neoCutscene"
-obj = "neo"
-
-[node name="QuestObject" parent="Neo" index="1"]
-quest = "barQuest3"
-endingQuest = "meetupQuest"
-id = "neo"
-
-[node name="Sprite2D" type="Sprite2D" parent="Neo"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("4_yds5c")
-
-[node name="Schitzo" parent="." instance=ExtResource("8_tix3f")]
-position = Vector2(629, 409)
-cutscene = "schitzoCutscene"
-
-[node name="QuestObject" parent="Schitzo" index="1"]
-quest = "barQuest3"
-id = "schitzo"
-
-[node name="Sprite2D" type="Sprite2D" parent="Schitzo"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("4_yds5c")
-
 [connection signal="area_entered" from="TravelArea/Area2D" to="TravelArea" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_exited"]
 
-[editable path="Bartender"]
-[editable path="Neo"]
-[editable path="Schitzo"]
+[editable path="Ysorting/Neo/NeoProcess"]
+[editable path="Ysorting/Schitzo/SchitzoProcess"]
+[editable path="Ysorting/Bartender/BartenderProcess"]

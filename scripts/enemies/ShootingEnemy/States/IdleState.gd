@@ -23,6 +23,7 @@ var speedMod = 0.3
 
 func enter():
     character.speedMod = speedMod
+    perlinNoise.seed = randi()
     # print("changed")
 
 func exit():
@@ -64,7 +65,8 @@ func _physics_process(delta):
     if stopped:
         finalDirection = Vector2.ZERO
 
-    character.dir = finalDirection
+    # character.dir = finalDirection
+    character.navTarget = character.to_global(finalDirection)
 
 
 func stop(delta):

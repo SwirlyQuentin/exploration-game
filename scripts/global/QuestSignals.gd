@@ -15,3 +15,5 @@ signal barQuest3
 signal organizerQuest
 
 signal metalQuest2
+
+signal willQuest

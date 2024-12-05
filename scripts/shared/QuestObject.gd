@@ -16,7 +16,8 @@ func _ready():
     QuestSignals.connect(QuestEngine.getSignal(quest), catchSignal)
     if(endingQuest != ""):
         QuestSignals.connect(QuestEngine.getSignal(endingQuest), endObject)
-    disable()
+    if (action == "enable"):
+        disable()
 
     pass
 

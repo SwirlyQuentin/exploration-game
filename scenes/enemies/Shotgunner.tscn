@@ -1,0 +1,204 @@
+[gd_scene load_steps=28 format=3 uid="uid://b1tfo5ld2fubp"]
+
+[ext_resource type="Texture2D" uid="uid://c7keox103wkfd" path="res://assets/enemies/shotgun/RougeRodent_characters_enemy-sus.png" id="1_1w4c3"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/ShootingBase.gd" id="1_hqqcm"]
+[ext_resource type="Script" path="res://scripts/enemies/StateMachine/StateMachine.gd" id="2_a3u5n"]
+[ext_resource type="PackedScene" uid="uid://cufh450k7ysk1" path="res://scenes/enemies/shared/DamageNumbers.tscn" id="2_htal8"]
+[ext_resource type="Shader" uid="uid://1kecy47puo5c" path="res://tools/Hitflash.tres" id="3_0nfyx"]
+[ext_resource type="Script" path="res://scripts/enemies/ShootingEnemy/States/IdleState.gd" id="3_kxrrl"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/States/Attacking.gd" id="6_n4r45"]
+[ext_resource type="Script" path="res://scripts/enemies/shared/ActiveCheck.gd" id="7_q32ch"]
+[ext_resource type="Script" path="res://scripts/enemies/DefaultShootingEnemy/States/Return.gd" id="7_w10l3"]
+[ext_resource type="Script" path="res://scripts/weapons/Shotgun.gd" id="8_ug2th"]
+[ext_resource type="Script" path="res://scripts/player/Hitbox.gd" id="10_p3huy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc3tn"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_levf0"]
+bg_color = Color(0.321569, 0.0705882, 0.0705882, 1)
+
+[sub_resource type="Theme" id="Theme_t8exy"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bc3tn")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_levf0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqcp3"]
+size = Vector2(16, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ljy"]
+shader = ExtResource("3_0nfyx")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsie7"]
+atlas = ExtResource("1_1w4c3")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsvv8"]
+atlas = ExtResource("1_1w4c3")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rncbj"]
+atlas = ExtResource("1_1w4c3")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vupsd"]
+atlas = ExtResource("1_1w4c3")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35rgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsie7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsvv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rncbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vupsd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ycyd"]
+radius = 114.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lbp5"]
+radius = 268.007
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdjyj"]
+size = Vector2(32, 56)
+
+[sub_resource type="Animation" id="Animation_lau66"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_hp5hc"]
+resource_name = "hit"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_d1ljy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o46el"]
+_data = {
+"RESET": SubResource("Animation_lau66"),
+"hit": SubResource("Animation_hp5hc")
+}
+
+[node name="Shotgunner" type="CharacterBody2D"]
+collision_layer = 64
+script = ExtResource("1_hqqcm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -20.0
+theme = SubResource("Theme_t8exy")
+value = 50.0
+show_percentage = false
+
+[node name="DamageNumbers" parent="." instance=ExtResource("2_htal8")]
+offset_left = -31.0
+offset_top = 40.0
+offset_right = 34.0
+offset_bottom = 74.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 38)
+shape = SubResource("RectangleShape2D_aqcp3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.937817, 0.915013, 1.54972e-06, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_d1ljy")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_35rgx")
+autoplay = "default"
+frame = 1
+frame_progress = 0.111022
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_a3u5n")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_kxrrl")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("6_n4r45")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("7_w10l3")
+
+[node name="ActiveCheck" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("7_q32ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveCheck"]
+visible = false
+shape = SubResource("CircleShape2D_6ycyd")
+
+[node name="Holster" type="Node2D" parent="."]
+
+[node name="Shotgun" type="Node2D" parent="Holster"]
+script = ExtResource("8_ug2th")
+gunRange = 300
+
+[node name="ShootingPoint" type="Marker2D" parent="Holster/Shotgun"]
+
+[node name="EnemyAlert" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAlert"]
+visible = false
+shape = SubResource("CircleShape2D_2lbp5")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["damagable"]]
+visible = false
+collision_layer = 72
+collision_mask = 72
+script = ExtResource("10_p3huy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-4, 12)
+shape = SubResource("RectangleShape2D_cdjyj")
+
+[node name="Hitflash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o46el")
+}
+
+[connection signal="area_entered" from="ActiveCheck" to="ActiveCheck" method="_on_area_entered"]

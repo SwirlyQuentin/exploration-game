@@ -15,7 +15,7 @@
         },
         {
             "name": "Organizer",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Organizer.tscn",
             "actor-key": "organizer",
             "actor-ref": ""
         }

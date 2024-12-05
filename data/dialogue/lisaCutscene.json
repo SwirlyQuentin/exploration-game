@@ -15,7 +15,7 @@
         },
         {
             "name": "Lisa",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Lisa.tscn",
             "actor-key": "lisa",
             "actor-ref": ""
         }

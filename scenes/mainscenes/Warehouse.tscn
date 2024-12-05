@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=3 uid="uid://bo3net0p2atw1"]
+
+[ext_resource type="Script" path="res://scripts/main-scenes/Warehouse.gd" id="1_k5674"]
+[ext_resource type="Texture2D" uid="uid://dclbaqtysqcrk" path="res://assets/environment/Warehouse/Warehouse-Background.png" id="2_uu7ux"]
+[ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="3_xrbya"]
+[ext_resource type="Texture2D" uid="uid://jcdht6c7bfjo" path="res://assets/NPC/Boss/RougeRodent_characters_boss.png" id="4_cm5a6"]
+[ext_resource type="PackedScene" uid="uid://hnmhayqa84ix" path="res://scenes/quest-objects/EnemyGroup.tscn" id="5_fj4t8"]
+[ext_resource type="PackedScene" uid="uid://b1tfo5ld2fubp" path="res://scenes/enemies/Shotgunner.tscn" id="6_w8i3x"]
+[ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="7_50lnb"]
+[ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="8_hjmyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sog8u"]
+atlas = ExtResource("4_cm5a6")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtch3"]
+atlas = ExtResource("4_cm5a6")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6iop"]
+atlas = ExtResource("4_cm5a6")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqkg"]
+atlas = ExtResource("4_cm5a6")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0gen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sog8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtch3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6iop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmqkg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nkq4w"]
+vertices = PackedVector2Array(1328.01, 227.992, 1328.98, 798, 9.03125, 798, 10.9609, 227)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 217, 1338, 218, 1339, 808, -1, 808)])
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5m4c"]
+
+[node name="Warehouse" type="Node"]
+script = ExtResource("1_k5674")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -783.0
+offset_top = -511.0
+offset_right = 2224.0
+offset_bottom = 1277.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 669.0
+offset_bottom = 404.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_uu7ux")
+stretch_mode = 3
+
+[node name="Player" parent="." instance=ExtResource("3_xrbya")]
+position = Vector2(20, 364)
+
+[node name="Boss" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(609, 164)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h0gen")
+
+[node name="EnemyGroup" parent="." instance=ExtResource("5_fj4t8")]
+position = Vector2(271, 405)
+objective = "will-saved"
+willComplete = true
+
+[node name="Shotgunner" parent="EnemyGroup" instance=ExtResource("6_w8i3x")]
+position = Vector2(-22, -3)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_nkq4w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(549, 162)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_j5m4c")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-2, 392)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_j5m4c")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(560, 808)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_j5m4c")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(1338, 382)
+rotation = 4.71239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_j5m4c")
+
+[node name="Will" type="Node2D" parent="."]
+position = Vector2(646, 188)
+
+[node name="Sprite2D" type="Sprite2D" parent="Will"]
+scale = Vector2(0.214844, 0.234375)
+texture = ExtResource("7_50lnb")
+
+[node name="DialogueObject" parent="Will" instance=ExtResource("8_hjmyw")]
+cutscene = "bossCutscene_part2"
+obj = "will"
+
+[node name="QuestObject" parent="Will/DialogueObject" index="1"]
+quest = "final"
+id = "will"
+
+[editable path="Will/DialogueObject"]

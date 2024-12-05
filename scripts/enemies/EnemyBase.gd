@@ -4,6 +4,7 @@ class_name EnemyBase
 
 @onready var damageNumbers = $DamageNumbers
 @onready var healthBar:ProgressBar = $HealthBar
+@onready var hitFlash:AnimationPlayer = $Hitflash
 
 
 signal deathSignal
@@ -19,7 +20,10 @@ func prepHealthBar():
     healthBar.max_value = health
     healthBar.value = health
 
-func takeDamage(damage):
+func takeDamage(damage, character = null):
+    if (hitFlash != null):
+        print("playing")
+        hitFlash.play("hit")
     currentTotalDamage += damage
     health -= damage
     healthBar.value = health

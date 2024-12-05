@@ -9,7 +9,7 @@
         },
         {
             "name": "Schitzo",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Schitzo.tscn",
             "actor-key": "sch",
             "actor-ref": ""
         }

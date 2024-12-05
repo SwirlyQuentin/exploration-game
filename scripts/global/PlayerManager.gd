@@ -8,6 +8,7 @@ var maxLevel = 50
 var levelExp = {"1": 10}
 var exitSpace = null
 var bubbleLoc = null
+var forgeSolved = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

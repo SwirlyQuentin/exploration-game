@@ -1,27 +1,92 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp5wwreobuwmy"]
+[gd_scene load_steps=29 format=3 uid="uid://dp5wwreobuwmy"]
 
 [ext_resource type="Script" path="res://scripts/main-scenes/MetalShop.gd" id="1_0nfe3"]
 [ext_resource type="PackedScene" uid="uid://vksaete574p5" path="res://scenes/player/Player.tscn" id="1_jmfvv"]
+[ext_resource type="Texture2D" uid="uid://gg7pg7wi8tkt" path="res://assets/environment/MetalShop/MetalShop-Background.png" id="2_6nvcn"]
 [ext_resource type="Script" path="res://scripts/shared/TravelArea.gd" id="2_de68u"]
 [ext_resource type="Texture2D" uid="uid://cg44664s6ywtq" path="res://icon.svg" id="3_v6c72"]
-[ext_resource type="Script" path="res://scripts/shared/TestButton.gd" id="4_ggpal"]
+[ext_resource type="Script" path="res://scripts/puzzles/LavaValve/PipePuzzle.gd" id="4_0c1yg"]
+[ext_resource type="PackedScene" uid="uid://bvx4vgmwsbpvv" path="res://scenes/puzzles/PipePuzzle/Pipe.tscn" id="5_fe02v"]
+[ext_resource type="Texture2D" uid="uid://bup6m6mj24u6b" path="res://assets/environment/MetalShop/PipeInGround.png" id="5_lvsw8"]
+[ext_resource type="PackedScene" uid="uid://7su1wxh81ir1" path="res://scenes/puzzles/PipePuzzle/CurvePipe.tscn" id="6_2jbn3"]
 [ext_resource type="PackedScene" uid="uid://bba3ijf1m24yb" path="res://scenes/shared/DialogueObject.tscn" id="6_mkgka"]
-[ext_resource type="PackedScene" uid="uid://df7127a2ypw7n" path="res://scenes/puzzles/PipePuzzle.tscn" id="7_rd10r"]
+[ext_resource type="PackedScene" uid="uid://bg08v3ynnx8ga" path="res://scenes/puzzles/PipePuzzle/TwoWayPipe.tscn" id="7_ib15a"]
 [ext_resource type="PackedScene" uid="uid://dlltspsq4fiog" path="res://scenes/shared/QuestObject.tscn" id="8_xyk26"]
+[ext_resource type="Texture2D" uid="uid://c2pgj10nbrd83" path="res://assets/NPC/Lisa/RougeRodent_characters_lisa.png" id="9_nr8yw"]
+[ext_resource type="Texture2D" uid="uid://b0byyiqnm3kci" path="res://assets/environment/MetalShop/ToolRack.png" id="13_md3f2"]
+[ext_resource type="Texture2D" uid="uid://dr5ktfbyvvupk" path="res://assets/environment/MetalShop/WaterBucket.png" id="14_ctv3l"]
+[ext_resource type="Texture2D" uid="uid://ce4uwwvqb5j3p" path="res://assets/environment/MetalShop/Anvil.png" id="15_x0pmh"]
+[ext_resource type="Texture2D" uid="uid://dcvjylkbmedv7" path="res://assets/environment/MetalShop/FirePlaceCabinet.png" id="16_486mw"]
+[ext_resource type="Texture2D" uid="uid://bdw24gbqm3kf6" path="res://assets/environment/MetalShop/EmptyLavaSlab.png" id="16_g01qe"]
+[ext_resource type="Texture2D" uid="uid://chygmaj0ll7r5" path="res://assets/environment/MetalShop/LavaSlab.png" id="19_dkar7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in5g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug38g"]
-size = Vector2(26, 26)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2l8g"]
+size = Vector2(77.5, 23.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uafa"]
+atlas = ExtResource("9_nr8yw")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62l7k"]
+atlas = ExtResource("9_nr8yw")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uodtu"]
+atlas = ExtResource("9_nr8yw")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_562x2"]
+atlas = ExtResource("9_nr8yw")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24csq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uafa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62l7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uodtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_562x2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfkoq"]
+size = Vector2(17.5, 23.5)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f0fmf"]
 
 [node name="MetalShop" type="Node"]
 script = ExtResource("1_0nfe3")
 
-[node name="Player" parent="." instance=ExtResource("1_jmfvv")]
-position = Vector2(584, 325)
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -364.0
+offset_top = -201.0
+offset_right = 1589.0
+offset_bottom = 927.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 355.0
+offset_top = 124.0
+offset_right = 555.0
+offset_bottom = 348.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_6nvcn")
 
 [node name="TravelArea" type="Node2D" parent="."]
-position = Vector2(508, 307)
+position = Vector2(569, 559)
 script = ExtResource("2_de68u")
 zone = "gameState"
 
@@ -38,38 +103,108 @@ collision_mask = 16
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_1in5g")
 
-[node name="TestButton" type="Node2D" parent="."]
-position = Vector2(554, 260)
-script = ExtResource("4_ggpal")
+[node name="TextureRect7" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 345.0
+offset_top = 255.0
+offset_right = 409.0
+offset_bottom = 312.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_lvsw8")
+stretch_mode = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="TestButton"]
-position = Vector2(-7.62939e-06, 2.38419e-06)
-scale = Vector2(0.203125, 0.203125)
-texture = ExtResource("3_v6c72")
+[node name="LavaValvePuzzle" type="Node2D" parent="."]
+position = Vector2(386, 337)
+script = ExtResource("4_0c1yg")
+isStory = true
+obj = "forge-fixed"
 
-[node name="Area2D" type="Area2D" parent="TestButton"]
-collision_layer = 16
-collision_mask = 16
+[node name="Pipes" type="Node2D" parent="LavaValvePuzzle"]
+position = Vector2(-4, -11)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestButton/Area2D"]
-shape = SubResource("RectangleShape2D_ug38g")
+[node name="Pipe" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(25, -3)
+correctRotation = 1
 
-[node name="DialogueObject" parent="." instance=ExtResource("6_mkgka")]
-position = Vector2(635, 273)
-cutscene = "lisaCutscene"
-obj = "lisa"
+[node name="Pipe2" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(25, 27)
+rotation = 4.71239
+correctRotation = 270
 
-[node name="QuestObject" parent="DialogueObject" index="1"]
-quest = "metalQuest2"
-endingQuest = "materialQuest"
-id = "lisa"
+[node name="Pipe3" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(55, 27)
+rotation = 1.5708
 
-[node name="Sprite2D" type="Sprite2D" parent="DialogueObject"]
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("3_v6c72")
+[node name="Pipe4" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(55, 57)
+rotation = 3.14159
+correctRotation = 180
 
-[node name="LavaValvePuzzle" parent="." instance=ExtResource("7_rd10r")]
-position = Vector2(791, 250)
+[node name="Pipe5" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(25, 57)
+rotation = 1.5708
+correctRotation = 2
+
+[node name="Pipe6" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(-5, 57)
+correctRotation = 0
+
+[node name="Pipe7" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(-5, 87)
+rotation = 4.71239
+correctRotation = 270
+
+[node name="Pipe8" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(25, 87)
+rotation = 1.5708
+correctRotation = 2
+
+[node name="Pipe9" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(55, 87)
+rotation = 1.5708
+correctRotation = 2
+
+[node name="Pipe10" parent="LavaValvePuzzle/Pipes" instance=ExtResource("7_ib15a")]
+position = Vector2(85, 87)
+correctRotation = 0
+
+[node name="Pipe11" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(85, 57)
+correctRotation = 0
+
+[node name="Pipe12" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(115, 57)
+rotation = 1.5708
+correctRotation = 2
+
+[node name="Pipe13" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(145, 57)
+rotation = 1.5708
+correctRotation = 2
+
+[node name="Pipe14" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(175, 57)
+rotation = 1.5708
+
+[node name="Pipe15" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(175, 87)
+correctRotation = 1
+
+[node name="Pipe16" parent="LavaValvePuzzle/Pipes" instance=ExtResource("7_ib15a")]
+position = Vector2(175, 117)
+rotation = 1.5708
+
+[node name="Pipe17" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(145, 117)
+correctRotation = 0
+
+[node name="Pipe18" parent="LavaValvePuzzle/Pipes" instance=ExtResource("6_2jbn3")]
+position = Vector2(205, 117)
+rotation = 1.5708
+
+[node name="Pipe19" parent="LavaValvePuzzle/Pipes" instance=ExtResource("5_fe02v")]
+position = Vector2(85, 117)
+correctRotation = 1
 
 [node name="QuestObject" parent="LavaValvePuzzle" instance=ExtResource("8_xyk26")]
 quest = "materialQuest"
@@ -77,9 +212,150 @@ endingQuest = "forgeQuest"
 id = "forge"
 invis = false
 
-[connection signal="area_entered" from="TravelArea/Area2D" to="TravelArea" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="TestButton/Area2D" to="TestButton" method="_on_area_2d_area_exited"]
+[node name="LavaEmpty" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 452.0
+offset_top = 456.0
+offset_right = 530.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("16_g01qe")
 
-[editable path="DialogueObject"]
-[editable path="LavaValvePuzzle"]
+[node name="StaticBody2D" type="StaticBody2D" parent="LavaEmpty"]
+visible = false
+position = Vector2(35.5, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LavaEmpty/StaticBody2D"]
+position = Vector2(3.75, -1.25)
+shape = SubResource("RectangleShape2D_c2l8g")
+
+[node name="LavaFull" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 452.0
+offset_top = 456.0
+offset_right = 530.0
+offset_bottom = 480.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_dkar7")
+
+[node name="QuestObject" parent="LavaFull" instance=ExtResource("8_xyk26")]
+quest = "forgeQuest"
+id = "lava"
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Lisa" type="Node2D" parent="YSort"]
+position = Vector2(516, 310)
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSort/Lisa"]
+process_mode = 3
+texture_filter = 1
+position = Vector2(1, -12.5)
+sprite_frames = SubResource("SpriteFrames_24csq")
+autoplay = "default"
+
+[node name="LisaCutscene2" parent="YSort/Lisa" instance=ExtResource("6_mkgka")]
+position = Vector2(0, 3)
+scale = Vector2(0.695, 0.695)
+cutscene = "lisaCutscene_part2"
+obj = "lisa-visited"
+
+[node name="QuestObject" parent="YSort/Lisa/LisaCutscene2" index="1"]
+quest = "forgeQuest"
+endingQuest = "hideoutQuest"
+id = "lisa2"
+
+[node name="LisaCutscene1" parent="YSort/Lisa" instance=ExtResource("6_mkgka")]
+position = Vector2(0, 3)
+scale = Vector2(0.705, 0.705)
+cutscene = "lisaCutscene"
+obj = "lisa"
+
+[node name="QuestObject" parent="YSort/Lisa/LisaCutscene1" index="1"]
+quest = "metalQuest2"
+endingQuest = "materialQuest"
+id = "lisa"
+invis = false
+
+[node name="Player" parent="YSort" instance=ExtResource("1_jmfvv")]
+position = Vector2(568, 532)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 454.0
+offset_top = 167.0
+offset_right = 564.0
+offset_bottom = 207.0
+texture = ExtResource("13_md3f2")
+
+[node name="Water" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 409.0
+offset_top = 455.0
+offset_right = 427.0
+offset_bottom = 479.0
+scale = Vector2(2, 2)
+texture = ExtResource("14_ctv3l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Water"]
+visible = false
+position = Vector2(9.5, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/StaticBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_dfkoq")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 627.0
+offset_top = 191.0
+offset_right = 691.0
+offset_bottom = 248.0
+scale = Vector2(2, 2)
+texture = ExtResource("16_486mw")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 569.0
+offset_top = 261.0
+offset_right = 597.0
+offset_bottom = 285.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15_x0pmh")
+stretch_mode = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(549, 287)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_f0fmf")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(354, 392)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_f0fmf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(560, 572)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_f0fmf")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(756, 382)
+rotation = 4.71239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_f0fmf")
+
+[connection signal="area_entered" from="TravelArea/Area2D" to="TravelArea" method="_on_area_2d_area_entered"]
+
+[editable path="YSort/Lisa/LisaCutscene2"]
+[editable path="YSort/Lisa/LisaCutscene2/QuestObject"]
+[editable path="YSort/Lisa/LisaCutscene1"]

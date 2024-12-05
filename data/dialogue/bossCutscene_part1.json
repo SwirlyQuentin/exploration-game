@@ -1,0 +1,54 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Boss",
+            "source": "res://scenes/cutscene/Actors/Boss.tscn",
+            "actor-key": "boss",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "boss",
+            "content": "Well well... I guess you made it",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "Where's Will",
+            "direction": "left"
+        },
+        {
+            "key": "boss",
+            "content": "In my torture chamber with my employees..",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "What do you want?",
+            "direction": "left"
+        },
+        {
+            "key": "boss",
+            "content": "I want you to join back, it's not the same without you..",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "Never.",
+            "direction": "left"
+        },
+        {
+            "key": "boss",
+            "content": "Then die.",
+            "direction": "right"
+        }
+    ]
+}

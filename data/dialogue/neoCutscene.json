@@ -8,12 +8,6 @@
             "actor-ref": ""
         },
         {
-            "name": "Bartender",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
-            "actor-key": "bar",
-            "actor-ref": ""
-        },
-        {
             "name": "Gun",
             "source": "res://scenes/cutscene/Actors/Gun.tscn",
             "actor-key": "gun",
@@ -21,7 +15,7 @@
         },
         {
             "name": "Neo",
-            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "source": "res://scenes/cutscene/Actors/Neo.tscn",
             "actor-key": "neo",
             "actor-ref": ""
         }

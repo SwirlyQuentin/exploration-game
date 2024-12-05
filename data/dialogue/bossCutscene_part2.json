@@ -1,0 +1,95 @@
+{
+    "actor-group": "IntroActors",
+    "actors": [
+        {
+            "name": "Rat",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "rat",
+            "actor-ref": ""
+        },
+        {
+            "name": "Boss",
+            "source": "res://scenes/cutscene/Actors/Boss.tscn",
+            "actor-key": "boss",
+            "actor-ref": ""
+        },
+        {
+            "name": "Will",
+            "source": "res://scenes/cutscene/Actors/Rat.tscn",
+            "actor-key": "will",
+            "actor-ref": ""
+        }
+    ],
+    "dialogue": [
+        {
+            "key": "will",
+            "content": "Rat? What are you doing here?",
+            "direction": "right"
+        },
+        {
+            "key": "boss",
+            "content": "Uncle can I have your Rat?",
+            "direction": "center"
+        },
+        {
+            "key": "will",
+            "content": "For the hundredth time, you cannot have him,",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "but you can always come visit,",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "you know this",
+            "direction": "right"
+        },
+        {
+            "key": "boss",
+            "content": "But I wannnntttt hiiiiimmm",
+            "direction": "center"
+        },
+        {
+            "key": "will",
+            "content": "No.",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "And stop using your gang to steal him.",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "I gave you a chance and you failed to even feed him properly.",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "C'mon Rat.",
+            "direction": "right"
+        },
+        {
+            "key": "boss",
+            "content": "One day Rat... you will be mine...",
+            "direction": "center"
+        },
+        {
+            "key": "will",
+            "content": "He can't understand you, Lilly.",
+            "direction": "right"
+        },
+        {
+            "key": "will",
+            "content": "Gosh, babysitting am I right Rat",
+            "direction": "right"
+        },
+        {
+            "key": "rat",
+            "content": "Squeek",
+            "direction": "left"
+        }
+    ]
+}
